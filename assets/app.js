@@ -318,6 +318,7 @@ function renderPositions() {
     ['shares', '持仓数量', true], ['cost', '成本价', true], ['close', '现价', true],
     ['chg', '今日涨跌', true], ['mv', '市值(¥)', true], ['pnl', '浮动盈亏', true],
     ['weight', '权重', true], ['score', '状态评分', true], ['delta', '评分变动', true],
+    ['stop', '建议止损', true], ['tp', '建议止盈', true],
     ['status', '状态', false], ['spark', '走势', false],
   ];
   $('#posHead').innerHTML = cols.map(([k, t, s]) =>
@@ -341,10 +342,12 @@ function renderPositions() {
       <td class="num">${fmt(h.weight, 1)}%</td>
       <td class="num" style="color:${scoreColor(lv.score)};font-weight:680;font-size:15px">${isNum(lv.score) ? lv.score : '—'}</td>
       <td class="num ${chgCls(d)}" title="${esc(h.change_reason)}">${isNum(d) ? arrow + ' ' + fmt(Math.abs(d), 1) : '—'}</td>
+      <td class="num">${stopTP_cell(h)}</td>
+      <td class="num">${takeProfit_cell(h)}</td>
       <td><span class="badge ${badgeCls(lv.score)}">${esc(lv.status)}</span></td>
       <td>${sparkSVG(h.spark)}</td>
     </tr>
-    <tr class="detail" data-for="${esc(h.code)}" style="display:none"><td></td><td colspan="13">
+    <tr class="detail" data-for="${esc(h.code)}" style="display:none"><td></td><td colspan="15">
       <div class="dimbox" id="${boxId(h.code)}"></div>
     </td></tr>`;
   }).join('');
@@ -358,6 +361,40 @@ function renderPositions() {
     if (det.style.display === 'none') box.innerHTML = dimDetail(code);
     det.style.display = det.style.display === 'none' ? '' : 'none';
   });
+}
+
+// ---- 止损/止盈 推荐价列 ----
+function stopTP_cell(h) {
+  if (!isNum(h.stop_price)) return '<span class="faint">—</span>';
+  const sdAtr = h.stop_distance_atr;
+  const sdPct = h.stop_distance_pct;
+  const atrTxt = isNum(sdAtr) ? `距 ${sdAtr.toFixed(1)}×ATR` : '';
+  const pctTxt2 = isNum(sdPct) ? `(-${sdPct.toFixed(1)}%)` : '';
+  const breached = h.stop_breached;
+  const ccy = esc(h.currency || '');
+  const cls = breached ? 'color:var(--up);font-weight:680'
+    : (isNum(sdAtr) && sdAtr < 0.5 ? 'color:#f0a020;font-weight:650'
+    : (isNum(sdAtr) && sdAtr < 1.0 ? 'color:var(--warn,#d49a30)' : ''));
+  return `<div title="${esc(h.stop_method || 'ATR 波动率自适应')}" style="${cls}">
+    ${fmt(h.stop_price, h.stop_price < 10 ? 3 : 2)} <span class="faint" style="font-size:10.5px">${ccy}</span><br>
+    <span style="font-size:10.5px">${breached ? '⚠ 已触发' : atrTxt}${pctTxt2 ? ' ' + pctTxt2 : ''}</span>
+  </div>`;
+}
+
+function takeProfit_cell(h) {
+  if (!isNum(h.take_profit_1)) return '<span class="faint">—</span>';
+  const tp1 = h.take_profit_1;
+  const tp2 = h.take_profit_2;
+  const tp1Atr = h.tp1_distance_atr;
+  const reached = h.tp1_reached;
+  const cls = reached ? 'color:var(--down);font-weight:680'
+    : (isNum(tp1Atr) && tp1Atr < 1.0 ? 'color:#5fc78a;font-weight:650' : '');
+  const tp2line = isNum(tp2)
+    ? `<br><span style="font-size:10.5px" class="faint">T2 ${fmt(tp2, tp2 < 10 ? 3 : 2)} · 距 ${h.tp2_distance_atr ? h.tp2_distance_atr.toFixed(1) + '×ATR' : '—'}</span>`
+    : '';
+  return `<div title="${esc(h.take_profit_1_method || '')}" style="${cls}">
+    ${fmt(tp1, tp1 < 10 ? 3 : 2)} <span class="faint" style="font-size:10.5px">-1/3</span>${tp2line}
+  </div>`;
 }
 
 function dimDetail(code) {
@@ -376,12 +413,43 @@ function dimDetail(code) {
       <span class="d">${esc(g.detail || '')}</span></div>`;
   }).join('');
   const others = allScores(h);
+  // 出场纪律详情（仅当有 stop_price 时显示）
+  let stopBlock = '';
+  if (isNum(h.stop_price) || isNum(h.take_profit_1)) {
+    const seg = [];
+    if (isNum(h.stop_price)) {
+      const cls = h.stop_breached ? 'var(--up)'
+        : (isNum(h.stop_distance_atr) && h.stop_distance_atr < 0.5 ? '#f0a020' : '');
+      seg.push(`<span><b style="color:${cls}">止损 ${fmt(h.stop_price, h.stop_price<10?3:2)} ${esc(h.currency||'')}</b>
+        <span class="faint" style="font-size:10.5px">(${esc(h.stop_method || 'ATR 多支撑')}${isNum(h.stop_distance_atr) ? ' · 距 '+h.stop_distance_atr.toFixed(1)+'×ATR' : ''})</span></span>`);
+    }
+    if (isNum(h.take_profit_1)) {
+      const cls = h.tp1_reached ? 'var(--down)' : '';
+      seg.push(`<span><b style="color:${cls}">止盈 T1 ${fmt(h.take_profit_1, h.take_profit_1<10?3:2)}</b>
+        <span class="faint" style="font-size:10.5px">${esc(h.take_profit_1_method || '')}${isNum(h.tp1_distance_atr) ? ' · 距 '+h.tp1_distance_atr.toFixed(1)+'×ATR' : ''}${h.tp1_reached ? ' · ⚡已触及' : ''}</span></span>`);
+    }
+    if (isNum(h.take_profit_2)) {
+      seg.push(`<span><b>止盈 T2 ${fmt(h.take_profit_2, h.take_profit_2<10?3:2)}</b>
+        <span class="faint" style="font-size:10.5px">${esc(h.take_profit_2_method || '')}${isNum(h.tp2_distance_atr) ? ' · 距 '+h.tp2_distance_atr.toFixed(1)+'×ATR' : ''}</span></span>`);
+    }
+    if (h.exit_state && h.exit_state.text) {
+      const colorByLevel = {ok:'var(--up)', warn:'#f0a020', watch:'#f0a020', danger:'var(--up)', warm:'var(--down)'}[h.exit_state.level] || 'var(--dim)';
+      seg.push(`<span style="color:${colorByLevel}">状态 · ${esc(h.exit_state.text)}</span>`);
+    }
+    if (isNum(h.holding_days) && isNum(h.time_stop_days)) {
+      seg.push(`<span class="faint" style="font-size:10.5px">持仓 ${h.holding_days} 日 / 时间止损 ${h.time_stop_days} 日</span>`);
+    }
+    stopBlock = `<div class="row" style="background:rgba(210,163,95,.07);border-radius:6px;padding:6px 10px;margin-top:6px">
+      <span class="n" style="color:var(--amber)">止盈止损</span>
+      <div style="display:flex;gap:18px;flex-wrap:wrap">${seg.join('')}</div>
+    </div>`;
+  }
   return `<div style="font-size:12px;color:var(--dim);margin-bottom:6px">
       <b style="color:var(--amber)">${esc(TN_FULL[h.template])}</b> 维度明细　
       评分变动说明：${esc(h.change_reason)}
       ${isNum(h.hard_stop) ? `　|　硬止损 ${fmt(h.hard_stop, 3)} ${esc(h.currency)}${h.hard_stop_hit ? ' <b style="color:var(--up)">已触及</b>' : ''}` : ''}
       ${isNum(h.chandelier) ? `　|　吊灯止损 ${fmt(h.chandelier, 3)}` : ''}
-    </div>${rows}
+    </div>${rows}${stopBlock}
     <div style="font-size:11.5px;color:var(--faint);margin-top:8px;border-top:1px dashed var(--line);padding-top:6px">
       其他模板评分：趋势 ${fmt(others.trend, 0)} · 长线 ${fmt(others.longterm, 0)} · 背离 ${fmt(others.divergence, 0)} · 基本面 ${fmt(others.fundamental, 0)}
       ${isNum(h.rsi) ? `　|　RSI ${fmt(h.rsi, 1)}` : ''}${isNum(h.ma20) ? `　|　MA20 ${fmt(h.ma20, 3)}` : ''}
@@ -536,6 +604,8 @@ function orderHoldings() {
     cost: h => h.cost, close: h => h.close, chg: h => h.chg ?? -999, mv: h => h.mv ?? -999,
     pnl: h => h.pnl ?? -999, weight: h => h.weight ?? -999,
     score: h => liveOf(h).score ?? -999, delta: h => h.score_change ?? -999,
+    stop: h => h.stop_distance_atr ?? -999,
+    tp: h => h.tp1_distance_atr ?? -999,
     status: h => liveOf(h).status,
   }[st.key] || (h => h.weight ?? -999);
   return [...DATA.holdings].map((h, i) => [h, i]).sort((a, b) => {

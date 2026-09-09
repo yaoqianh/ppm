@@ -356,6 +356,252 @@ def _fmt_num(v):
     return "—" if v is None else f"{v:g}"
 
 
+# ---------------------------------------------------------------- 止盈止损 / 出场纪律
+# 设计原则（来自 wb-finance-skill/stop-discipline.md）：
+#   1. **去成本锚定**：成本价不是市场关心的变量。止损位不应该基于「浮亏多少」
+#      反推，而是基于当前价格离关键支撑的偏离。
+#   2. **波动率自适应**：ATR(14) 反映个股的真实波动，比固定百分比更适合不同波动
+#      个性（高波动用更大缓冲，低波动用更紧）。
+#   3. **多支撑取严**：候选支撑位（ATR 反推价、MA20、MA60、近段前低）取其中
+#      **最高**的那条——保证任何一条支撑被破都出局。
+#   4. **止盈分批**：第一目标(60日高/52周高 − buffer)触发减半，剩余部分用吊灯
+#      或目标 2 跟踪。
+#   5. **时间止损**：横盘超过模板阈值 → 降仓或退出（释放资金成本）。
+
+from typing import Optional, Sequence  # noqa: E402
+
+
+def _safe_atr(closes: Sequence[float], highs: Sequence[float], lows: Sequence[float], n: int = 14) -> Optional[float]:
+    """手动 ATR（若 indicators 模块已经算好就直接传）"""
+    if not closes or len(closes) < n + 1:
+        return None
+    trs = []
+    for i in range(1, len(closes)):
+        tr = max(highs[i] - lows[i],
+                 abs(highs[i] - closes[i - 1]),
+                 abs(lows[i] - closes[i - 1]))
+        trs.append(tr)
+    if len(trs) < n:
+        return None
+    a = sum(trs[-n:]) / n
+    return a if a > 0 else None
+
+
+def compute_stop_take(t: dict, ctx: dict, tmpl_cfg: dict,
+                      avg_cost: Optional[float] = None) -> dict:
+    """
+    根据模板的 stop_take_config 计算止损 / 止盈价位。
+
+    返回：{
+        stop_price: 跌破即出局（取所有候选支撑位中"最高"那条），
+        partial_sell_at: 第一止盈位（半仓触发），
+        take_profit_2: 第二止盈位（清剩余仓位），
+        stop_distance_pct: (close - stop) / close × 100, 留有空间越大该值越大,
+        stop_distance_atr: (close - stop) / ATR(14), 0~3，越小越接近触发,
+        tp1_distance_atr: (partial_sell_at - close) / ATR(14),
+        stop_method: 实际生效的支撑位名(显示用),
+        tp1_method, tp2_method,
+    }
+    """
+    cfg = (tmpl_cfg or {}).get("stop_take_config", {}) or {}
+    close = t.get("close")
+    atr = t.get("atr")
+    ma20, ma60, ma250 = t.get("ma20"), t.get("ma60"), t.get("ma250")
+    high20, low20 = t.get("high20"), t.get("low20")
+    high60 = t.get("high60")
+    k = float(cfg.get("atr_multiplier") or 1.5)
+
+    out: dict = {
+        "stop_price": None, "partial_sell_at": None, "take_profit_2": None,
+        "stop_distance_pct": None, "stop_distance_atr": None, "tp1_distance_atr": None,
+        "tp2_distance_atr": None,
+        "stop_method": None, "tp1_method": None, "tp2_method": None,
+        "atr": atr, "atr_multiplier": k,
+    }
+    if close is None or atr is None or atr <= 0:
+        return out
+
+    # ---------------- 止损 ----------------
+    # 多支撑取严（max）：任何一条被破都出局
+    cands = []
+    atr_stop = close - k * atr
+    cands.append((atr_stop, f"收盘 − {k:g}×ATR({atr:.2f})"))
+    if ma20:
+        cands.append((ma20, "MA20"))
+    if ma60:
+        cands.append((ma60, "MA60"))
+    if low20:
+        # 给前低加点 buffer，避免插针
+        buffer = max(atr * 0.3, close * 0.005)
+        cands.append((low20 + buffer, f"近20日前低 + {buffer:.2f}"))
+    # 取最高（即最严 = 最接近当前价）的支撑
+    valid = [(p, name) for p, name in cands if p and p > 0]
+    if valid:
+        out["stop_price"], out["stop_method"] = max(valid, key=lambda x: x[0])
+        if out["stop_price"] > close:
+            out["stop_price"] = close * 0.97  # 上限封顶，最多比 close 低 3%
+        out["stop_distance_atr"] = (close - out["stop_price"]) / atr
+        out["stop_distance_pct"] = (close - out["stop_price"]) / close * 100
+
+    # ---------------- 止盈 ----------------
+    # tp1：60日高 − 0.5×ATR，留点回撤空间
+    if high60:
+        tp1 = high60 - 0.5 * atr
+        out["partial_sell_at"] = tp1
+        out["tp1_method"] = f"60日高({high60:.2f}) − 0.5×ATR"
+        out["tp1_distance_atr"] = (tp1 - close) / atr
+    elif high20:
+        tp1 = high20 - 0.5 * atr
+        out["partial_sell_at"] = tp1
+        out["tp1_method"] = f"20日高({high20:.2f}) − 0.5×ATR"
+        out["tp1_distance_atr"] = (tp1 - close) / atr
+
+    # tp2：60日高 + 1.5×ATR，强势突破后才到
+    if high60:
+        tp2 = high60 + 1.5 * atr
+    elif high20:
+        tp2 = high20 + 1.5 * atr
+    else:
+        tp2 = None
+    if tp2:
+        out["take_profit_2"] = tp2
+        out["tp2_method"] = f"近段高 + 1.5×ATR"
+        out["tp2_distance_atr"] = (tp2 - close) / atr
+
+    # ---------------- 模板特异性覆盖 ----------------
+    # longterm 用 52 周高（来自接口 high52 / 自算 high252）作为主目标
+    h52 = t.get("high252") or ctx.get("high52")
+    if h52 and tmpl_cfg.get("name", "").startswith("长线"):
+        out["partial_sell_at"] = h52 - 2 * atr
+        out["tp1_method"] = f"52周高({h52:.2f}) − 2×ATR"
+        out["take_profit_2"] = h52
+        out["tp2_method"] = f"52周高({h52:.2f})"
+        if out["partial_sell_at"]:
+            out["tp1_distance_atr"] = (out["partial_sell_at"] - close) / atr
+        if out["take_profit_2"]:
+            out["tp2_distance_atr"] = (out["take_profit_2"] - close) / atr
+
+    # divergence：用 2:1 盈亏比替代（按入场价；这里用入场价近似为 cost）
+    if tmpl_cfg.get("name", "").startswith("背离") and avg_cost:
+        rr_target = avg_cost + 2 * (avg_cost - (out["stop_price"] or avg_cost * 0.95))
+        out["partial_sell_at"] = rr_target
+        out["tp1_method"] = f"成本 + 2×ATR(2:1 盈亏比)"
+        out["tp1_distance_atr"] = (rr_target - close) / atr
+        out["take_profit_2"] = avg_cost + 3.5 * (avg_cost - (out["stop_price"] or avg_cost * 0.95))
+        out["tp2_method"] = f"成本 + 3.5×ATR"
+
+    return out
+
+
+def discipline_dim(stop_take: dict, t: dict, ctx: dict, tmpl_cfg: dict,
+                   holding_days: Optional[int] = None) -> dict:
+    """
+    出场纪律维度评分（满分依模板而异，由 tmpl_cfg.dimensions[discipline].max 决定）。
+
+    拆分（每项满分加总后用 min(total, cfg_max) 收口）：
+      - 空间分：止损位离现价 ≥ 2×ATR 满分；< 0.5×ATR 0 分
+      - 止损合规分：当前价未跌破止损；当日跌破 0 分
+      - 止盈可达分：到达 TP1 距离 ≤ 1×ATR 接近目标，5 分；超过 5×ATR 0 分
+      - 时间止损分：横盘未超阈值
+
+    返回：{"score": 0~cfg_max, "detail": "<人类可读明细>"}
+    """
+    cfg = (tmpl_cfg or {}).get("stop_take_config", {}) or {}
+    close = t.get("close")
+    atr = stop_take.get("atr") or t.get("atr")
+    # 从 cfg 中读取真正模板允许的 discipline 维度 max（趋势 15 / 长线 12 / 背离 15）
+    cfg_max = 15
+    for d in (tmpl_cfg or {}).get("dimensions", []):
+        if d.get("key") == "discipline":
+            cfg_max = float(d.get("max") or 15)
+            break
+
+    detail_parts = []
+    s = 0.0
+
+    if close is None or atr is None or atr <= 0:
+        return {"score": None, "detail": "止损/止盈建议计算依赖数据不足"}
+
+    # ---- 1) 止损空间分（按距离分级）----
+    sd_atr = stop_take.get("stop_distance_atr")
+    if sd_atr is None:
+        space_v, space_d = 0.0, "止损位未知"
+    elif sd_atr >= 2.0:
+        space_v, space_d = 5.0, f"止损安全(距 {sd_atr:.1f}×ATR)"
+    elif sd_atr >= 1.0:
+        space_v, space_d = 3.5, f"止损缓冲中等(距 {sd_atr:.1f}×ATR)"
+    elif sd_atr >= 0.5:
+        space_v, space_d = 1.5, f"止损贴近(距 {sd_atr:.1f}×ATR)"
+    else:
+        space_v, space_d = 0.0, f"⚠ 已触及或跌破止损(距 {sd_atr:.1f}×ATR)"
+    s += space_v
+    detail_parts.append(space_d)
+
+    # ---- 2) 止损合规 ----
+    sp = stop_take.get("stop_price")
+    if sp and close <= sp * 1.005:
+        comp_v, comp_d = 0.0, "已破止损位(收盘 ≤ 止损线)"
+    elif sp and close <= sp * 1.02:
+        comp_v, comp_d = 1.0, "距止损 ≤2%(危险区)"
+    elif sp and ctx.get("chg", 0) and ctx["chg"] < -3 and close < sp * 1.05:
+        comp_v, comp_d = 2.0, f"当日跌{ctx['chg']:.1f}%接近止损"
+    else:
+        comp_v, comp_d = 3.0, "未破止损"
+    s += comp_v
+    detail_parts.append(comp_d)
+
+    # ---- 3) 止盈可达 ----
+    tp1_atr = stop_take.get("tp1_distance_atr")
+    if tp1_atr is None:
+        tp_v, tp_d = 0.0, "止盈位未知"
+    elif tp1_atr <= 0.3:
+        tp_v, tp_d = 5.0, f"已触及 TP1(距{tp1_atr:.1f}×ATR)"
+    elif tp1_atr <= 1.0:
+        tp_v, tp_d = 4.0, f"接近 TP1(距{tp1_atr:.1f}×ATR)"
+    elif tp1_atr <= 3.0:
+        tp_v, tp_d = 2.0, f"可触 TP1(距{tp1_atr:.1f}×ATR)"
+    elif tp1_atr <= 5.0:
+        tp_v, tp_d = 1.0, f"TP1 较远(距{tp1_atr:.1f}×ATR)"
+    else:
+        tp_v, tp_d = 0.0, f"TP1 过远(距{tp1_atr:.1f}×ATR)"
+    s += tp_v
+    detail_parts.append(tp_d)
+
+    # ---- 4) 时间止损 ----
+    time_days = cfg.get("time_stop_days") or 60
+    if holding_days is None:
+        time_v, time_d = 0.0, "建仓日未知(无法做时间止损评分)"
+    else:
+        ratio = holding_days / time_days
+        if ratio < 0.5:
+            time_v, time_d = 2.0, f"持仓{holding_days}日 < 阈值{time_days}日的一半"
+        elif ratio < 1.0:
+            time_v, time_d = 1.0, f"持仓{holding_days}日 / {time_days}"
+        else:
+            time_v, time_d = 0.0, f"⚠ 持仓{holding_days}日 已超阈值{time_days}日，时间止损触发"
+    s += time_v
+    detail_parts.append(time_d)
+
+    return {"score": round(_clamp(s, 0, cfg_max), 1),
+            "detail": "｜".join(detail_parts)}
+
+
+def state_label(stop_take: dict) -> dict:
+    """给前端卡片用的快捷状态标签"""
+    sd_atr = stop_take.get("stop_distance_atr")
+    tp1_atr = stop_take.get("tp1_distance_atr")
+
+    if sd_atr is not None and sd_atr <= 0.2:
+        return {"level": "danger", "text": "已触发止损"}
+    if tp1_atr is not None and 0 < tp1_atr <= 0.3:
+        return {"level": "warm", "text": "已触止盈位"}
+    if sd_atr is not None and sd_atr <= 0.5:
+        return {"level": "warn", "text": "止损敏感区"}
+    if sd_atr is not None and sd_atr < 1.0:
+        return {"level": "watch", "text": "止损缓冲偏紧"}
+    return {"level": "ok", "text": "建议有效"}
+
+
 # ---------------------------------------------------------------- 综合评分
 
 def composite(dims: Dict[str, dict], tmpl_cfg: dict) -> Optional[float]:

@@ -289,6 +289,14 @@ footer {
   .drawer { width: 100%; }
 }
 
+/* ---------------------------------------------------------------- 止盈/止损 列 */
+#posTable td[data-k="stop"],
+#posTable td[data-k="tp"] { white-space: nowrap; line-height: 1.35; }
+#posTable td[data-k="stop"] .danger { color: var(--up); font-weight: 680; }
+#posTable td[data-k="stop"] .warn { color: #f0a020; font-weight: 650; }
+#posTable td[data-k="tp"] .good { color: var(--down); font-weight: 680; }
+#posTable td[data-k="tp"] .near { color: #5fc78a; font-weight: 650; }
+
 /* ---------------------------------------------------------------- 手机端：宽表格转卡片 */
 
 @media (max-width: 780px) {
@@ -330,6 +338,13 @@ footer {
   /* 次要列在手机上隐藏，避免卡片过长 */
   #posTable td[data-k="spark"] { display: none; }
   #posTable td[data-k="rk"] { display: none; }
+  #posTable td[data-k="delta"] { display: none; }
+  /* 手机端让建议止损/止盈两列排在最显眼位置 */
+  #posTable td[data-k="stop"],
+  #posTable td[data-k="tp"] {
+    background: rgba(210,163,95,.07); margin-top: 4px;
+    padding: 5px 8px; border-radius: 5px;
+  }
 
   /* 分组标题行 / 操作参考副行：整行平铺，不加列名 */
   .resp-table tr.group-row { background: var(--card3); padding: 7px 13px; }

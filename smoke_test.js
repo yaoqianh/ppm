@@ -49,7 +49,7 @@ setTimeout(() => {
   check('择时走势图为 SVG', $('#timingChart svg') !== null);
 
   // 表格
-  check('持仓明细表头 14 列', $$('#posHead th').length === 14);
+  check('持仓明细表头 16 列', $$('#posHead th').length === 16);
   check('持仓明细 8 行', $$('#posBody tr[data-code]').length === 8);
   check('持仓明细含完整字段', (() => {
     const t = $('#posBody tr[data-code]').textContent;

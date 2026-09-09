@@ -144,6 +144,24 @@ def evaluate(ctx: dict, cfg: dict) -> Dict[str, Dict[str, dict]]:
     }
 
 
+def estimate_holding_days(code: str, trades_doc: dict, as_of: str) -> Optional[int]:
+    """
+    估算持仓天数 —— 从 trades.json 找该 code 第一次 'buy' 的日期（type=baseline 也算）。
+    返回 None 表示无建仓日，常见的场景是迁移数据。
+    """
+    buys = sorted([t["date"] for t in trades_doc.get("trades", [])
+                   if t.get("code") == code and t.get("side") == "buy" and t.get("date")])
+    if not buys:
+        return None
+    try:
+        from datetime import date
+        y0, m0, d0 = (int(x) for x in buys[0].split("-"))
+        y1, m1, d1 = (int(x) for x in as_of.split("-"))
+        return max(0, (date(y1, m1, d1) - date(y0, m0, d0)).days)
+    except Exception:
+        return None
+
+
 def scores_from_dims(all_dims: Dict[str, Dict[str, dict]], cfg: dict) -> Dict[str, Optional[float]]:
     out = {}
     for key, tmpl in cfg["templates"].items():
@@ -364,6 +382,16 @@ def build_dashboard(verbose: bool = True, backfill: bool = True, force: bool = F
 
     timing = SC.market_timing(idx_states, pool_stats, bench_vol, bench_amt_ratio, cfg)
 
+    # 提前算 as_of，供 holding_days 估算使用（持仓循环需要该日期）
+    as_of_est = None
+    for _c in ([holdings[0]["code"]] if holdings else []) + [bench_code]:
+        _b = klines.get(_c) or []
+        if _b:
+            as_of_est = _b[-1]["date"]
+            break
+    if not as_of_est:
+        as_of_est = datetime.now().strftime("%Y-%m-%d")
+
     # ---------- 持仓 ----------
     out_holdings = []
     for h in holdings:
@@ -406,12 +434,34 @@ def build_dashboard(verbose: bool = True, backfill: bool = True, force: bool = F
             hard_stop = cost - (hard_stop_cny / fx) / shares
         chandelier = ctx["t"].get("chandelier")
 
+        # 持仓天数 → 用于时间止损
+        holding_days = estimate_holding_days(code, trades_doc, as_of_est)
+
+        # 新版止盈/止损建议（去成本锚定 / ATR 波动率自适应 / 多支撑取严）
+        stop_take = SC.compute_stop_take(ctx["t"], ctx, tmpl_cfg, cost)
+        st_state = SC.state_label(stop_take)
+
+        # 把"出场纪律"维度塞到对应模板的 dims，让 composite 自动包含
+        dd = SC.discipline_dim(stop_take, ctx["t"], ctx, tmpl_cfg, holding_days)
+        if dd.get("score") is not None and tmpl in all_dims:
+            all_dims[tmpl]["discipline"] = dd
+        # 重新算：补齐 discipline 后的分数
+        sc = scores_from_dims(all_dims, cfg)
+        main_score = sc.get(tmpl)
+        status, advice = SC.status_of(main_score, tmpl_cfg)
+
         signals = []
         for d in (all_dims.get(tmpl) or {}).values():
             if d.get("detail"):
                 signals.append(d["detail"])
         if chandelier:
             signals.append(f"吊灯止损线{chandelier:.2f}(10日最高−3×ATR)")
+        if stop_take.get("stop_price"):
+            signals.append(f"建议止损{stop_take['stop_price']:.2f}"
+                           f"(依据:{stop_take.get('stop_method', '')})")
+        if stop_take.get("partial_sell_at"):
+            signals.append(f"止盈第一目标{stop_take['partial_sell_at']:.2f}, "
+                           f"触发可减半仓")
 
         out_holdings.append({
             "code": code, "name": h.get("name") or rt.get("name") or code,
@@ -431,8 +481,26 @@ def build_dashboard(verbose: bool = True, backfill: bool = True, force: bool = F
             "hard_stop": _round(hard_stop, 3),
             "hard_stop_hit": bool(close and hard_stop and close <= hard_stop),
             "chandelier": _round(chandelier, 3),
+            "stop_price": _round(stop_take.get("stop_price"), 3),
+            "stop_method": stop_take.get("stop_method"),
+            "stop_distance_atr": _round(stop_take.get("stop_distance_atr"), 2),
+            "stop_distance_pct": _round(stop_take.get("stop_distance_pct"), 1),
+            "stop_breached": bool(close and stop_take.get("stop_price")
+                                  and close <= stop_take["stop_price"]),
+            "take_profit_1": _round(stop_take.get("partial_sell_at"), 3),
+            "take_profit_1_method": stop_take.get("tp1_method"),
+            "take_profit_2": _round(stop_take.get("take_profit_2"), 3),
+            "take_profit_2_method": stop_take.get("tp2_method"),
+            "tp1_distance_atr": _round(stop_take.get("tp1_distance_atr"), 2),
+            "tp2_distance_atr": _round(stop_take.get("tp2_distance_atr"), 2),
+            "tp1_reached": bool(close and stop_take.get("partial_sell_at")
+                                and close >= stop_take["partial_sell_at"]),
+            "exit_state": st_state,
+            "holding_days": holding_days,
+            "time_stop_days": tmpl_cfg.get("stop_take_config", {}).get("time_stop_days"),
             "ma20": _round(ctx["t"].get("ma20"), 3),
             "ma60": _round(ctx["t"].get("ma60"), 3),
+            "atr": _round(ctx["t"].get("atr"), 3),
             "rsi": _round(ctx["t"].get("rsi"), 1),
             "pe": _round(f.get("pe"), 2), "pb": _round(f.get("pb"), 2),
             "high252": _round(ctx["t"].get("high252"), 3),
@@ -518,14 +586,7 @@ def build_dashboard(verbose: bool = True, backfill: bool = True, force: bool = F
         })
 
     # ---------- 历史快照 ----------
-    as_of = None
-    for c in (holdings[0]["code"] if holdings else bench_code,):
-        b = klines.get(c) or []
-        if b:
-            as_of = b[-1]["date"]
-    if not as_of:
-        as_of = datetime.now().strftime("%Y-%m-%d")
-
+    as_of = as_of_est
     snap = {
         "date": as_of,
         "scores": {x["code"]: x["score"] for x in out_holdings},
@@ -651,11 +712,15 @@ def build_dashboard(verbose: bool = True, backfill: bool = True, force: bool = F
         {"name": "基本面/估值评分",
          "basis": f"基准 {cfg['templates']['fundamental'].get('base', 50)} 分 · 最新已披露财报 + 腾讯PE/PB · ETF不适用",
          "rules": "；".join(f"{d['name']}: {d.get('desc','')}" for d in cfg["templates"]["fundamental"]["dimensions"])},
-        {"name": "止损纪律",
-         "basis": f"软止损(退出通道) + 硬止损(全部持仓, 单笔浮亏¥{hard_stop_cny:,.0f})",
-         "rules": "软止损: 60日/20日/10日前低三者取最高者, 收盘跌破即无条件清仓; "
-                  f"硬止损: 单笔浮亏达到¥{hard_stop_cny:,.0f}无条件执行, 硬止损价=(成本−{hard_stop_cny:,.0f}/股数)÷汇率, "
-                  "触及或接近时红色警示"},
+        {"name": "止盈止损建议",
+         "basis": "去成本锚定 · ATR(14) 波动率自适应 · 多支撑取严",
+         "rules": "止损 = max(收盘 − K×ATR, MA20, MA60, 近段前低+缓冲)；"
+                  "止盈 1 = 近段高 − 0.5×ATR(半仓触发)，止盈 2 = 近段高 + 1.5×ATR(突破后清剩余)；"
+                  "背离模板改用 2:1 盈亏比目标；长线改以 52 周高为主目标；"
+                  f"硬止损(¥{hard_stop_cny:,.0f}单笔浮亏)仍保留为风险兜底"},
+        {"name": "出场纪律评分",
+         "basis": "满分依模板而异（trend 15 / longterm 12 / divergence 15）",
+         "rules": "空间分(止损 ≥2×ATR 满分) + 止损合规 + 止盈可达 + 时间止损"},
     ]
 
     dashboard = {
