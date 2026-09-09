@@ -39,33 +39,35 @@ portfolio-dashboard/
 
 ## 二、快速开始
 
+如果想立刻在本地看一眼，跑下面两条命令即可：
+
 ```bash
 cd portfolio-dashboard
 
-# 1) 拉取最新行情、重算评分、生成数据
+# 1) 抓行情、算评分（仅一次）
 python run_update.py
 
-# 2) 启动本地预览（浏览器打开 http://localhost:8000）
+# 2) 启动预览（浏览器打开 http://localhost:8000）
 python serve.py
-# 或者一步到位
-python run_update.py --serve
 ```
 
-> **注意**：必须通过 HTTP 打开。直接双击 `index.html` 会因浏览器的本地文件安全策略（CORS）读不到 `data/dashboard.json`。
+> **必须通过 HTTP 打开**。直接双击 `index.html` 会因浏览器本地文件安全策略（CORS）读不到 `data/dashboard.json`。
 
-依赖：Python 3.9+，仅用标准库，无需 `pip install`。
+依赖：Python 3.9+，**只用标准库**，无需 `pip install`。如果你不想手动跑命令，请看下面的「场景 4 / 场景 5」。
 
 ---
 
-## 三、每天怎么用
+## 三、日常使用
 
-### 方式 A：只刷新行情（持仓没变）
+**场景 1｜持仓没变，只想更新行情**
 
 ```bash
 python run_update.py
 ```
 
-### 方式 B：持仓变了 —— 把最新持仓发给 AI
+> 也可双击 `update.bat`。
+
+**场景 2｜持仓变了 —— 把最新持仓发给 AI**
 
 直接把你的持仓信息发给 AI，例如：
 
@@ -78,7 +80,7 @@ AI 会做三件事：
 2. 往 `data/trades.json` 追加一条调仓记录（自动计算已实现盈亏）
 3. 执行 `python run_update.py` 重算全部评分并刷新页面
 
-### 方式 C：自己改文件
+**场景 3｜自己改文件**
 
 `data/positions.json` 格式：
 
@@ -99,6 +101,33 @@ AI 会做三件事：
 - 代码后缀：`.SH` 沪市 / `.SZ` 深市 / `.HK` 港股
 
 `data/trades.json` 里 `type` 为 `baseline` 的记录是迁移基线，不计入已实现盈亏；真实调仓请用 `"type": "normal"`。
+
+**场景 4｜全自动每日更新（推荐）**
+
+不熟悉命令行也没关系，按下面三步把项目推到 GitHub，**网站每天收盘后自动更新，手机随时打开看最新数据**：
+
+1. 登录 [github.com/new](https://github.com/new) 创建一个**公开**仓库（建议命名 `portfolio-dashboard`，**不要**勾选 Add README）
+2. 在项目根目录打开终端（PowerShell），执行：
+
+    ```bash
+    git remote add origin https://github.com/<你的用户名>/portfolio-dashboard.git
+    git push -u origin main
+    ```
+
+3. 在 GitHub 仓库页面依次点击 **Settings → Pages → Source: GitHub Actions**，等 1-2 分钟会出现「🚀 deploy」字样，之后每天 15:30 自动抓数据并部署
+
+完成后会得到一个永久网址，形如 `https://<你的用户名>.github.io/portfolio-dashboard/`，手机浏览器把它加到主屏就是 APP。
+
+> 日常修改流程：把持仓信息发给 AI，AI 改文件并 `git push` → Actions 自动重算并部署，1-2 分钟后手机上看到新数据。
+
+**场景 5｜本地双击脚本（无需命令行）**
+
+不想配 GitHub 也可以。Windows 上**双击以下两个文件**即可：
+
+- `update.bat` — 拉一次最新行情、重算评分
+- `preview.bat` — 启动本地预览服务，并在控制台打印**手机同 WiFi 访问的局域网地址**
+
+> 这两个脚本会自动避开微软应用商店的 Python 跳转、双重兜底到真实解释器；找不到 Python 时给出安装指引，不会乱弹窗。
 
 ---
 
