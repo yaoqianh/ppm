@@ -1,0 +1,15 @@
+{
+  "_note": "基本面明细（ROE / 净利率 / 营收YoY / 归母净利YoY / PE / PB）。ROE、营收、归母、净利率来自财报，免费行情接口不提供，需要手工维护或由 AI 定期更新；PE 与 PB 会在每次 run_update.py 时自动从腾讯行情接口覆盖刷新（A股可用）。缺失的维度会从评分分母中剔除，不会按 0 分处理。",
+  "_source_warning": "本文件初始值取自原看板展示的财报摘要；其中 net_margin 为按行业常识补齐的估算值，请核对后修正。",
+
+  "data": {
+    "00700.HK":  { "roe": 19.9, "net_margin": 30.0, "rev_yoy": 10.0,  "profit_yoy": 10.0, "pe": null, "pb": null, "as_of": "2026Q2", "source": "migrated" },
+    "002472.SZ": { "roe": 11.5, "net_margin": 12.0, "rev_yoy": 8.0,   "profit_yoy": 2.0,  "pe": null, "pb": null, "as_of": "2026Q2", "source": "migrated" },
+    "600941.SH": { "roe": 11.2, "net_margin": 13.0, "rev_yoy": -1.0,  "profit_yoy": -6.0, "pe": null, "pb": null, "as_of": "2026Q2", "source": "migrated" },
+    "300059.SZ": { "roe": 17.0, "net_margin": 65.0, "rev_yoy": 44.0,  "profit_yoy": 45.0, "pe": null, "pb": null, "as_of": "2026Q2", "source": "migrated" },
+    "600036.SH": { "roe": 11.7, "net_margin": 45.0, "rev_yoy": 5.0,   "profit_yoy": 2.0,  "pe": null, "pb": null, "as_of": "2026Q2", "source": "migrated" },
+    "002558.SZ": { "roe": null, "net_margin": null, "rev_yoy": null,  "profit_yoy": null, "pe": null, "pb": null, "as_of": null,    "source": "待补充财报明细" },
+    "513180.SH": { "roe": null, "net_margin": null, "rev_yoy": null,  "profit_yoy": null, "pe": null, "pb": null, "as_of": null,    "source": "ETF 不适用" },
+    "512710.SH": { "roe": null, "net_margin": null, "rev_yoy": null,  "profit_yoy": null, "pe": null, "pb": null, "as_of": null,    "source": "ETF 不适用" }
+  }
+}

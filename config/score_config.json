@@ -1,0 +1,134 @@
+{
+  "version": "1.0",
+  "note": "评分维度与权重配置文件。前端页面与 Python 计算引擎共用本文件：修改后前端实时重算，下次 run_update.py 也会按新权重重算并写入历史快照。",
+
+  "formula": "composite = 100 * Σ(score_i / max_i * weight_i) / Σ(weight_i)，仅统计 enabled=true 的维度。默认 weight_i = max_i，此时 composite = 原始总分。",
+
+  "templates": {
+    "trend": {
+      "name": "趋势跟踪",
+      "scene": "波段/趋势股",
+      "mode": "weighted_sum",
+      "base": 0,
+      "normalize_to": 100,
+      "dimensions": [
+        { "key": "structure",  "name": "结构", "max": 25, "weight": 25, "enabled": true, "desc": "均线多头排列 15 + MA20 上行 10" },
+        { "key": "momentum",   "name": "动量", "max": 30, "weight": 30, "enabled": true, "desc": "突破20日新高 15 + RS 强于沪深300 15" },
+        { "key": "volume",     "name": "量能", "max": 15, "weight": 15, "enabled": true, "desc": "突破日量能 ≥1.5 倍均量" },
+        { "key": "filter",     "name": "滤网", "max": 15, "weight": 15, "enabled": true, "desc": "沪深300不空头 8 + 站上半年线 7" },
+        { "key": "position",   "name": "位置", "max": 15, "weight": 15, "enabled": true, "desc": "距52周高点 ≤15% 满分" }
+      ],
+      "tiers": [
+        { "min": 75, "status": "强势",   "advice": "趋势完好, 回踩MA20不破可介入或持有" },
+        { "min": 55, "status": "转强",   "advice": "趋势转强, 可分批跟进, 设好吊灯止损" },
+        { "min": 35, "status": "观察",   "advice": "强度一般, 不急介入, 等确认信号" },
+        { "min": 0,  "status": "弱势",   "advice": "趋势走坏, 回避或仅保留底仓" }
+      ],
+      "sell_rules": "吊灯止损(10日最高 − 3×ATR) / 跌破MA20 / 浮盈≥+20%分批止盈 / 浮亏超硬止损线无条件清仓"
+    },
+
+    "longterm": {
+      "name": "长线监控",
+      "scene": "长线价值建仓/加仓评分（越高越值得买）",
+      "mode": "weighted_sum",
+      "base": 0,
+      "normalize_to": 100,
+      "dimensions": [
+        { "key": "valuation", "name": "估值分位", "max": 35, "weight": 35, "enabled": true, "desc": "PE历史分位(无PE用价格分位), 明细标注PB分位" },
+        { "key": "cushion",   "name": "位置安全垫", "max": 20, "weight": 20, "enabled": true, "desc": "距52周低点 ≤10% 满分" },
+        { "key": "weekly",    "name": "周线结构", "max": 20, "weight": 20, "enabled": true, "desc": "周线MACD多头8 + 年线上8 + 年线上行4" },
+        { "key": "quality",   "name": "基本面质量", "max": 25, "weight": 25, "enabled": true, "desc": "ROE / 营收 / 归母 / 净利率" }
+      ],
+      "tiers": [
+        { "min": 75, "status": "积极建仓区", "advice": "估值/位置/结构/基本面共振, 可按长线计划建仓或加仓" },
+        { "min": 60, "status": "分批建仓",   "advice": "长线价值浮现, 适合分批布局, 留好加仓余地" },
+        { "min": 45, "status": "持有观察",   "advice": "持有现有仓位, 不追加, 等估值或结构进一步改善" },
+        { "min": 0,  "status": "不加仓",     "advice": "长线维度暂不支持加仓, 仅持有或按卖出纪律处理" }
+      ],
+      "sell_rules": "周线MACD死叉 / 跌破年线MA250且3日未收回 → 警示并执行减仓"
+    },
+
+    "divergence": {
+      "name": "背离反转",
+      "scene": "趋势反转/左侧抄底（Elder《以交易为生》评分卡）",
+      "mode": "weighted_sum",
+      "base": 0,
+      "normalize_to": 100,
+      "dimensions": [
+        { "key": "w_impulse",     "name": "周线强力系统", "max": 20, "weight": 20, "enabled": true, "desc": "红0 / 绿1 / 蓝紧跟红2，×10" },
+        { "key": "d_impulse",     "name": "日线强力系统", "max": 20, "weight": 20, "enabled": true, "desc": "红0 / 绿1 / 蓝紧跟红2，×10" },
+        { "key": "price_value",   "name": "价格vs价值",   "max": 20, "weight": 20, "enabled": true, "desc": "低于EMA13~26区间2 / 区间内1 / 高于0，×10" },
+        { "key": "false_break",   "name": "假突破",       "max": 20, "weight": 20, "enabled": true, "desc": "将要发生2 / 已发生1 / 无0，×10" },
+        { "key": "divergence_ok", "name": "背离完备性",   "max": 20, "weight": 20, "enabled": true, "desc": "日线/周线MACD柱背离各1分(宽松口径)，×10" }
+      ],
+      "tiers": [
+        { "min": 80, "status": "A级建仓", "advice": "背离条件完备, 可主动建仓" },
+        { "min": 60, "status": "B级轻仓", "advice": "左侧轻仓试错, 控制仓位" },
+        { "min": 40, "status": "C级观察", "advice": "仅观察, 等背离信号完备" },
+        { "min": 0,  "status": "放弃",    "advice": "无有效背离结构, 放弃本轮" }
+      ],
+      "sell_rules": "反转失败即离场：跌破背离起涨点或再次创新低无条件退出"
+    },
+
+    "fundamental": {
+      "name": "基本面/估值评分",
+      "scene": "基准 50 分 · 最新已披露财报 + 腾讯 PE/PB · ETF 不适用",
+      "mode": "base_plus_adjust",
+      "base": 50,
+      "normalize_to": 100,
+      "dimensions": [
+        { "key": "roe",        "name": "ROE年化",   "min": -15, "max": 10, "weight": 10, "enabled": true, "desc": "≥15% +10 / ≥8% +5 / 亏损 −15" },
+        { "key": "net_margin", "name": "净利率",     "min": -10, "max": 5,  "weight": 5,  "enabled": true, "desc": "≥20% +5 / 为负 −10" },
+        { "key": "rev_yoy",    "name": "营收YoY",   "min": -10, "max": 10, "weight": 10, "enabled": true, "desc": "≥20% +10 / ≥0% +5 / ≤−10% −10" },
+        { "key": "profit_yoy", "name": "归母净利YoY", "min": -15, "max": 10, "weight": 10, "enabled": true, "desc": "≥30% +10 / ≥0% +5 / ≤−30% −15 / 其余为负 −5" },
+        { "key": "pe",         "name": "PE(TTM)",  "min": -10, "max": 10, "weight": 10, "enabled": true, "desc": "≤15 +10 / 15–30 +5 / >80 −5 / 亏损 −10" },
+        { "key": "pb",         "name": "PB",         "min": -5,  "max": 5,  "weight": 5,  "enabled": true, "desc": "<1.5 +5 / >8 −5" }
+      ],
+      "tiers": [
+        { "min": 75, "status": "优质",   "advice": "基本面扎实, 支持长期持有" },
+        { "min": 60, "status": "良好",   "advice": "基本面稳健" },
+        { "min": 45, "status": "中性",   "advice": "基本面中性, 不构成加分项" },
+        { "min": 0,  "status": "偏弱",   "advice": "基本面走弱, 谨慎持有" }
+      ],
+      "sell_rules": "基本面恶化（连续两期归母负增长）触发复核"
+    },
+
+    "exit": {
+      "name": "退出通道",
+      "scene": "深套历史遗留仓位的纪律退出（非建仓策略）",
+      "mode": "trigger",
+      "base": 0,
+      "normalize_to": 100,
+      "dimensions": [],
+      "tiers": [],
+      "sell_rules": "反弹至布林中轨/MA20 减1/3 → 布林上轨或MA60 再减1/3 → 站回年线MA250三日 清完；收盘跌破近60日前低 无条件清仓"
+    }
+  },
+
+  "market_timing": {
+    "name": "大盘择时 · 五维评分",
+    "mode": "weighted_sum",
+    "normalize_to": 100,
+    "dimensions": [
+      { "key": "trend",   "name": "趋势",     "max": 40, "weight": 40, "enabled": true, "desc": "五大指数多头/震荡/空头计数" },
+      { "key": "volume",  "name": "量能",     "max": 20, "weight": 20, "enabled": true, "desc": "近5日量能 / 20日均量" },
+      { "key": "breadth", "name": "广度",     "max": 20, "weight": 20, "enabled": true, "desc": "持仓+自选站上MA20 比例" },
+      { "key": "vol",     "name": "波动",     "max": 10, "weight": 10, "enabled": true, "desc": "沪深300 20日年化波动率" },
+      { "key": "newhigh", "name": "新高动能", "max": 10, "weight": 10, "enabled": true, "desc": "池内处于20日新高附近比例" }
+    ],
+    "position_tiers": [
+      { "min": 70, "position": "进攻(7成以上)", "note": "趋势/广度/量能共振向上, 可积极参与" },
+      { "min": 55, "position": "偏多(5-7成)",   "note": "结构健康, 正常参与" },
+      { "min": 40, "position": "均衡(4-5成)",   "note": "多空交织, 控制节奏" },
+      { "min": 25, "position": "防守(3成以下)", "note": "趋势/广度/量能共振走弱, 少动多看" },
+      { "min": 0,  "position": "空仓观望",     "note": "系统性风险释放中, 保留现金" }
+    ]
+  },
+
+  "thresholds": {
+    "high_score": 70,
+    "low_score": 40,
+    "deep_loss_pct": -20,
+    "concentration_warn": 30
+  }
+}

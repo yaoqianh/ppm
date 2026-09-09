@@ -1,0 +1,24 @@
+{
+  "_schema": {
+    "date": "成交日期 YYYY-MM-DD",
+    "side": "buy / sell",
+    "shares": "成交股数（卖出为正数即可）",
+    "price": "成交单价（该币种本币价格）",
+    "currency": "CNY / HKD / USD",
+    "fee": "手续费+印花税等（本币）",
+    "type": "baseline（迁移基线，不计入已实现盈亏） / normal（真实调仓）",
+    "note": "备注，例如调仓理由"
+  },
+  "_note": "以下 baseline 记录由原看板迁移生成，用于让「历史调仓记录」模块有初始数据。请把它们替换为你的真实成交流水：卖出记录会自动计算已实现盈亏。",
+
+  "trades": [
+    { "date": "2026-09-03", "side": "buy", "code": "513180.SH", "name": "恒生科技ETF", "shares": 129400, "price": 0.8,      "currency": "CNY", "fee": 0, "type": "baseline", "note": "迁移基线：对应原看板成本口径" },
+    { "date": "2026-09-03", "side": "buy", "code": "002472.SZ", "name": "双环传动",   "shares": 2700,   "price": 35.8523,  "currency": "CNY", "fee": 0, "type": "baseline", "note": "迁移基线" },
+    { "date": "2026-09-03", "side": "buy", "code": "600941.SH", "name": "中国移动",   "shares": 700,    "price": 78.8694,  "currency": "CNY", "fee": 0, "type": "baseline", "note": "迁移基线" },
+    { "date": "2026-09-03", "side": "buy", "code": "600036.SH", "name": "招商银行",   "shares": 500,    "price": 38.2828,  "currency": "CNY", "fee": 0, "type": "baseline", "note": "迁移基线" },
+    { "date": "2026-09-03", "side": "buy", "code": "00700.HK",  "name": "腾讯控股",   "shares": 300,    "price": 441.1378, "currency": "HKD", "fee": 0, "type": "baseline", "note": "迁移基线：原看板成本为CNY口径379.38，按0.86汇率还原为港币" },
+    { "date": "2026-09-03", "side": "buy", "code": "300059.SZ", "name": "东方财富",   "shares": 2000,   "price": 19.2242,  "currency": "CNY", "fee": 0, "type": "baseline", "note": "迁移基线" },
+    { "date": "2026-09-03", "side": "buy", "code": "002558.SZ", "name": "巨人网络",   "shares": 700,    "price": 26.6446,  "currency": "CNY", "fee": 0, "type": "baseline", "note": "迁移基线" },
+    { "date": "2026-09-03", "side": "buy", "code": "512710.SH", "name": "军工龙头ETF", "shares": 20000,  "price": 0.6403,   "currency": "CNY", "fee": 0, "type": "baseline", "note": "迁移基线" }
+  ]
+}

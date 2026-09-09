@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>持仓追踪 · 辅助决策看板</title>
+<meta name="description" content="A股/港股持仓追踪与辅助决策看板：持仓明细、五维择时、每日评分趋势、调仓记录与盈亏统计"/>
+<link rel="stylesheet" href="assets/style.css"/>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <h1>持仓追踪 · 辅助决策看板</h1>
+    <span class="time" id="time">加载中…</span>
+    <span class="spacer"></span>
+    <button class="btn" id="btnCfg">⚙ 评分配置</button>
+    <button class="btn" id="btnReload">↻ 刷新数据</button>
+  </header>
+
+  <nav class="tabs" id="tabs">
+    <a href="#overview" class="on">概览</a>
+    <a href="#timing">大盘择时</a>
+    <a href="#trend">评分趋势</a>
+    <a href="#holdings">持仓明细</a>
+    <a href="#diag">持仓诊断</a>
+    <a href="#trades">调仓记录</a>
+    <a href="#templates">策略模板</a>
+    <a href="#watch">自选扫描</a>
+  </nav>
+
+  <div class="summary" id="summary">加载中…</div>
+
+  <!-- ============ 收益与盈亏统计 ============ -->
+  <section id="overview">
+    <h2>收益与盈亏统计<span class="sub" id="ovSub"></span></h2>
+    <div class="grid g6" id="stats"></div>
+
+    <div class="card" style="margin-top:14px">
+      <div style="font-size:13px;color:var(--dim);margin-bottom:10px">持仓权重分布</div>
+      <div id="weights"></div>
+    </div>
+  </section>
+
+  <!-- ============ 大盘择时 ============ -->
+  <section id="timing">
+    <h2>大盘择时 · 五维评分<span class="sub">趋势40 + 量能20 + 广度20 + 波动10 + 新高动能10</span></h2>
+    <div class="card" id="regime"></div>
+    <div class="grid g2" id="indexes" style="margin-top:14px"></div>
+  </section>
+
+  <!-- ============ 评分趋势 ============ -->
+  <section id="trend">
+    <h2>每日评分变化趋势<span class="sub">点击图例可切换显示</span></h2>
+    <div class="chart-card">
+      <div class="range-bar" id="rangeBar">
+        <button data-n="20" class="on">近20日</button>
+        <button data-n="40">近40日</button>
+        <button data-n="0">全部</button>
+      </div>
+      <div id="chart"></div>
+      <div class="chart-legend" id="legend"></div>
+    </div>
+
+    <div class="card" style="margin-top:14px">
+      <div style="font-size:13px;color:var(--dim);margin-bottom:8px">大盘择时评分走势</div>
+      <div id="timingChart"></div>
+    </div>
+  </section>
+
+  <!-- ============ 持仓明细 ============ -->
+  <section id="holdings">
+    <h2>持仓明细<span class="sub">代码 / 名称 / 数量 / 成本 / 现价 / 浮动盈亏 / 权重 / 状态评分</span></h2>
+    <div class="card">
+      <div class="tw">
+        <table id="posTable" class="resp-table">
+          <thead><tr id="posHead"></tr></thead>
+          <tbody id="posBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 持仓诊断 ============ -->
+  <section id="diag">
+    <h2>持仓诊断<span class="sub">四套模板评分 + 关键信号 + 操作参考</span></h2>
+    <div class="card">
+      <div class="tw">
+        <table id="diagTable" class="resp-table">
+          <thead><tr id="diagHead"></tr></thead>
+          <tbody id="diagBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 调仓记录 ============ -->
+  <section id="trades">
+    <h2>历史调仓记录<span class="sub">买入 / 卖出流水与已实现盈亏</span></h2>
+    <div class="card">
+      <div class="tw">
+        <table id="tradeTable" class="resp-table">
+          <thead><tr id="tradeHead"></tr></thead>
+          <tbody id="tradeBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 策略模板 ============ -->
+  <section id="templates">
+    <h2>策略模板与持仓分配</h2>
+    <div class="card" id="tplBox"></div>
+  </section>
+
+  <!-- ============ 自选扫描 ============ -->
+  <section id="watch">
+    <h2>自选股技术面扫描<span class="sub" id="watchSub"></span></h2>
+    <div class="card">
+      <div class="tw">
+        <table id="watchTable" class="resp-table">
+          <thead><tr id="watchHead"></tr></thead>
+          <tbody id="watchBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div>数据：腾讯财经行情（实时 + 前复权日线）· 技术指标 MA/MACD/RSI/ATR/布林带/年化波动率</div>
+    <div>策略：趋势跟踪 / 长线监控 / 背离反转 / 基本面评分四套模板 + 深套股退出通道触发器，仅供辅助决策，不构成投资建议。技术指标有滞后性，回测未含滑点与流动性约束。</div>
+    <div>更新方式：修改 <code class="c">data/positions.json</code> 后执行 <code class="c">python run_update.py</code>；或把最新持仓发给 AI，由 AI 更新数据并重新计算。</div>
+    <div>评分维度与权重可在右上角「评分配置」中实时调整，改动仅保存在本地浏览器；若需写入项目请导出 JSON 覆盖 <code class="c">config/score_config.json</code>。</div>
+  </footer>
+</div>
+
+<!-- ============ 评分配置抽屉 ============ -->
+<div class="mask" id="mask"></div>
+<aside class="drawer" id="drawer">
+  <div class="dh">
+    <b>⚙ 评分维度与权重</b>
+    <span class="spacer"></span>
+    <button class="btn" id="btnExport">导出 JSON</button>
+    <button class="btn" id="btnReset">恢复默认</button>
+    <button class="btn" id="btnClose">✕</button>
+  </div>
+  <div class="db" id="cfgBody"></div>
+</aside>
+
+<div class="toast" id="toast"></div>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

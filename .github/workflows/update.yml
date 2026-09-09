@@ -1,0 +1,78 @@
+name: 每日更新持仓看板
+
+on:
+  # 每交易日北京时间 15:30 与 17:30 各跑一次（GitHub cron 用 UTC，UTC+8）
+  # 跑两次是为了防止 GitHub 定时任务排队延迟导致错过收盘数据；同一天重复运行不会产生重复快照
+  schedule:
+    - cron: '30 7,9 * * 1-5'
+  # 手动改了持仓 / 调仓 / 评分配置后，推送即自动重算并重新部署
+  push:
+    branches: [main, master]
+    paths:
+      - 'data/positions.json'
+      - 'data/trades.json'
+      - 'data/fundamentals.json'
+      - 'config/**'
+  # 也可以在 GitHub 网页上点「Run workflow」手动触发
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+# 防止两次运行互相打断导致提交冲突
+concurrency:
+  group: update-dashboard
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 准备 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: 拉取行情并重新计算评分
+        id: refresh
+        run: python run_update.py --no-backfill
+        continue-on-error: true
+
+      - name: 取数失败则中止，保留上次数据
+        if: steps.refresh.outcome == 'failure'
+        run: |
+          echo "::error::行情更新失败，已保留上一次的数据，本次不部署。"
+          exit 1
+
+      - name: 提交更新后的数据
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A data/
+          if git diff --staged --quiet; then
+            echo "数据无变化，跳过提交"
+          else
+            git commit -m "chore(data): 更新看板数据 $(date -u +'%Y-%m-%d %H:%M UTC') [skip ci]"
+            git push
+          fi
+
+      - name: 打包站点
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+  deploy:
+    needs: update
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: 部署到 GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

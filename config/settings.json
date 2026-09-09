@@ -1,0 +1,47 @@
+{
+  "version": "1.0",
+
+  "fx": {
+    "CNY": 1.0,
+    "HKD": 0.86,
+    "USD": 7.15,
+    "note": "各币种折算为人民币的汇率，用于统一计算市值、权重与组合汇总。请按实际情况调整。"
+  },
+
+  "risk": {
+    "hard_stop_loss_cny": 15000,
+    "note": "单笔浮亏达到该金额无条件止损。硬止损价 = 成本 − 限额 / 股数（再按汇率折回本币）。"
+  },
+
+  "quote": {
+    "provider": "tencent",
+    "fallback_providers": ["tencent", "sina", "manual"],
+    "timeout_seconds": 15,
+    "retries": 2,
+    "kline_days": 320,
+    "note": "manual 表示读 data/positions.json 里手填的 close，用于离线或接口异常时兜底。"
+  },
+
+  "market": {
+    "benchmark": "000300.SH",
+    "indices": [
+      { "code": "000001.SH", "name": "上证指数", "role": "全市场基调" },
+      { "code": "000300.SH", "name": "沪深300",  "role": "红利底仓对标" },
+      { "code": "399006.SZ", "name": "创业板指", "role": "成长仓对标" },
+      { "code": "000688.SH", "name": "科创50",   "role": "科技成长对标" },
+      { "code": "HSTECH.HI", "name": "恒生科技", "role": "港股敞口对标" }
+    ]
+  },
+
+  "history": {
+    "backfill_days": 60,
+    "max_snapshots": 500,
+    "note": "backfill_days：首次运行时用历史K线回算最近N天的评分，用于生成评分变化趋势图。"
+  },
+
+  "display": {
+    "currency_symbol": "¥",
+    "default_sort": "weight",
+    "note": "default_sort 可选 weight / pnl / score / name"
+  }
+}
