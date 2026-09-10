@@ -15,6 +15,7 @@
     <span class="time" id="time" data-page-node-id="0xKR60YEzh1FvDOP4xGUpH">加载中…</span>
     <span class="spacer" data-page-node-id="NWybKIWE4QW5WFO1S6fYh0"></span>
     <button class="btn" id="btnCfg" data-page-node-id="hfxnLdwMHAF9D855dSyjZv">⚙ 评分配置</button>
+    <button class="btn" id="btnAdvanced" data-page-node-id="btnAdvanced" title="切换收益统计与调仓记录的显示">📊 高级数据</button>
     <button class="btn" id="btnReload" data-page-node-id="gf10HUSHyG1vclEt02Brrr">↻ 刷新数据</button>
   </header>
 
@@ -24,8 +25,6 @@
     <a href="#trend" data-page-node-id="uhcAAKafBxJUvpxZNleP0T">评分趋势</a>
     <a href="#holdings" data-page-node-id="5KKPon5pVe1CUfeK1bjdy7">持仓明细</a>
     <a href="#diag" data-page-node-id="FIRHMqQbVBKYAZY1ZuR2HW">持仓诊断</a>
-    <a href="#trades" data-page-node-id="10uNNExRCSnwX0R89BQakj">调仓记录</a>
-    <a href="#templates" data-page-node-id="XLj8KjFCq1Bv4SmDbNcCax">策略模板</a>
     <a href="#watch" data-page-node-id="FmLvEtSJWMey8e0zO1nKC5">自选扫描</a>
   </nav>
 
@@ -33,8 +32,8 @@
 
   <!-- ============ 收益与盈亏统计 ============ -->
   <section id="overview" data-page-node-id="ueIHwrpyvMylSj3hJkSWsj">
-    <h2 data-page-node-id="vt2FIDDcPMt04Ikk2KtHTJ">收益与盈亏统计<span class="sub" id="ovSub" data-page-node-id="sgFmahL9frZ9YgvvdS6ppe"></span></h2>
-    <div class="grid g6" id="stats" data-page-node-id="JkBLPFEmwkPVA34Ig3S09B"></div>
+    <h2 data-page-node-id="vt2FIDDcPMt04Ikk2KtHTJ">持仓权重分布<span class="sub" id="ovSub" data-page-node-id="sgFmahL9frZ9YgvvdS6ppe"></span></h2>
+    <div class="grid g6 advanced-block" id="stats" data-page-node-id="JkBLPFEmwkPVA34Ig3S09B"></div>
 
     <div class="card" style="margin-top:14px" data-page-node-id="DhU6BNdfnRjuA6ppuMrJci">
       <div style="font-size:13px;color:var(--dim);margin-bottom:10px" data-page-node-id="66OUq6Ou1IPETlYYQBDcbz">持仓权重分布</div>
@@ -94,8 +93,8 @@
     </div>
   </section>
 
-  <!-- ============ 调仓记录 ============ -->
-  <section id="trades" data-page-node-id="VCLY7XCWL3BqGDbFDGnbkD">
+  <!-- ============ 调仓记录（高级数据，默认折叠） ============ -->
+  <section id="trades" class="advanced-block" data-page-node-id="VCLY7XCWL3BqGDbFDGnbkD">
     <h2 data-page-node-id="vIMROq3YUMDN6WKRaJcM6p">历史调仓记录<span class="sub" data-page-node-id="u6kqENXLDSQSoeGWXO752x">买入 / 卖出流水与已实现盈亏</span></h2>
     <div class="card" data-page-node-id="c4xskIbgfXroHez0Ryui93">
       <div class="tw" data-page-node-id="JsCmHrmNLdQLu9UVo8fAaJ">
@@ -105,12 +104,6 @@
         </table>
       </div>
     </div>
-  </section>
-
-  <!-- ============ 策略模板 ============ -->
-  <section id="templates" data-page-node-id="KuxH1xwX2g703Rcl3YJkrX">
-    <h2 data-page-node-id="Abwm9XwGZyWJIT6iAgbljQ">策略模板与持仓分配</h2>
-    <div class="card" id="tplBox" data-page-node-id="gIEsGpWvECFbeOz2C3wJwZ"></div>
   </section>
 
   <!-- ============ 自选扫描 ============ -->
@@ -124,6 +117,12 @@
         </table>
       </div>
     </div>
+  </section>
+
+  <!-- ============ 策略模板（最底，默认折叠） ============ -->
+  <section id="templates" class="advanced-block" data-page-node-id="KuxH1xwX2g703Rcl3YJkrX">
+    <h2 data-page-node-id="Abwm9XwGZyWJIT6iAgbljQ">策略模板与持仓分配</h2>
+    <div class="card" id="tplBox" data-page-node-id="gIEsGpWvECFbeOz2C3wJwZ"></div>
   </section>
 
   <footer data-page-node-id="7FPfBHNtNfiiBsCalDTyd1">

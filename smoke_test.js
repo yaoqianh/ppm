@@ -115,6 +115,32 @@ setTimeout(() => {
   rb.dispatchEvent(new w.MouseEvent('click', { bubbles: true }));
   check('时间范围可切换', rb.classList.contains('on') && $('#chart svg') !== null);
 
+  // 高级数据：默认隐藏 stats/trades/templates，按钮可切换
+  const advBtn = $('#btnAdvanced');
+  check('高级数据按钮存在', !!advBtn);
+  const statsEl = $('#stats'), tradesEl = $('#trades'), tplEl = $('#templates');
+  // jsdom 不渲染外部样式表，display:none 用 inline 不会被应用；用 classList 替代判断
+  check('默认 body 不含 show-advanced', !w.document.body.classList.contains('show-advanced'));
+  check('默认 stats 有 advanced-block 类', statsEl && statsEl.classList.contains('advanced-block'));
+  check('默认 trades 有 advanced-block 类', tradesEl && tradesEl.classList.contains('advanced-block'));
+  check('默认 templates 有 advanced-block 类', tplEl && tplEl.classList.contains('advanced-block'));
+  advBtn.dispatchEvent(new w.MouseEvent('click', { bubbles: true }));
+  check('点击后 body 含 show-advanced', w.document.body.classList.contains('show-advanced'));
+  advBtn.dispatchEvent(new w.MouseEvent('click', { bubbles: true }));
+  check('再点一次 body 移除 show-advanced', !w.document.body.classList.contains('show-advanced'));
+
+  // 三环集团改为趋势模板（数据端 + UI 双重验证）
+  const dashData = JSON.parse(dataTxt);
+  const sanDash = dashData.holdings.find(h => h.name === '三环集团');
+  check('三环集团模板为 trend（数据）', sanDash && sanDash.template === 'trend', sanDash && sanDash.template);
+  // 持仓明细表中显示为「趋势跟踪」
+  const sanTr = $$('#posBody tr[data-code]').find(r => {
+    const nm = r.querySelector('td:nth-child(2) b')?.textContent || '';
+    return nm.includes('三环');
+  });
+  const sanTag = sanTr ? sanTr.querySelector('td:nth-child(3) .tag')?.textContent : '';
+  check('三环集团 UI 标签为「趋势跟踪」', sanTag === '趋势跟踪', sanTag);
+
   check('全流程后仍无 JS 错误', errors.length === 0, errors.join(' | '));
   console.log('\n冒烟测试结束。');
 }, 300);

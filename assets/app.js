@@ -788,6 +788,17 @@ function boot(data) {
   $('#mask').onclick = closeCfg;
   $('#btnReload').onclick = () => location.reload();
 
+  // 高级数据：收益统计 + 调仓记录 + 策略模板（默认折叠，仅手动开启）
+  const ADV_KEY = 'pd_show_advanced';
+  if (localStorage.getItem(ADV_KEY) === '1') document.body.classList.add('show-advanced');
+  const btnAdv = $('#btnAdvanced');
+  if (btnAdv) btnAdv.onclick = () => {
+    document.body.classList.toggle('show-advanced');
+    const on = document.body.classList.contains('show-advanced');
+    localStorage.setItem(ADV_KEY, on ? '1' : '0');
+    toast(on ? '已展开：收益统计 / 调仓记录 / 策略模板' : '已收起');
+  };
+
   $('#btnReset').onclick = () => {
     OVR = {};
     localStorage.removeItem(LS_KEY);

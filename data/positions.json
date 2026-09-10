@@ -56,12 +56,12 @@
   {
    "code": "300408.SZ",
    "name": "三环集团",
-   "template": "longterm",
+   "template": "trend",
    "shares": 200,
    "cost": 98.3007,
    "currency": "CNY",
    "market": null,
-   "note": "2026-09-10 新买入"
+   "note": "2026-09-10 新买入；趋势模板"
   },
   {
    "code": "600036.SH",

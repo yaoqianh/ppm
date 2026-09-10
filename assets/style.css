@@ -54,6 +54,12 @@ h1 { font-size: 24px; font-weight: 650; letter-spacing: .5px; }
 }
 .btn:hover { background: var(--card3); border-color: var(--amber); color: var(--amber); }
 .btn.primary { background: rgba(210,163,95,.14); border-color: rgba(210,163,95,.45); color: var(--amber); }
+.btn.active { background: rgba(210,163,95,.22); border-color: rgba(210,163,95,.6); color: var(--amber); }
+
+/* 高级数据模块（默认隐藏） */
+.advanced-block { display: none; }
+body.show-advanced .advanced-block { display: revert; }
+body.show-advanced #btnAdvanced { background: rgba(210,163,95,.22); border-color: rgba(210,163,95,.6); color: var(--amber); }
 
 /* 顶部导航 */
 nav.tabs {
