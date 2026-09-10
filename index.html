@@ -1,153 +1,153 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<html lang="zh-CN" data-page-node-id="WasLr8LlHyCg7PvkcqFgFd">
+<head data-page-node-id="N6wG3mKFqgg81sBEqtBiLE">
+<meta charset="UTF-8" data-page-node-id="GjRMGRR0Cp9Otzmb4Ib5L7"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="FGnQKuv7798Ntx8KBEqNcB"/>
 <title>持仓追踪 · 辅助决策看板</title>
-<meta name="description" content="A股/港股持仓追踪与辅助决策看板：持仓明细、五维择时、每日评分趋势、调仓记录与盈亏统计"/>
-<link rel="stylesheet" href="assets/style.css"/>
+<meta name="description" content="A股/港股持仓追踪与辅助决策看板：持仓明细、五维择时、每日评分趋势、调仓记录与盈亏统计" data-page-node-id="KngpcSDFZxYOKCBpcN8iRP"/>
+<link rel="stylesheet" href="assets/style.css" data-page-node-id="fMrjL2C6YiW7qqKz2XJaVh"/>
 </head>
-<body>
-<div class="wrap">
+<body data-page-node-id="CGO8pWHREK46GYmSNn8Myr">
+<div class="wrap" data-page-node-id="MRDtyalPMkGCAhn1FTofon">
 
-  <header class="top">
-    <h1>持仓追踪 · 辅助决策看板</h1>
-    <span class="time" id="time">加载中…</span>
-    <span class="spacer"></span>
-    <button class="btn" id="btnCfg">⚙ 评分配置</button>
-    <button class="btn" id="btnReload">↻ 刷新数据</button>
+  <header class="top" data-page-node-id="aHwi9EWcfFczMS209p1b1N">
+    <h1 data-page-node-id="6Y0ZXByIRtXXUHGOjKwilC">持仓追踪 · 辅助决策看板</h1>
+    <span class="time" id="time" data-page-node-id="0xKR60YEzh1FvDOP4xGUpH">加载中…</span>
+    <span class="spacer" data-page-node-id="NWybKIWE4QW5WFO1S6fYh0"></span>
+    <button class="btn" id="btnCfg" data-page-node-id="hfxnLdwMHAF9D855dSyjZv">⚙ 评分配置</button>
+    <button class="btn" id="btnReload" data-page-node-id="gf10HUSHyG1vclEt02Brrr">↻ 刷新数据</button>
   </header>
 
-  <nav class="tabs" id="tabs">
-    <a href="#overview" class="on">概览</a>
-    <a href="#timing">大盘择时</a>
-    <a href="#trend">评分趋势</a>
-    <a href="#holdings">持仓明细</a>
-    <a href="#diag">持仓诊断</a>
-    <a href="#trades">调仓记录</a>
-    <a href="#templates">策略模板</a>
-    <a href="#watch">自选扫描</a>
+  <nav class="tabs" id="tabs" data-page-node-id="wZzB7A7DV13KsuDvpAOFuC">
+    <a href="#overview" class="on" data-page-node-id="F8DP7Fy4hB7nksQ8HJpwCb">概览</a>
+    <a href="#timing" data-page-node-id="VnZnPXGmkMpRC0hztRwNE4">大盘择时</a>
+    <a href="#trend" data-page-node-id="uhcAAKafBxJUvpxZNleP0T">评分趋势</a>
+    <a href="#holdings" data-page-node-id="5KKPon5pVe1CUfeK1bjdy7">持仓明细</a>
+    <a href="#diag" data-page-node-id="FIRHMqQbVBKYAZY1ZuR2HW">持仓诊断</a>
+    <a href="#trades" data-page-node-id="10uNNExRCSnwX0R89BQakj">调仓记录</a>
+    <a href="#templates" data-page-node-id="XLj8KjFCq1Bv4SmDbNcCax">策略模板</a>
+    <a href="#watch" data-page-node-id="FmLvEtSJWMey8e0zO1nKC5">自选扫描</a>
   </nav>
 
-  <div class="summary" id="summary">加载中…</div>
+  <div class="summary" id="summary" data-page-node-id="8chV41CVtBcurZqgm678H1">加载中…</div>
 
   <!-- ============ 收益与盈亏统计 ============ -->
-  <section id="overview">
-    <h2>收益与盈亏统计<span class="sub" id="ovSub"></span></h2>
-    <div class="grid g6" id="stats"></div>
+  <section id="overview" data-page-node-id="ueIHwrpyvMylSj3hJkSWsj">
+    <h2 data-page-node-id="vt2FIDDcPMt04Ikk2KtHTJ">收益与盈亏统计<span class="sub" id="ovSub" data-page-node-id="sgFmahL9frZ9YgvvdS6ppe"></span></h2>
+    <div class="grid g6" id="stats" data-page-node-id="JkBLPFEmwkPVA34Ig3S09B"></div>
 
-    <div class="card" style="margin-top:14px">
-      <div style="font-size:13px;color:var(--dim);margin-bottom:10px">持仓权重分布</div>
-      <div id="weights"></div>
+    <div class="card" style="margin-top:14px" data-page-node-id="DhU6BNdfnRjuA6ppuMrJci">
+      <div style="font-size:13px;color:var(--dim);margin-bottom:10px" data-page-node-id="66OUq6Ou1IPETlYYQBDcbz">持仓权重分布</div>
+      <div id="weights" data-page-node-id="xUGuMsjjT0UG35EM4PysfD"></div>
     </div>
   </section>
 
   <!-- ============ 大盘择时 ============ -->
-  <section id="timing">
-    <h2>大盘择时 · 五维评分<span class="sub">趋势40 + 量能20 + 广度20 + 波动10 + 新高动能10</span></h2>
-    <div class="card" id="regime"></div>
-    <div class="grid g2" id="indexes" style="margin-top:14px"></div>
+  <section id="timing" data-page-node-id="OxsIRTgKi7V4rJjp8AZ37q">
+    <h2 data-page-node-id="yJ3CUlgsfdUYqpxDwup4uY">大盘择时 · 五维评分<span class="sub" data-page-node-id="mZfnqzBx8ChocAEzs5drTQ">趋势40 + 量能20 + 广度20 + 波动10 + 新高动能10</span></h2>
+    <div class="card" id="regime" data-page-node-id="kSmfmzWXVEjGRh7Bt5cYr8"></div>
+    <div class="grid g2" id="indexes" style="margin-top:14px" data-page-node-id="LduU5OHNb4Maxdrl393bFx"></div>
   </section>
 
   <!-- ============ 评分趋势 ============ -->
-  <section id="trend">
-    <h2>每日评分变化趋势<span class="sub">点击图例可切换显示</span></h2>
-    <div class="chart-card">
-      <div class="range-bar" id="rangeBar">
-        <button data-n="20" class="on">近20日</button>
-        <button data-n="40">近40日</button>
-        <button data-n="0">全部</button>
+  <section id="trend" data-page-node-id="5Tvdaz9n3I1K7tiKHR6JDe">
+    <h2 data-page-node-id="Iko5zPBxuqa8WrG7FE4gqx">每日评分变化趋势<span class="sub" data-page-node-id="mirlJib0facHBAfder39oH">点击图例可切换显示</span></h2>
+    <div class="chart-card" data-page-node-id="BI9nXBJibi4AYTzTc0YFPl">
+      <div class="range-bar" id="rangeBar" data-page-node-id="YYNEvKKqEiiiz9VVNJ028h">
+        <button data-n="20" class="on" data-page-node-id="tkEzREiV3WZxh8NDTvdEci">近20日</button>
+        <button data-n="40" data-page-node-id="Njh02JP6DrhFGVwTffC3IL">近40日</button>
+        <button data-n="0" data-page-node-id="TdOJfgbDpuwE7zylj8J3d4">全部</button>
       </div>
-      <div id="chart"></div>
-      <div class="chart-legend" id="legend"></div>
+      <div id="chart" data-page-node-id="D9AFPZ98EaKVrwD5fKDxUk"></div>
+      <div class="chart-legend" id="legend" data-page-node-id="piGAvBGjof3nJsODKMACmZ"></div>
     </div>
 
-    <div class="card" style="margin-top:14px">
-      <div style="font-size:13px;color:var(--dim);margin-bottom:8px">大盘择时评分走势</div>
-      <div id="timingChart"></div>
+    <div class="card" style="margin-top:14px" data-page-node-id="l9N0liYtW9BSQpRHLbjAif">
+      <div style="font-size:13px;color:var(--dim);margin-bottom:8px" data-page-node-id="6QZ59UULlmOiEE7KEI4zCb">大盘择时评分走势</div>
+      <div id="timingChart" data-page-node-id="uQEykj6BFUrGV0XpyRlC7q"></div>
     </div>
   </section>
 
   <!-- ============ 持仓明细 ============ -->
-  <section id="holdings">
-    <h2>持仓明细<span class="sub">代码 / 名称 / 数量 / 成本 / 现价 / 浮动盈亏 / 权重 / 状态评分</span></h2>
-    <div class="card">
-      <div class="tw">
-        <table id="posTable" class="resp-table">
-          <thead><tr id="posHead"></tr></thead>
-          <tbody id="posBody"></tbody>
+  <section id="holdings" data-page-node-id="ML9DRfZg5XIDcQeAQXv0Xn">
+    <h2 data-page-node-id="VKLx5WoxFd73k8jpKveuwI">持仓明细<span class="sub" data-page-node-id="nYYX7zi3tfkZfJyjO0JTBv">代码 / 名称 / 数量 / 成本 / 现价 / 浮动盈亏 / 权重 / 状态评分</span></h2>
+    <div class="card" data-page-node-id="4QymzlkLbmEVSpXzkcA4cl">
+      <div class="tw" data-page-node-id="IAtB6rz2zTBBW6Qzpm3nX9">
+        <table id="posTable" class="resp-table" data-page-node-id="uXHU4F5E82NLFm3izhhZHo">
+          <thead data-page-node-id="iPUiqChBb5blntKQn40Bje"><tr id="posHead" data-page-node-id="GFivaZ5MRz3NGKmiNzj1se"></tr></thead>
+          <tbody id="posBody" data-page-node-id="quWtRpuRmpVE07VM1JsGU1"></tbody>
         </table>
       </div>
     </div>
   </section>
 
   <!-- ============ 持仓诊断 ============ -->
-  <section id="diag">
-    <h2>持仓诊断<span class="sub">四套模板评分 + 关键信号 + 操作参考</span></h2>
-    <div class="card">
-      <div class="tw">
-        <table id="diagTable" class="resp-table">
-          <thead><tr id="diagHead"></tr></thead>
-          <tbody id="diagBody"></tbody>
+  <section id="diag" data-page-node-id="fnbgKz1so3UQUi9Tx7Llmb">
+    <h2 data-page-node-id="WcvxOWdQj6DPD7uB1HDqMn">持仓诊断<span class="sub" data-page-node-id="RnGcFVLsRpdGfDfwqVRhJr">四套模板评分 + 关键信号 + 操作参考</span></h2>
+    <div class="card" data-page-node-id="wGvGzorv03HWhG9m3l0BOw">
+      <div class="tw" data-page-node-id="OsM5KMvbaYHZmlaQFnt1Ir">
+        <table id="diagTable" class="resp-table" data-page-node-id="Fqfk2xz048943jUdlFItlp">
+          <thead data-page-node-id="YHwZrUWlpcGnBKi9Up5p1W"><tr id="diagHead" data-page-node-id="wfUbrAEyTbMqRzFrukVfZ9"></tr></thead>
+          <tbody id="diagBody" data-page-node-id="xBBepnDuEOdissbAqQN0bl"></tbody>
         </table>
       </div>
     </div>
   </section>
 
   <!-- ============ 调仓记录 ============ -->
-  <section id="trades">
-    <h2>历史调仓记录<span class="sub">买入 / 卖出流水与已实现盈亏</span></h2>
-    <div class="card">
-      <div class="tw">
-        <table id="tradeTable" class="resp-table">
-          <thead><tr id="tradeHead"></tr></thead>
-          <tbody id="tradeBody"></tbody>
+  <section id="trades" data-page-node-id="VCLY7XCWL3BqGDbFDGnbkD">
+    <h2 data-page-node-id="vIMROq3YUMDN6WKRaJcM6p">历史调仓记录<span class="sub" data-page-node-id="u6kqENXLDSQSoeGWXO752x">买入 / 卖出流水与已实现盈亏</span></h2>
+    <div class="card" data-page-node-id="c4xskIbgfXroHez0Ryui93">
+      <div class="tw" data-page-node-id="JsCmHrmNLdQLu9UVo8fAaJ">
+        <table id="tradeTable" class="resp-table" data-page-node-id="Wqz0EqtpYovhlA9NfjCjgV">
+          <thead data-page-node-id="E3CCir4xBReVb3rpEEScD2"><tr id="tradeHead" data-page-node-id="V08SndoeEq4ovGXBCXTPt8"></tr></thead>
+          <tbody id="tradeBody" data-page-node-id="4TWbu3CiJjYTRsC5FMTtFV"></tbody>
         </table>
       </div>
     </div>
   </section>
 
   <!-- ============ 策略模板 ============ -->
-  <section id="templates">
-    <h2>策略模板与持仓分配</h2>
-    <div class="card" id="tplBox"></div>
+  <section id="templates" data-page-node-id="KuxH1xwX2g703Rcl3YJkrX">
+    <h2 data-page-node-id="Abwm9XwGZyWJIT6iAgbljQ">策略模板与持仓分配</h2>
+    <div class="card" id="tplBox" data-page-node-id="gIEsGpWvECFbeOz2C3wJwZ"></div>
   </section>
 
   <!-- ============ 自选扫描 ============ -->
-  <section id="watch">
-    <h2>自选股技术面扫描<span class="sub" id="watchSub"></span></h2>
-    <div class="card">
-      <div class="tw">
-        <table id="watchTable" class="resp-table">
-          <thead><tr id="watchHead"></tr></thead>
-          <tbody id="watchBody"></tbody>
+  <section id="watch" data-page-node-id="G5d8koy01rNxNDwSg6SFCT">
+    <h2 data-page-node-id="TbxbGFiA4htzO6Lt8fIgbS">自选股技术面扫描<span class="sub" id="watchSub" data-page-node-id="7ZDu9CftXDSr0XHCMa3DfP"></span></h2>
+    <div class="card" data-page-node-id="RVWjutXbhKGAK0LYiaWYeI">
+      <div class="tw" data-page-node-id="AF7N08lKxhTvsgNJoSwj8y">
+        <table id="watchTable" class="resp-table" data-page-node-id="XkT2okdXXNbBGGCK5P7TLe">
+          <thead data-page-node-id="oLXBvlzHIJTj88b0dERvEo"><tr id="watchHead" data-page-node-id="94wIqqeWykkPKArlo6Of2l"></tr></thead>
+          <tbody id="watchBody" data-page-node-id="VitAFjmm3QqYPGLs4P3vN9"></tbody>
         </table>
       </div>
     </div>
   </section>
 
-  <footer>
-    <div>数据：腾讯财经行情（实时 + 前复权日线）· 技术指标 MA/MACD/RSI/ATR/布林带/年化波动率</div>
-    <div>策略：趋势跟踪 / 长线监控 / 背离反转 / 基本面评分四套模板 + 深套股退出通道触发器，仅供辅助决策，不构成投资建议。技术指标有滞后性，回测未含滑点与流动性约束。</div>
-    <div>更新方式：修改 <code class="c">data/positions.json</code> 后执行 <code class="c">python run_update.py</code>；或把最新持仓发给 AI，由 AI 更新数据并重新计算。</div>
-    <div>评分维度与权重可在右上角「评分配置」中实时调整，改动仅保存在本地浏览器；若需写入项目请导出 JSON 覆盖 <code class="c">config/score_config.json</code>。</div>
+  <footer data-page-node-id="7FPfBHNtNfiiBsCalDTyd1">
+    <div data-page-node-id="sXZtGNS3lWxzX4DfAQHhBq">数据：腾讯财经行情（实时 + 前复权日线）· 技术指标 MA/MACD/RSI/ATR/布林带/年化波动率</div>
+    <div data-page-node-id="Zv1NSYq0EF0DDfaGL8TjFp">策略：趋势跟踪 / 长线监控 / 背离反转 / 基本面评分四套模板 + 深套股退出通道触发器，仅供辅助决策，不构成投资建议。技术指标有滞后性，回测未含滑点与流动性约束。</div>
+    <div data-page-node-id="7vbRN6Pje7yQpf4HoQDAxz">更新方式：修改 <code class="c" data-page-node-id="vBcsRAylbtp7S52jbqZu4J">data/positions.json</code> 后执行 <code class="c" data-page-node-id="28na3mZ64OXruCIJA1YBwS">python run_update.py</code>；或把最新持仓发给 AI，由 AI 更新数据并重新计算。</div>
+    <div data-page-node-id="BxV4FhDJetdNU98zdCtjAI">评分维度与权重可在右上角「评分配置」中实时调整，改动仅保存在本地浏览器；若需写入项目请导出 JSON 覆盖 <code class="c" data-page-node-id="6rnBEGNsE1MbbOnwm1oMi7">config/score_config.json</code>。</div>
   </footer>
 </div>
 
 <!-- ============ 评分配置抽屉 ============ -->
-<div class="mask" id="mask"></div>
-<aside class="drawer" id="drawer">
-  <div class="dh">
-    <b>⚙ 评分维度与权重</b>
-    <span class="spacer"></span>
-    <button class="btn" id="btnExport">导出 JSON</button>
-    <button class="btn" id="btnReset">恢复默认</button>
-    <button class="btn" id="btnClose">✕</button>
+<div class="mask" id="mask" data-page-node-id="N5VGo5xoiME6i0I4eL8oLg"></div>
+<aside class="drawer" id="drawer" data-page-node-id="N9tglMZv0b3IvEmwhBYC9F">
+  <div class="dh" data-page-node-id="Dt0FWV0CbdUjd1SGdRQ8Sp">
+    <b data-page-node-id="BcoYeVtueAbNBE4Nl4BOhC">⚙ 评分维度与权重</b>
+    <span class="spacer" data-page-node-id="r96uwdf3y4ZFqYyAhBEq9U"></span>
+    <button class="btn" id="btnExport" data-page-node-id="UJBnQUtd3KaSPoETme9ABP">导出 JSON</button>
+    <button class="btn" id="btnReset" data-page-node-id="9maCCwK8uCVdgZgvivTxEL">恢复默认</button>
+    <button class="btn" id="btnClose" data-page-node-id="rZiup3X7pZ2LomB6CFIySK">✕</button>
   </div>
-  <div class="db" id="cfgBody"></div>
+  <div class="db" id="cfgBody" data-page-node-id="rRFyaAxc17pU2CHrPEpnv8"></div>
 </aside>
 
-<div class="toast" id="toast"></div>
+<div class="toast" id="toast" data-page-node-id="3P3dOhHHaxSJyYPAOZoCEm"></div>
 
 <script src="assets/app.js"></script>
 </body>

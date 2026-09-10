@@ -38,25 +38,26 @@ setTimeout(() => {
   check('摘要已渲染', $('#summary').textContent.length > 30 && !/数据加载失败/.test($('#summary').textContent),
     $('#summary').textContent.slice(0, 60) + '…');
 
-  // 各模块
+  // 各模块（持仓数从数据文件动态取，避免每次调仓都改断言）
+  const nHold = require('./data/dashboard.json').holdings.length;
   check('统计卡 8 张', $$('#stats .stat').length === 8, $$('#stats .stat').length + ' 张');
-  check('权重分布条已渲染', $$('#weights .bar-row').length === 8);
+  check('权重分布条已渲染', $$('#weights .bar-row').length === nHold);
   check('择时五维条已渲染', $$('#regime .bar-row').length === 5);
   check('择时总分非空', /^\d+/.test($('#regime').textContent.trim()) || $('#regime').textContent.includes('/ 100'));
   check('指数卡 5 张', $$('#indexes .card').length === 5);
   check('评分趋势图为 SVG', $('#chart svg') !== null);
-  check('趋势图例 = 持仓数', $$('#legend .lg').length === 8, $$('#legend .lg').length + '');
+  check('趋势图例 = 持仓数', $$('#legend .lg').length === nHold, $$('#legend .lg').length + '');
   check('择时走势图为 SVG', $('#timingChart svg') !== null);
 
   // 表格
   check('持仓明细表头 16 列', $$('#posHead th').length === 16);
-  check('持仓明细 8 行', $$('#posBody tr[data-code]').length === 8);
+  check('持仓明细行数 = 持仓数', $$('#posBody tr[data-code]').length === nHold);
   check('持仓明细含完整字段', (() => {
     const t = $('#posBody tr[data-code]').textContent;
     return /腾讯|移动|双环/.test(t) && /%/.test(t);
   })());
-  check('持仓诊断 8 行', $$('#diagBody tr').length === 16, $$('#diagBody tr').length + ' 行(含副行)');
-  check('调仓记录已渲染', $$('#tradeBody tr').length === 8);
+  check('持仓诊断行数 = 持仓数×2', $$('#diagBody tr').length === nHold * 2, $$('#diagBody tr').length + ' 行(含副行)');
+  check('调仓记录已渲染', $$('#tradeBody tr').length >= nHold);
   check('自选扫描已渲染', $$('#watchBody tr').length > 34, $$('#watchBody tr').length + ' 行');
   check('策略模板 4 套', $$('#tplBox').length === 1 && /趋势跟踪/.test($('#tplBox').textContent));
 
@@ -64,7 +65,7 @@ setTimeout(() => {
   const posTds = $$('#posBody tr[data-code]')[0].children;
   check('手机端列名标签已注入', Array.from(posTds).filter(td => td.getAttribute('data-l')).length >= 10,
     Array.from(posTds).map(td => td.getAttribute('data-l')).filter(Boolean).join('/'));
-  check('持仓诊断副行有 sub-row 标记', $$('#diagBody tr.sub-row').length === 8);
+  check('持仓诊断副行有 sub-row 标记', $$('#diagBody tr.sub-row').length === nHold);
   check('自选分组行有 group-row 标记', $$('#watchBody tr.group-row').length === 3);
 
   // 展开维度明细
@@ -78,7 +79,7 @@ setTimeout(() => {
   const scoreTh = $$('#posHead th').find(t => t.dataset.k === 'pnl');
   scoreTh.dispatchEvent(new w.MouseEvent('click', { bubbles: true }));
   const order = $$('#posBody tr[data-code]').map(r => r.dataset.code);
-  check('按盈亏排序生效', order.length === 8 && scoreTh.classList.contains('sorted'), order.slice(0, 3).join(','));
+  check('按盈亏排序生效', order.length === nHold && scoreTh.classList.contains('sorted'), order.slice(0, 3).join(','));
 
   // 评分配置：打开抽屉并调整权重
   $('#btnCfg').dispatchEvent(new w.MouseEvent('click', { bubbles: true }));
@@ -101,7 +102,7 @@ setTimeout(() => {
   ltCb.dispatchEvent(new w.Event('input', { bubbles: true }));
   const after2 = colOf();
   check('停用维度后分数重算', JSON.stringify(after) !== JSON.stringify(after2) &&
-    $$('#posBody tr[data-code]').length === 8, `${after.join('/')} → ${after2.join('/')}`);
+    $$('#posBody tr[data-code]').length === nHold, `${after.join('/')} → ${after2.join('/')}`);
 
   // 图例切换（renderCharts 会重建节点，需重新查询）
   const firstKey = $$('#legend .lg')[0].dataset.k;

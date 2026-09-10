@@ -1,47 +1,8 @@
 {
- "version": "1.0",
- "as_of": "2026-09-03",
+ "version": "1.1",
+ "as_of": "2026-09-10",
+ "note": "2026-09-10 按用户券商持仓截图更新：清仓恒生科技ETF/巨人网络/军工龙头ETF，减仓双环传动/中国移动/招商银行，新买入百度集团-W/三环集团。成本为券商摊薄成本口径。",
  "holdings": [
-  {
-   "code": "513180.SH",
-   "name": "恒生科技ETF",
-   "template": "longterm",
-   "shares": 129400,
-   "cost": 0.8,
-   "currency": "CNY",
-   "market": null,
-   "note": ""
-  },
-  {
-   "code": "002472.SZ",
-   "name": "双环传动",
-   "template": "longterm",
-   "shares": 2700,
-   "cost": 35.8523,
-   "currency": "CNY",
-   "market": null,
-   "note": ""
-  },
-  {
-   "code": "600941.SH",
-   "name": "中国移动",
-   "template": "longterm",
-   "shares": 700,
-   "cost": 78.8694,
-   "currency": "CNY",
-   "market": null,
-   "note": ""
-  },
-  {
-   "code": "600036.SH",
-   "name": "招商银行",
-   "template": "longterm",
-   "shares": 500,
-   "cost": 38.2828,
-   "currency": "CNY",
-   "market": null,
-   "note": ""
-  },
   {
    "code": "00700.HK",
    "name": "腾讯控股",
@@ -51,6 +12,36 @@
    "currency": "HKD",
    "market": null,
    "note": ""
+  },
+  {
+   "code": "002472.SZ",
+   "name": "双环传动",
+   "template": "longterm",
+   "shares": 2000,
+   "cost": 34.8315,
+   "currency": "CNY",
+   "market": null,
+   "note": "2026-09-10 减仓700股，摊薄成本"
+  },
+  {
+   "code": "600941.SH",
+   "name": "中国移动",
+   "template": "longterm",
+   "shares": 600,
+   "cost": 75.8593,
+   "currency": "CNY",
+   "market": null,
+   "note": "2026-09-10 减仓100股，摊薄成本"
+  },
+  {
+   "code": "09888.HK",
+   "name": "百度集团-W",
+   "template": "longterm",
+   "shares": 700,
+   "cost": 91.1881,
+   "currency": "HKD",
+   "market": null,
+   "note": "2026-09-10 新买入；截图成本CNY 78.4226按0.86汇率还原为港币"
   },
   {
    "code": "300059.SZ",
@@ -63,24 +54,24 @@
    "note": ""
   },
   {
-   "code": "002558.SZ",
-   "name": "巨人网络",
-   "template": "trend",
-   "shares": 700,
-   "cost": 26.6446,
+   "code": "300408.SZ",
+   "name": "三环集团",
+   "template": "longterm",
+   "shares": 200,
+   "cost": 98.3007,
    "currency": "CNY",
    "market": null,
-   "note": ""
+   "note": "2026-09-10 新买入"
   },
   {
-   "code": "512710.SH",
-   "name": "军工龙头ETF",
-   "template": "trend",
-   "shares": 20000,
-   "cost": 0.6403,
+   "code": "600036.SH",
+   "name": "招商银行",
+   "template": "longterm",
+   "shares": 100,
+   "cost": 26.548,
    "currency": "CNY",
    "market": null,
-   "note": ""
+   "note": "2026-09-10 减仓400股，摊薄成本"
   }
  ],
  "watchlist": [
@@ -222,11 +213,6 @@
   {
    "code": "01024.HK",
    "name": "快手-W",
-   "group": "AI产业链"
-  },
-  {
-   "code": "09888.HK",
-   "name": "百度-W",
    "group": "AI产业链"
   },
   {
