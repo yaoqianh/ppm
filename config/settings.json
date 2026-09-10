@@ -22,6 +22,11 @@
     "note": "manual 表示读 data/positions.json 里手填的 close，用于离线或接口异常时兜底。"
   },
 
+  "fundamentals": {
+    "auto_fetch": true,
+    "note": "true = 每次 run_update 时自动从东方财富补 A 股财报（ROE/营收YoY/归母YoY/净利率）。\n手工维护的 data/fundamentals.json 优先，仅填补缺失字段。\n港股与 ETF 该接口无数据：港股需手工维护，ETF 本就无财报。"
+  },
+
   "market": {
     "benchmark": "000300.SH",
     "indices": [

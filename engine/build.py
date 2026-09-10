@@ -17,6 +17,7 @@ from typing import Dict, List, Optional, Any
 from . import quote as Q
 from . import indicators as ind
 from . import scoring as SC
+from . import fundamentals as FUND
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CONFIG_DIR = os.path.join(BASE, "config")
@@ -309,6 +310,15 @@ def build_dashboard(verbose: bool = True, backfill: bool = True, force: bool = F
 
     holdings = positions.get("holdings", [])
     watchlist = positions.get("watchlist", [])
+
+    # A 股财报：手工值优先，缺失项用东财接口自动补齐（港股/ETF 该接口无数据，仍走手工）
+    if settings.get("fundamentals", {}).get("auto_fetch", True):
+        try:
+            auto_fund = FUND.fetch_a_share_fundamentals(
+                [x["code"] for x in holdings + watchlist], verbose=verbose)
+            fund_map = FUND.merge_fundamentals(fund_map, auto_fund)
+        except Exception as e:
+            errors.append(f"A股财报自动抓取失败: {type(e).__name__}: {e}")
     errors: List[str] = []
 
     def log(*a):

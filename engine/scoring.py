@@ -211,7 +211,9 @@ def longterm_dimensions(t: dict, ctx: dict) -> Dict[str, dict]:
     # 基本面质量 25
     q = ctx.get("quality_norm")
     if q is None:
-        dims["quality"] = {"score": None, "detail": "基本面质量数据不足"}
+        # ETF 无财报属正常缺失，文案要和数据缺失区分开
+        detail = "ETF 不适用" if ctx.get("is_etf") else "基本面质量数据不足"
+        dims["quality"] = {"score": None, "detail": detail}
     else:
         v = round(25 * (q ** 1.3), 1)
         dims["quality"] = {"score": v, "detail": f"基本面质量 → {v}分"}
@@ -283,12 +285,17 @@ def divergence_dimensions(t: dict, ctx: dict) -> Dict[str, dict]:
 def fundamental_dimensions(ctx: dict) -> Dict[str, dict]:
     """基本面/估值：基准 50 分 + 六项调整"""
     f = ctx.get("fundamentals") or {}
+    is_etf = bool(ctx.get("is_etf"))
     dims: Dict[str, dict] = {}
 
-    def adj(key, value, rules):
-        """rules: [(阈值, 分值)] 从高分到低分"""
+    def adj(key, value, rules, na_label=None):
+        """rules: [(阈值, 分值)] 从高分到低分
+
+        na_label: 无数据时的说明文案。ETF 没有财报，属正常缺失，
+        文案要区分开，避免和"数据没抓到"混为一谈。
+        """
         if value is None:
-            return None, "无数据"
+            return None, (na_label or ("ETF 不适用" if is_etf else "无数据"))
         for test, val, label in rules:
             if test(value):
                 return float(val), label

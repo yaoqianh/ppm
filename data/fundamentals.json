@@ -1,6 +1,8 @@
 {
   "_note": "基本面明细（ROE / 净利率 / 营收YoY / 归母净利YoY / PE / PB）。ROE、营收、归母、净利率来自财报，免费行情接口不提供，需要手工维护或由 AI 定期更新；PE 与 PB 会在每次 run_update.py 时自动从腾讯行情接口覆盖刷新（A股可用）。缺失的维度会从评分分母中剔除，不会按 0 分处理。",
   "_source_warning": "本文件初始值取自原看板展示的财报摘要；其中 net_margin 为按行业常识补齐的估算值，请核对后修正。",
+  "_auto": "A 股（.SH/.SZ/.BJ）会在每次 run_update.py 时自动从东方财富 datacenter 补财报（engine/fundamentals.py），本文件中的手工值优先、仅填补缺失字段。港股该接口不覆盖，需手工维护。ETF 无财报，属正常缺失。",
+  "_todo_hk": "以下 7 只港股无自动数据源，如需纳入基本面评分请手工填 roe/net_margin/rev_yoy/profit_yoy：00100.HK MINIMAX-W、06082.HK 壁仞科技、02513.HK 智谱、00981.HK 中芯国际、01810.HK 小米集团-W、01024.HK 快手-W、09988.HK 阿里巴巴-W。",
 
   "data": {
     "00700.HK":  { "roe": 19.9, "net_margin": 30.0, "rev_yoy": 10.0,  "profit_yoy": 10.0, "pe": null, "pb": null, "as_of": "2026Q2", "source": "migrated" },
