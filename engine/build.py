@@ -568,11 +568,26 @@ def build_dashboard(verbose: bool = True, backfill: bool = True, force: bool = F
         all_dims = evaluate(ctx, cfg)
         sc = scores_from_dims(all_dims, cfg)
         st, adv = SC.status_of(sc.get("trend"), cfg["templates"].get("trend", {}))
+        t_now = ctx["t"]
+        # 52 周高低位（取 K 线，回退到实时字段）
+        high52 = t_now.get("high252") or rt.get("high52")
+        low52 = t_now.get("low252") or rt.get("low52")
+        close = rt.get("price") or t_now.get("close")
+        pos52 = None
+        if close and high52 and low52 and high52 != low52:
+            pos52 = round((close - low52) / (high52 - low52) * 100, 1)
         out_watch.append({
             "code": code, "name": w.get("name") or rt.get("name") or code,
             "group": w.get("group") or "其他",
-            "close": _round(rt.get("price") or ctx["t"].get("close"), 2),
+            "close": _round(close, 2),
             "chg": _round(rt.get("change_pct"), 2),
+            "high252": _round(high52, 3),
+            "low252": _round(low52, 3),
+            "pos_in_52w": pos52,
+            "atr": _round(t_now.get("atr"), 3),
+            "ma20": _round(t_now.get("ma20"), 3),
+            "ma60": _round(t_now.get("ma60"), 3),
+            "volume_ratio": _round(t_now.get("volume_ratio"), 2),
             "scores": {k: _round(v, 1) for k, v in sc.items()},
             "score": _round(sc.get("trend"), 1),
             "lscore": _round(sc.get("longterm"), 1),

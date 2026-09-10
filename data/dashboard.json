@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-09-10 08:08 (UTC+8)",
+ "updated_at": "2026-09-10 08:16 (UTC+8)",
  "as_of": "2026-09-09",
  "summary": "大盘防守(3成以下)｜持仓7只｜高分(≥70)3只腾讯控股、百度集团-W、东方财富｜低分(<40)1只三环集团｜趋势/广度/量能共振走弱, 少动多看｜总市值约36.6万，第一大持仓腾讯控股占31%、前三占67%，持仓分散度尚可。",
  "portfolio": {
@@ -24,7 +24,7 @@
   "currency": "CNY"
  },
  "timing": {
-  "total": 32.1,
+  "total": 32.5,
   "dims": [
    {
     "key": "trend",
@@ -44,8 +44,8 @@
     "key": "breadth",
     "name": "广度",
     "max": 20,
-    "score": 6.0,
-    "detail": "持仓+自选 12/40 只站上MA20(30%)"
+    "score": 6.2,
+    "detail": "持仓+自选 13/42 只站上MA20(31%)"
    },
    {
     "key": "vol",
@@ -58,8 +58,8 @@
     "key": "newhigh",
     "name": "新高动能",
     "max": 10,
-    "score": 1.0,
-    "detail": "池内 4/40 只处20日新高附近(10%)"
+    "score": 1.2,
+    "detail": "池内 5/42 只处20日新高附近(12%)"
    }
   ],
   "position": "防守(3成以下)",
@@ -74,16 +74,16 @@
     "detail": "近5日量能/20日均量 = 0.88(略缩)"
    },
    "breadth": {
-    "score": 6.0,
-    "detail": "持仓+自选 12/40 只站上MA20(30%)"
+    "score": 6.2,
+    "detail": "持仓+自选 13/42 只站上MA20(31%)"
    },
    "vol": {
     "score": 7.1,
     "detail": "沪深300 20日年化波动率 15.2%(正常)"
    },
    "newhigh": {
-    "score": 1.0,
-    "detail": "池内 4/40 只处20日新高附近(10%)"
+    "score": 1.2,
+    "detail": "池内 5/42 只处20日新高附近(12%)"
    }
   }
  },
@@ -1522,6 +1522,13 @@
    "group": "价值",
    "close": 28.05,
    "chg": 0.65,
+   "high252": 29.57,
+   "low252": 24.38,
+   "pos_in_52w": 70.7,
+   "atr": 0.428,
+   "ma20": 28.177,
+   "ma60": 27.709,
+   "volume_ratio": 0.68,
    "scores": {
     "trend": 53.4,
     "longterm": 51.5,
@@ -1640,6 +1647,13 @@
    "group": "价值",
    "close": 47.33,
    "chg": 2.18,
+   "high252": 50.15,
+   "low252": 35.23,
+   "pos_in_52w": 81.1,
+   "atr": 1.193,
+   "ma20": 46.802,
+   "ma60": 43.926,
+   "volume_ratio": 0.99,
    "scores": {
     "trend": 60.0,
     "longterm": 31.7,
@@ -1758,6 +1772,13 @@
    "group": "周期",
    "close": 43.25,
    "chg": 0.05,
+   "high252": 58.343,
+   "low252": 31.81,
+   "pos_in_52w": 43.1,
+   "atr": 1.078,
+   "ma20": 41.04,
+   "ma60": 38.832,
+   "volume_ratio": 0.65,
    "scores": {
     "trend": 65.0,
     "longterm": 42.3,
@@ -1876,6 +1897,13 @@
    "group": "价值",
    "close": 16.54,
    "chg": 2.48,
+   "high252": 17.52,
+   "low252": 13.03,
+   "pos_in_52w": 78.2,
+   "atr": 0.396,
+   "ma20": 16.517,
+   "ma60": 15.176,
+   "volume_ratio": 0.92,
    "scores": {
     "trend": 51.6,
     "longterm": 38.3,
@@ -1994,6 +2022,13 @@
    "group": "AI产业链",
    "close": 33.57,
    "chg": -0.94,
+   "high252": 45.8,
+   "low252": 23.165,
+   "pos_in_52w": 46.0,
+   "atr": 2.166,
+   "ma20": 36.778,
+   "ma60": 35.287,
+   "volume_ratio": 0.72,
    "scores": {
     "trend": 18.8,
     "longterm": 18.7,
@@ -2112,6 +2147,13 @@
    "group": "AI产业链",
    "close": 234.0,
    "chg": -0.72,
+   "high252": 288.7,
+   "low252": 77.81,
+   "pos_in_52w": 74.1,
+   "atr": 16.146,
+   "ma20": 224.403,
+   "ma60": 209.722,
+   "volume_ratio": 0.95,
    "scores": {
     "trend": 63.8,
     "longterm": 18.7,
@@ -2230,6 +2272,13 @@
    "group": "周期",
    "close": 154.88,
    "chg": -0.94,
+   "high252": 173.09,
+   "low252": 85.001,
+   "pos_in_52w": 79.3,
+   "atr": 5.757,
+   "ma20": 158.789,
+   "ma60": 136.988,
+   "volume_ratio": 0.91,
    "scores": {
     "trend": 36.5,
     "longterm": 26.7,
@@ -2348,6 +2397,13 @@
    "group": "价值",
    "close": 34.4,
    "chg": 1.59,
+   "high252": 44.14,
+   "low252": 21.19,
+   "pos_in_52w": 57.6,
+   "atr": 1.237,
+   "ma20": 33.547,
+   "ma60": 30.811,
+   "volume_ratio": 1.01,
    "scores": {
     "trend": 54.7,
     "longterm": 33.3,
@@ -2466,6 +2522,13 @@
    "group": "AI产业链",
    "close": 320.8,
    "chg": -3.14,
+   "high252": 1330.0,
+   "low252": 186.2,
+   "pos_in_52w": 11.8,
+   "atr": 40.038,
+   "ma20": 329.29,
+   "ma60": 320.042,
+   "volume_ratio": 0.76,
    "scores": {
     "trend": 20.8,
     "longterm": 40.0,
@@ -2584,6 +2647,13 @@
    "group": "AI产业链",
    "close": 38.22,
    "chg": 0.05,
+   "high252": 70.75,
+   "low252": 27.32,
+   "pos_in_52w": 25.1,
+   "atr": 3.332,
+   "ma20": 39.052,
+   "ma60": 42.72,
+   "volume_ratio": 0.69,
    "scores": {
     "trend": 21.4,
     "longterm": 16.1,
@@ -2702,6 +2772,13 @@
    "group": "AI产业链",
    "close": 1054.96,
    "chg": -0.38,
+   "high252": 1620.0,
+   "low252": 648.658,
+   "pos_in_52w": 41.8,
+   "atr": 64.21,
+   "ma20": 1070.751,
+   "ma60": 1224.659,
+   "volume_ratio": 0.79,
    "scores": {
     "trend": 17.1,
     "longterm": 21.3,
@@ -2820,6 +2897,13 @@
    "group": "AI产业链",
    "close": 913.5,
    "chg": -0.27,
+   "high252": 2980.0,
+   "low252": 116.1,
+   "pos_in_52w": 27.8,
+   "atr": 128.427,
+   "ma20": 1093.225,
+   "ma60": 1366.208,
+   "volume_ratio": 0.67,
    "scores": {
     "trend": 3.4,
     "longterm": 21.3,
@@ -2938,6 +3022,13 @@
    "group": "周期",
    "close": 65.0,
    "chg": -0.54,
+   "high252": 93.5,
+   "low252": 49.32,
+   "pos_in_52w": 35.5,
+   "atr": 3.439,
+   "ma20": 69.722,
+   "ma60": 72.394,
+   "volume_ratio": 0.7,
    "scores": {
     "trend": 11.9,
     "longterm": 47.3,
@@ -3056,6 +3147,13 @@
    "group": "周期",
    "close": 26.38,
    "chg": -2.01,
+   "high252": 59.9,
+   "low252": 21.3,
+   "pos_in_52w": 13.2,
+   "atr": 1.147,
+   "ma20": 27.352,
+   "ma60": 26.381,
+   "volume_ratio": 0.8,
    "scores": {
     "trend": 24.0,
     "longterm": 65.1,
@@ -3174,6 +3272,13 @@
    "group": "AI产业链",
    "close": 120.51,
    "chg": -0.83,
+   "high252": 176.34,
+   "low252": 88.19,
+   "pos_in_52w": 36.7,
+   "atr": 5.302,
+   "ma20": 125.891,
+   "ma60": 137.265,
+   "volume_ratio": 0.77,
    "scores": {
     "trend": 11.4,
     "longterm": 29.6,
@@ -3292,6 +3397,13 @@
    "group": "AI产业链",
    "close": 0.68,
    "chg": 0.89,
+   "high252": 0.944,
+   "low252": 0.381,
+   "pos_in_52w": 52.6,
+   "atr": 0.032,
+   "ma20": 0.668,
+   "ma60": 0.715,
+   "volume_ratio": 1.01,
    "scores": {
     "trend": 30.0,
     "longterm": 22.7,
@@ -3410,6 +3522,13 @@
    "group": "AI产业链",
    "close": 381.87,
    "chg": -1.06,
+   "high252": 846.66,
+   "low252": 145.05,
+   "pos_in_52w": 33.8,
+   "atr": 23.167,
+   "ma20": 399.644,
+   "ma60": 495.895,
+   "volume_ratio": 0.78,
    "scores": {
     "trend": 5.9,
     "longterm": 22.7,
@@ -3528,6 +3647,13 @@
    "group": "AI产业链",
    "close": 0.65,
    "chg": -0.61,
+   "high252": 0.98,
+   "low252": 0.305,
+   "pos_in_52w": 50.7,
+   "atr": 0.032,
+   "ma20": 0.691,
+   "ma60": 0.745,
+   "volume_ratio": 0.72,
    "scores": {
     "trend": 13.4,
     "longterm": 22.7,
@@ -3646,6 +3772,13 @@
    "group": "周期",
    "close": 5.55,
    "chg": -0.18,
+   "high252": 9.5,
+   "low252": 3.734,
+   "pos_in_52w": 31.5,
+   "atr": 0.236,
+   "ma20": 5.851,
+   "ma60": 6.419,
+   "volume_ratio": 0.82,
    "scores": {
     "trend": 16.1,
     "longterm": 22.7,
@@ -3764,6 +3897,13 @@
    "group": "AI产业链",
    "close": 0.61,
    "chg": -0.33,
+   "high252": 0.807,
+   "low252": 0.463,
+   "pos_in_52w": 42.7,
+   "atr": 0.023,
+   "ma20": 0.623,
+   "ma60": 0.674,
+   "volume_ratio": 0.84,
    "scores": {
     "trend": 17.1,
     "longterm": 34.0,
@@ -3882,6 +4022,13 @@
    "group": "AI产业链",
    "close": 56.87,
    "chg": -2.6,
+   "high252": 61.8,
+   "low252": 38.11,
+   "pos_in_52w": 79.2,
+   "atr": 3.055,
+   "ma20": 57.1,
+   "ma60": null,
+   "volume_ratio": 0.75,
    "scores": {
     "trend": 43.8,
     "longterm": 10.7,
@@ -4000,6 +4147,13 @@
    "group": "价值",
    "close": 39.53,
    "chg": 1.15,
+   "high252": 43.055,
+   "low252": 29.635,
+   "pos_in_52w": 73.7,
+   "atr": 1.116,
+   "ma20": 34.821,
+   "ma60": 34.654,
+   "volume_ratio": 0.67,
    "scores": {
     "trend": 80.4,
     "longterm": 32.5,
@@ -4118,6 +4272,13 @@
    "group": "周期",
    "close": 6.08,
    "chg": 0.5,
+   "high252": 7.595,
+   "low252": 5.575,
+   "pos_in_52w": 25.0,
+   "atr": 0.108,
+   "ma20": 6.135,
+   "ma60": 6.177,
+   "volume_ratio": 0.76,
    "scores": {
     "trend": 25.1,
     "longterm": 84.0,
@@ -4236,6 +4397,13 @@
    "group": "价值",
    "close": 336.84,
    "chg": 0.4,
+   "high252": 467.348,
+   "low252": 264.412,
+   "pos_in_52w": 35.7,
+   "atr": 10.698,
+   "ma20": 371.385,
+   "ma60": 379.433,
+   "volume_ratio": 1.27,
    "scores": {
     "trend": 13.3,
     "longterm": 63.2,
@@ -4354,6 +4522,13 @@
    "group": "周期",
    "close": 55.92,
    "chg": -2.15,
+   "high252": 90.5,
+   "low252": 55.26,
+   "pos_in_52w": 1.9,
+   "atr": 1.684,
+   "ma20": 60.216,
+   "ma60": 62.812,
+   "volume_ratio": 1.74,
    "scores": {
     "trend": 17.0,
     "longterm": 73.3,
@@ -4472,6 +4647,13 @@
    "group": "AI产业链",
    "close": 908.9,
    "chg": 0.72,
+   "high252": 1416.88,
+   "low252": 309.91,
+   "pos_in_52w": 54.1,
+   "atr": 57.755,
+   "ma20": 887.894,
+   "ma60": 1026.495,
+   "volume_ratio": 0.71,
    "scores": {
     "trend": 13.5,
     "longterm": 22.7,
@@ -4590,6 +4772,13 @@
    "group": "AI产业链",
    "close": 26.13,
    "chg": -4.64,
+   "high252": 53.161,
+   "low252": 23.44,
+   "pos_in_52w": 9.1,
+   "atr": 1.239,
+   "ma20": 27.052,
+   "ma60": 27.505,
+   "volume_ratio": 1.02,
    "scores": {
     "trend": 22.1,
     "longterm": 82.7,
@@ -4708,6 +4897,13 @@
    "group": "AI产业链",
    "close": 32.32,
    "chg": -2.18,
+   "high252": 91.91,
+   "low252": 31.94,
+   "pos_in_52w": 0.6,
+   "atr": 1.412,
+   "ma20": 35.042,
+   "ma60": 40.771,
+   "volume_ratio": 1.42,
    "scores": {
     "trend": 8.0,
     "longterm": 73.3,
@@ -4826,6 +5022,13 @@
    "group": "价值",
    "close": 109.8,
    "chg": 0.27,
+   "high252": 185.173,
+   "low252": 88.65,
+   "pos_in_52w": 21.9,
+   "atr": 4.148,
+   "ma20": 115.89,
+   "ma60": 111.989,
+   "volume_ratio": 0.69,
    "scores": {
     "trend": 5.4,
     "longterm": 71.7,
@@ -4944,6 +5147,13 @@
    "group": "价值",
    "close": 26.36,
    "chg": 5.52,
+   "high252": 44.85,
+   "low252": 17.76,
+   "pos_in_52w": 31.7,
+   "atr": 0.893,
+   "ma20": 25.844,
+   "ma60": 26.879,
+   "volume_ratio": 2.72,
    "scores": {
     "trend": 20.0,
     "longterm": 21.3,
@@ -5062,6 +5272,13 @@
    "group": "周期",
    "close": 8.09,
    "chg": -1.1,
+   "high252": 13.86,
+   "low252": 7.05,
+   "pos_in_52w": 15.3,
+   "atr": 0.244,
+   "ma20": 8.168,
+   "ma60": 8.15,
+   "volume_ratio": 0.79,
    "scores": {
     "trend": 9.0,
     "longterm": 69.1,
@@ -5180,6 +5397,13 @@
    "group": "周期",
    "close": 90.83,
    "chg": -2.44,
+   "high252": 199.782,
+   "low252": 82.364,
+   "pos_in_52w": 7.2,
+   "atr": 3.084,
+   "ma20": 93.876,
+   "ma60": 95.046,
+   "volume_ratio": 1.16,
    "scores": {
     "trend": 7.8,
     "longterm": 83.7,
@@ -5298,6 +5522,13 @@
    "group": "周期",
    "close": 36.19,
    "chg": -0.08,
+   "high252": 60.491,
+   "low252": 28.781,
+   "pos_in_52w": 23.4,
+   "atr": 1.188,
+   "ma20": 36.721,
+   "ma60": 39.398,
+   "volume_ratio": 0.56,
    "scores": {
     "trend": 4.8,
     "longterm": 58.0,
@@ -5405,6 +5636,256 @@
      "pb": {
       "score": 0.0,
       "detail": "PB4.69 → PB 1.5–8 +0"
+     }
+    }
+   },
+   "error": null
+  },
+  {
+   "code": "513180.SH",
+   "name": "恒生科技ETF",
+   "group": "AI产业链",
+   "close": 0.56,
+   "chg": -0.53,
+   "high252": 0.896,
+   "low252": 0.538,
+   "pos_in_52w": 5.9,
+   "atr": 0.011,
+   "ma20": 0.583,
+   "ma60": 0.589,
+   "volume_ratio": 0.65,
+   "scores": {
+    "trend": 8.2,
+    "longterm": 84.0,
+    "divergence": 30.0,
+    "fundamental": 50.0,
+    "exit": null
+   },
+   "score": 8.2,
+   "lscore": 84.0,
+   "dscore": 30.0,
+   "fscore": 50.0,
+   "status": "弱势",
+   "advice": "趋势走坏, 回避或仅保留底仓",
+   "signals": [
+    "均线空头排列 0/15；MA20 走平/下行 0/10",
+    "未突破20日高点0.611 0/15；RS弱于沪深300 -4.9pct 5/15",
+    "量能不足(量比0.7) 0/15",
+    "沪深300空头(大盘滤网不通过) 0/8；股价处于长周期空头区 0/7",
+    "距52周高点0.896 -38%"
+   ],
+   "dims": {
+    "trend": {
+     "structure": {
+      "score": 0.0,
+      "detail": "均线空头排列 0/15；MA20 走平/下行 0/10"
+     },
+     "momentum": {
+      "score": 5.0,
+      "detail": "未突破20日高点0.611 0/15；RS弱于沪深300 -4.9pct 5/15"
+     },
+     "volume": {
+      "score": 3.2,
+      "detail": "量能不足(量比0.7) 0/15"
+     },
+     "filter": {
+      "score": 0.0,
+      "detail": "沪深300空头(大盘滤网不通过) 0/8；股价处于长周期空头区 0/7"
+     },
+     "position": {
+      "score": 0.0,
+      "detail": "距52周高点0.896 -38%"
+     }
+    },
+    "longterm": {
+     "valuation": {
+      "score": 35.0,
+      "detail": "价格分位0%(窗口252日) → 35分"
+     },
+     "cushion": {
+      "score": 20.0,
+      "detail": "距52周低点0.538 +3.9% → 20分"
+     },
+     "weekly": {
+      "score": 8.0,
+      "detail": "周线MACD多头 +8；⚠卖出纪律: 跌破年线MA250且3日未收回"
+     },
+     "quality": {
+      "score": null,
+      "detail": "基本面质量数据不足"
+     }
+    },
+    "divergence": {
+     "w_impulse": {
+      "score": 0.0,
+      "detail": "周线强力系统 红 → 0分"
+     },
+     "d_impulse": {
+      "score": 0.0,
+      "detail": "日线强力系统 红 → 0分"
+     },
+     "price_value": {
+      "score": 20.0,
+      "detail": "价格低于EMA13~26区间 20分"
+     },
+     "false_break": {
+      "score": 0.0,
+      "detail": "无假突破结构 0分"
+     },
+     "divergence_ok": {
+      "score": 10.0,
+      "detail": "周线MACD柱底背离 +1"
+     }
+    },
+    "fundamental": {
+     "roe": {
+      "score": null,
+      "detail": "ROE年化— → 无数据"
+     },
+     "net_margin": {
+      "score": null,
+      "detail": "净利率— → 无数据"
+     },
+     "rev_yoy": {
+      "score": null,
+      "detail": "营收YoY— → 无数据"
+     },
+     "profit_yoy": {
+      "score": null,
+      "detail": "归母YoY— → 无数据"
+     },
+     "pe": {
+      "score": null,
+      "detail": "PE(TTM)— → 无PE"
+     },
+     "pb": {
+      "score": null,
+      "detail": "PB— → 无数据"
+     }
+    }
+   },
+   "error": null
+  },
+  {
+   "code": "512710.SH",
+   "name": "军工龙头ETF",
+   "group": "周期",
+   "close": 0.66,
+   "chg": 1.55,
+   "high252": 0.985,
+   "low252": 0.575,
+   "pos_in_52w": 19.5,
+   "atr": 0.014,
+   "ma20": 0.624,
+   "ma60": 0.633,
+   "volume_ratio": 1.05,
+   "scores": {
+    "trend": 54.3,
+    "longterm": 73.9,
+    "divergence": 40.0,
+    "fundamental": 50.0,
+    "exit": null
+   },
+   "score": 54.3,
+   "lscore": 73.9,
+   "dscore": 40.0,
+   "fscore": 50.0,
+   "status": "观察",
+   "advice": "强度一般, 不急介入, 等确认信号",
+   "signals": [
+    "均线多头排列 15/15；MA20 上行 10/10",
+    "逼近20日新高(0.661, 差距<3%) 8/15；RS强于沪深300 +6.8pct 15/15",
+    "量能不足(量比1.1) 0/15",
+    "沪深300空头(大盘滤网不通过) 0/8；股价处于长周期空头区 0/7",
+    "距52周高点0.985 -34%"
+   ],
+   "dims": {
+    "trend": {
+     "structure": {
+      "score": 25.0,
+      "detail": "均线多头排列 15/15；MA20 上行 10/10"
+     },
+     "momentum": {
+      "score": 23.0,
+      "detail": "逼近20日新高(0.661, 差距<3%) 8/15；RS强于沪深300 +6.8pct 15/15"
+     },
+     "volume": {
+      "score": 5.2,
+      "detail": "量能不足(量比1.1) 0/15"
+     },
+     "filter": {
+      "score": 0.0,
+      "detail": "沪深300空头(大盘滤网不通过) 0/8；股价处于长周期空头区 0/7"
+     },
+     "position": {
+      "score": 1.1,
+      "detail": "距52周高点0.985 -34%"
+     }
+    },
+    "longterm": {
+     "valuation": {
+      "score": 30.0,
+      "detail": "价格分位17%(窗口252日) → 30分"
+     },
+     "cushion": {
+      "score": 17.4,
+      "detail": "距52周低点0.575 +13.9% → 17.4分"
+     },
+     "weekly": {
+      "score": 8.0,
+      "detail": "周线MACD多头 +8；⚠卖出纪律: 跌破年线MA250且3日未收回"
+     },
+     "quality": {
+      "score": null,
+      "detail": "基本面质量数据不足"
+     }
+    },
+    "divergence": {
+     "w_impulse": {
+      "score": 10.0,
+      "detail": "周线强力系统 绿 → 10分"
+     },
+     "d_impulse": {
+      "score": 10.0,
+      "detail": "日线强力系统 绿 → 10分"
+     },
+     "price_value": {
+      "score": 0.0,
+      "detail": "价格高于EMA13~26区间 0分"
+     },
+     "false_break": {
+      "score": 20.0,
+      "detail": "逼近前高, 假突破将要发生 20分"
+     },
+     "divergence_ok": {
+      "score": 0.0,
+      "detail": "无有效背离结构 0分"
+     }
+    },
+    "fundamental": {
+     "roe": {
+      "score": null,
+      "detail": "ROE年化— → 无数据"
+     },
+     "net_margin": {
+      "score": null,
+      "detail": "净利率— → 无数据"
+     },
+     "rev_yoy": {
+      "score": null,
+      "detail": "营收YoY— → 无数据"
+     },
+     "profit_yoy": {
+      "score": null,
+      "detail": "归母YoY— → 无数据"
+     },
+     "pe": {
+      "score": null,
+      "detail": "PE(TTM)— → 无PE"
+     },
+     "pb": {
+      "score": null,
+      "detail": "PB— → 无数据"
      }
     }
    },
@@ -6303,7 +6784,7 @@
    25.0,
    25.7,
    32.2,
-   32.1
+   32.5
   ],
   "series": {
    "00700.HK": [
