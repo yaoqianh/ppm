@@ -2301,13 +2301,12 @@
     "002472.SZ": 64.0,
     "600941.SH": 53.7,
     "09888.HK": 70.7,
-    "300059.SZ": 86.2,
     "300124.SZ": 64.8,
     "600036.SH": 51.5
    },
    "timing": 22.5,
-   "total_mv": 368831.0,
-   "total_pnl_pct": 2.08,
+   "total_mv": 332211.0,
+   "total_pnl_pct": 2.89,
    "dims": {
     "00700.HK": {
      "trend": {
@@ -2682,100 +2681,6 @@
       "pb": {
        "score": null,
        "detail": "PB— → 无数据"
-      }
-     }
-    },
-    "300059.SZ": {
-     "trend": {
-      "structure": {
-       "score": 0.0,
-       "detail": "均线空头排列 0/15；MA20 走平/下行 0/10"
-      },
-      "momentum": {
-       "score": 5.0,
-       "detail": "未突破20日高点19.65 0/15；RS弱于沪深300 -2.6pct 5/15"
-      },
-      "volume": {
-       "score": 8.0,
-       "detail": "放量但未突破(量比1.5) 8/15"
-      },
-      "filter": {
-       "score": 0.0,
-       "detail": "沪深300空头(大盘滤网不通过) 0/8；股价处于长周期空头区 0/7"
-      },
-      "position": {
-       "score": 0.0,
-       "detail": "距52周高点29.26 -37%"
-      }
-     },
-     "longterm": {
-      "valuation": {
-       "score": 35.0,
-       "detail": "PE/价格分位2%(窗口252日) → 35分"
-      },
-      "cushion": {
-       "score": 20.0,
-       "detail": "距52周低点17.22 +6.3% → 20分"
-      },
-      "weekly": {
-       "score": 8.0,
-       "detail": "周线MACD多头 +8；⚠卖出纪律: 跌破年线MA250且3日未收回"
-      },
-      "quality": {
-       "score": 25.0,
-       "detail": "基本面质量 → 25.0分"
-      },
-      "discipline": {
-       "score": 8.5,
-       "detail": "止损缓冲中等(距 1.3×ATR)｜未破止损｜TP1 过远(距24.7×ATR)｜持仓8日 < 阈值180日的一半"
-      }
-     },
-     "divergence": {
-      "w_impulse": {
-       "score": 0.0,
-       "detail": "周线强力系统 红 → 0分"
-      },
-      "d_impulse": {
-       "score": 0.0,
-       "detail": "日线强力系统 红 → 0分"
-      },
-      "price_value": {
-       "score": 20.0,
-       "detail": "价格低于EMA13~26区间 20分"
-      },
-      "false_break": {
-       "score": 10.0,
-       "detail": "已发生冲高回落(假突破) 10分"
-      },
-      "divergence_ok": {
-       "score": 20.0,
-       "detail": "日线MACD柱底背离 +1；周线MACD柱底背离 +1"
-      }
-     },
-     "fundamental": {
-      "roe": {
-       "score": 10.0,
-       "detail": "ROE年化+17.0% → ROE≥15% +10"
-      },
-      "net_margin": {
-       "score": 5.0,
-       "detail": "净利率+65.0% → 净利率≥20% +5"
-      },
-      "rev_yoy": {
-       "score": 10.0,
-       "detail": "营收YoY+44.0% → 营收YoY≥20% +10"
-      },
-      "profit_yoy": {
-       "score": 10.0,
-       "detail": "归母YoY+45.0% → 归母YoY≥30% +10"
-      },
-      "pe": {
-       "score": 5.0,
-       "detail": "PE(TTM)19.87 → PE 15–30 +5"
-      },
-      "pb": {
-       "score": 0.0,
-       "detail": "PB2.94 → PB 1.5–8 +0"
       }
      }
     },

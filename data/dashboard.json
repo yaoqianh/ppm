@@ -1,22 +1,21 @@
 {
- "updated_at": "2026-09-13 11:28 (UTC+8)",
+ "updated_at": "2026-09-13 19:36 (UTC+8)",
  "as_of": "2026-09-11",
- "summary": "大盘空仓观望｜持仓7只｜高分(≥70)3只腾讯控股、百度集团-W、东方财富｜系统性风险释放中, 保留现金｜总市值约36.9万，第一大持仓腾讯控股占30%、前三占67%，持仓分散度尚可。",
+ "summary": "大盘空仓观望｜持仓6只｜高分(≥70)2只腾讯控股、百度集团-W｜系统性风险释放中, 保留现金｜总市值约33.2万，第一大持仓腾讯控股占33%、前三占75%，持仓分散度尚可。",
  "portfolio": {
-  "total_mv": 368831.0,
-  "total_cost": 361323.0,
-  "total_pnl_amt": 7508.0,
-  "total_pnl_pct": 2.08,
-  "day_pnl": -4286.0,
+  "total_mv": 332211.0,
+  "total_cost": 322875.0,
+  "total_pnl_amt": 9336.0,
+  "total_pnl_pct": 2.89,
+  "day_pnl": -2966.0,
   "realized_pnl": -27383.0,
-  "position_count": 7,
-  "top1_weight": 30.0,
-  "top3_weight": 67.3,
+  "position_count": 6,
+  "top1_weight": 33.3,
+  "top3_weight": 74.7,
   "deep_loss": [],
   "high_score_names": [
    "腾讯控股",
-   "百度集团-W",
-   "东方财富"
+   "百度集团-W"
   ],
   "low_score_names": [],
   "currency": "CNY"
@@ -293,7 +292,7 @@
    "high252": 677.7,
    "low252": 411.0,
    "error": null,
-   "weight": 30.0,
+   "weight": 33.3,
    "score_prev": 81.3,
    "score_change": 0.0,
    "change_reason": "较上一交易日评分基本持平",
@@ -490,7 +489,7 @@
    "high252": 53.04,
    "low252": 34.13,
    "error": null,
-   "weight": 20.7,
+   "weight": 22.9,
    "score_prev": 59.6,
    "score_change": 4.4,
    "change_reason": "↑4.4 分：估值分位 30→35(+5.0)",
@@ -687,7 +686,7 @@
    "high252": 107.409,
    "low252": 85.38,
    "error": null,
-   "weight": 15.9,
+   "weight": 17.6,
    "score_prev": 48.1,
    "score_change": 5.6,
    "change_reason": "↑5.6 分：周线结构 8→16(+8.0)；出场纪律 11→9.5(-1.5)；位置安全垫 17.3→17(-0.3)",
@@ -884,7 +883,7 @@
    "high252": 161.2,
    "low252": 86.5,
    "error": null,
-   "weight": 16.6,
+   "weight": 18.5,
    "score_prev": 70.7,
    "score_change": 0.0,
    "change_reason": "较上一交易日评分基本持平",
@@ -919,203 +918,6 @@
     75.3,
     70.7,
     70.7
-   ]
-  },
-  {
-   "code": "300059.SZ",
-   "name": "东方财富",
-   "template": "longterm",
-   "shares": 2000.0,
-   "cost": 19.2242,
-   "currency": "CNY",
-   "fx": 1.0,
-   "close": 18.31,
-   "prev_close": 18.97,
-   "chg": -3.48,
-   "mv": 36620.0,
-   "cost_amt": 38448.0,
-   "pnl": -4.8,
-   "pnl_amt": -1828.0,
-   "day_pnl": -1320.0,
-   "score": 86.2,
-   "scores": {
-    "trend": 13.0,
-    "longterm": 86.2,
-    "divergence": 50.0,
-    "fundamental": 90.0,
-    "exit": null
-   },
-   "dims": {
-    "trend": {
-     "structure": {
-      "score": 0.0,
-      "detail": "均线空头排列 0/15；MA20 走平/下行 0/10"
-     },
-     "momentum": {
-      "score": 5.0,
-      "detail": "未突破20日高点19.65 0/15；RS弱于沪深300 -2.6pct 5/15"
-     },
-     "volume": {
-      "score": 8.0,
-      "detail": "放量但未突破(量比1.5) 8/15"
-     },
-     "filter": {
-      "score": 0.0,
-      "detail": "沪深300空头(大盘滤网不通过) 0/8；股价处于长周期空头区 0/7"
-     },
-     "position": {
-      "score": 0.0,
-      "detail": "距52周高点29.26 -37%"
-     }
-    },
-    "longterm": {
-     "valuation": {
-      "score": 35.0,
-      "detail": "PE/价格分位2%(窗口252日) → 35分"
-     },
-     "cushion": {
-      "score": 20.0,
-      "detail": "距52周低点17.22 +6.3% → 20分"
-     },
-     "weekly": {
-      "score": 8.0,
-      "detail": "周线MACD多头 +8；⚠卖出纪律: 跌破年线MA250且3日未收回"
-     },
-     "quality": {
-      "score": 25.0,
-      "detail": "基本面质量 → 25.0分"
-     },
-     "discipline": {
-      "score": 8.5,
-      "detail": "止损缓冲中等(距 1.3×ATR)｜未破止损｜TP1 过远(距24.7×ATR)｜持仓8日 < 阈值180日的一半"
-     }
-    },
-    "divergence": {
-     "w_impulse": {
-      "score": 0.0,
-      "detail": "周线强力系统 红 → 0分"
-     },
-     "d_impulse": {
-      "score": 0.0,
-      "detail": "日线强力系统 红 → 0分"
-     },
-     "price_value": {
-      "score": 20.0,
-      "detail": "价格低于EMA13~26区间 20分"
-     },
-     "false_break": {
-      "score": 10.0,
-      "detail": "已发生冲高回落(假突破) 10分"
-     },
-     "divergence_ok": {
-      "score": 20.0,
-      "detail": "日线MACD柱底背离 +1；周线MACD柱底背离 +1"
-     }
-    },
-    "fundamental": {
-     "roe": {
-      "score": 10.0,
-      "detail": "ROE年化+17.0% → ROE≥15% +10"
-     },
-     "net_margin": {
-      "score": 5.0,
-      "detail": "净利率+65.0% → 净利率≥20% +5"
-     },
-     "rev_yoy": {
-      "score": 10.0,
-      "detail": "营收YoY+44.0% → 营收YoY≥20% +10"
-     },
-     "profit_yoy": {
-      "score": 10.0,
-      "detail": "归母YoY+45.0% → 归母YoY≥30% +10"
-     },
-     "pe": {
-      "score": 5.0,
-      "detail": "PE(TTM)19.87 → PE 15–30 +5"
-     },
-     "pb": {
-      "score": 0.0,
-      "detail": "PB2.94 → PB 1.5–8 +0"
-     }
-    }
-   },
-   "status": "积极建仓区",
-   "advice": "估值/位置/结构/基本面共振, 可按长线计划建仓或加仓",
-   "signals": [
-    "PE/价格分位2%(窗口252日) → 35分",
-    "距52周低点17.22 +6.3% → 20分",
-    "周线MACD多头 +8；⚠卖出纪律: 跌破年线MA250且3日未收回",
-    "基本面质量 → 25.0分",
-    "止损缓冲中等(距 1.3×ATR)｜未破止损｜TP1 过远(距24.7×ATR)｜持仓8日 < 阈值180日的一半",
-    "吊灯止损线18.42(10日最高−3×ATR)",
-    "建议止损17.76(依据:MA60)",
-    "止盈第一目标28.44, 触发可减半仓"
-   ],
-   "hard_stop": 11.724,
-   "hard_stop_hit": false,
-   "chandelier": 18.421,
-   "stop_price": 17.761,
-   "stop_method": "MA60",
-   "stop_distance_atr": 1.34,
-   "stop_distance_pct": 3.0,
-   "stop_breached": false,
-   "take_profit_1": 28.441,
-   "take_profit_1_method": "52周高(29.26) − 2×ATR",
-   "take_profit_2": 29.26,
-   "take_profit_2_method": "52周高(29.26)",
-   "tp1_distance_atr": 24.73,
-   "tp2_distance_atr": 26.73,
-   "tp1_reached": false,
-   "exit_state": {
-    "level": "ok",
-    "text": "建议有效"
-   },
-   "holding_days": 8,
-   "time_stop_days": 180,
-   "ma20": 19.069,
-   "ma60": 19.809,
-   "atr": 0.41,
-   "rsi": 33.7,
-   "pe": null,
-   "pb": null,
-   "high252": 29.26,
-   "low252": 17.22,
-   "error": null,
-   "weight": 9.9,
-   "score_prev": 86.2,
-   "score_change": 0.0,
-   "change_reason": "较上一交易日评分基本持平",
-   "spark": [
-    74.9,
-    74.7,
-    68.5,
-    74.9,
-    75.0,
-    74.8,
-    79.5,
-    79.6,
-    79.8,
-    81.0,
-    80.5,
-    86.9,
-    88.0,
-    88.0,
-    88.0,
-    88.0,
-    88.0,
-    81.4,
-    80.4,
-    81.1,
-    81.3,
-    81.2,
-    88.0,
-    87.7,
-    82.2,
-    87.8,
-    88.0,
-    86.2,
-    86.2,
-    86.2
    ]
   },
   {
@@ -1278,7 +1080,7 @@
    "high252": 90.5,
    "low252": 53.44,
    "error": null,
-   "weight": 5.8,
+   "weight": 6.4,
    "score_prev": null,
    "score_change": null,
    "change_reason": "首次记录，暂无对比基准",
@@ -1475,7 +1277,7 @@
    "high252": 41.974,
    "low252": 34.277,
    "error": null,
-   "weight": 1.1,
+   "weight": 1.2,
    "score_prev": 51.1,
    "score_change": 0.4,
    "change_reason": "↑0.4 分：位置安全垫 12.4→12.9(+0.5)",
@@ -5888,6 +5690,131 @@
     }
    },
    "error": null
+  },
+  {
+   "code": "300059.SZ",
+   "name": "东方财富",
+   "group": "周期",
+   "close": 18.31,
+   "chg": -3.48,
+   "high252": 29.26,
+   "low252": 17.22,
+   "pos_in_52w": 9.1,
+   "atr": 0.41,
+   "ma20": 19.069,
+   "ma60": 19.809,
+   "volume_ratio": 1.49,
+   "scores": {
+    "trend": 13.0,
+    "longterm": 88.0,
+    "divergence": 50.0,
+    "fundamental": 90.0,
+    "exit": null
+   },
+   "score": 13.0,
+   "lscore": 88.0,
+   "dscore": 50.0,
+   "fscore": 90.0,
+   "status": "弱势",
+   "advice": "趋势走坏, 回避或仅保留底仓",
+   "signals": [
+    "均线空头排列 0/15；MA20 走平/下行 0/10",
+    "未突破20日高点19.65 0/15；RS弱于沪深300 -2.6pct 5/15",
+    "放量但未突破(量比1.5) 8/15",
+    "沪深300空头(大盘滤网不通过) 0/8；股价处于长周期空头区 0/7",
+    "距52周高点29.26 -37%"
+   ],
+   "dims": {
+    "trend": {
+     "structure": {
+      "score": 0.0,
+      "detail": "均线空头排列 0/15；MA20 走平/下行 0/10"
+     },
+     "momentum": {
+      "score": 5.0,
+      "detail": "未突破20日高点19.65 0/15；RS弱于沪深300 -2.6pct 5/15"
+     },
+     "volume": {
+      "score": 8.0,
+      "detail": "放量但未突破(量比1.5) 8/15"
+     },
+     "filter": {
+      "score": 0.0,
+      "detail": "沪深300空头(大盘滤网不通过) 0/8；股价处于长周期空头区 0/7"
+     },
+     "position": {
+      "score": 0.0,
+      "detail": "距52周高点29.26 -37%"
+     }
+    },
+    "longterm": {
+     "valuation": {
+      "score": 35.0,
+      "detail": "PE/价格分位2%(窗口252日) → 35分"
+     },
+     "cushion": {
+      "score": 20.0,
+      "detail": "距52周低点17.22 +6.3% → 20分"
+     },
+     "weekly": {
+      "score": 8.0,
+      "detail": "周线MACD多头 +8；⚠卖出纪律: 跌破年线MA250且3日未收回"
+     },
+     "quality": {
+      "score": 25.0,
+      "detail": "基本面质量 → 25.0分"
+     }
+    },
+    "divergence": {
+     "w_impulse": {
+      "score": 0.0,
+      "detail": "周线强力系统 红 → 0分"
+     },
+     "d_impulse": {
+      "score": 0.0,
+      "detail": "日线强力系统 红 → 0分"
+     },
+     "price_value": {
+      "score": 20.0,
+      "detail": "价格低于EMA13~26区间 20分"
+     },
+     "false_break": {
+      "score": 10.0,
+      "detail": "已发生冲高回落(假突破) 10分"
+     },
+     "divergence_ok": {
+      "score": 20.0,
+      "detail": "日线MACD柱底背离 +1；周线MACD柱底背离 +1"
+     }
+    },
+    "fundamental": {
+     "roe": {
+      "score": 10.0,
+      "detail": "ROE年化+17.0% → ROE≥15% +10"
+     },
+     "net_margin": {
+      "score": 5.0,
+      "detail": "净利率+65.0% → 净利率≥20% +5"
+     },
+     "rev_yoy": {
+      "score": 10.0,
+      "detail": "营收YoY+44.0% → 营收YoY≥20% +10"
+     },
+     "profit_yoy": {
+      "score": 10.0,
+      "detail": "归母YoY+45.0% → 归母YoY≥30% +10"
+     },
+     "pe": {
+      "score": 5.0,
+      "detail": "PE(TTM)19.87 → PE 15–30 +5"
+     },
+     "pb": {
+      "score": 0.0,
+      "detail": "PB2.94 → PB 1.5–8 +0"
+     }
+    }
+   },
+   "error": null
   }
  ],
  "trades": [
@@ -6138,7 +6065,6 @@
     "双环传动",
     "中国移动",
     "百度集团-W",
-    "东方财富",
     "汇川技术",
     "招商银行"
    ]
@@ -7045,70 +6971,6 @@
     70.7,
     70.7
    ],
-   "300059.SZ": [
-    79.6,
-    80.0,
-    75.1,
-    71.4,
-    74.2,
-    70.6,
-    78.6,
-    78.5,
-    73.4,
-    68.3,
-    76.1,
-    74.8,
-    70.3,
-    73.8,
-    74.4,
-    72.6,
-    74.2,
-    79.5,
-    80.5,
-    74.4,
-    79.6,
-    80.1,
-    74.2,
-    73.8,
-    74.6,
-    73.8,
-    81.2,
-    80.3,
-    81.1,
-    79.3,
-    74.9,
-    74.2,
-    74.9,
-    74.7,
-    68.5,
-    74.9,
-    75.0,
-    74.8,
-    79.5,
-    79.6,
-    79.8,
-    81.0,
-    80.5,
-    86.9,
-    88.0,
-    88.0,
-    88.0,
-    88.0,
-    88.0,
-    81.4,
-    80.4,
-    81.1,
-    81.3,
-    81.2,
-    88.0,
-    87.7,
-    82.2,
-    87.8,
-    88.0,
-    86.2,
-    86.2,
-    86.2
-   ],
    "300124.SZ": [
     null,
     null,
@@ -7243,7 +7105,6 @@
    "002472.SZ": "双环传动",
    "600941.SH": "中国移动",
    "09888.HK": "百度集团-W",
-   "300059.SZ": "东方财富",
    "300124.SZ": "汇川技术",
    "600036.SH": "招商银行"
   }
