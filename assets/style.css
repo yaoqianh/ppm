@@ -184,34 +184,11 @@ code.c {
   font-family: var(--mono); font-size: 11px; color: var(--faint);
 }
 
-/* 迷你走势 */
-.spark { display: block; }
-
 /* 展开的维度明细 */
 .dimbox { background: var(--card2); border-radius: 8px; padding: 10px 14px; margin: 2px 0 8px; }
 .dimbox .row { display: flex; gap: 10px; align-items: baseline; font-size: 12px; padding: 2.5px 0; }
 .dimbox .row .n { width: 74px; color: var(--dim); flex-shrink: 0; }
 .dimbox .row .d { color: var(--faint); flex: 1; }
-
-/* ---------------------------------------------------------------- 图表 */
-
-.chart-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 18px; }
-.chart-legend { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
-.lg {
-  font-size: 11.5px; padding: 3px 10px; border-radius: 20px; cursor: pointer;
-  border: 1px solid var(--line); background: var(--card2); color: var(--faint);
-  display: inline-flex; align-items: center; gap: 6px; transition: .15s;
-}
-.lg i { width: 9px; height: 9px; border-radius: 50%; display: inline-block; background: currentColor; }
-.lg.on { color: var(--txt); border-color: var(--dim); }
-.chart-svg { width: 100%; height: auto; display: block; }
-
-.range-bar { display: flex; gap: 4px; margin-bottom: 10px; flex-wrap: wrap; }
-.range-bar button {
-  background: var(--card2); border: 1px solid var(--line); color: var(--dim);
-  border-radius: 6px; padding: 4px 11px; font-size: 12px; cursor: pointer; font-family: inherit;
-}
-.range-bar button.on { background: rgba(210,163,95,.14); border-color: rgba(210,163,95,.45); color: var(--amber); }
 
 /* ---------------------------------------------------------------- 配置抽屉 */
 
@@ -277,6 +254,9 @@ footer {
 }
 .toast.on { opacity: 1; transform: translateX(-50%); }
 
+/* 手机端横向滑动提示（桌面端不显示） */
+.scroll-hint { display: none; font-size: 11.5px; color: var(--faint); margin: 0 0 8px; }
+
 /* ---------------------------------------------------------------- 响应式 */
 
 @media (max-width: 1100px) {
@@ -303,68 +283,56 @@ footer {
 #posTable td[data-k="tp"] .good { color: var(--down); font-weight: 680; }
 #posTable td[data-k="tp"] .near { color: #5fc78a; font-weight: 650; }
 
-/* ---------------------------------------------------------------- 手机端：宽表格转卡片 */
+/* ---------------------------------------------------------------- 手机端：表格横向滑动（与电脑端一致的纵向对比） */
 
 @media (max-width: 780px) {
-  /* 表格容器不再横向滚动 */
-  .tw { overflow-x: visible; }
+  /* 表格保持表格结构，容器横向滚动；不再把每只票拆成上下堆叠的卡片 */
+  .tw {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    /* 右侧渐隐，暗示还有列在外面 */
+    box-shadow: inset -16px 0 14px -14px rgba(0,0,0,.55);
+  }
+  #posTable, #diagTable { min-width: 880px; }
+  #watchTable { min-width: 780px; }
+  #tradeTable { min-width: 720px; }
+  /* 冻结列要靠 separate 才能让边框跟着一起走 */
+  #posTable, #diagTable, #watchTable, #tradeTable { border-collapse: separate; border-spacing: 0; }
 
-  .resp-table { min-width: 0; }
-  .resp-table thead { display: none; }
-  .resp-table tbody tr {
-    display: block;
-    background: var(--card2);
-    border: 1px solid var(--line);
-    border-radius: 10px;
-    padding: 10px 13px;
-    margin-bottom: 10px;
-  }
-  .resp-table tbody tr:hover td { background: none; }
-  .resp-table td {
-    display: flex; justify-content: space-between; align-items: baseline;
-    gap: 14px; border: none; padding: 4px 0; text-align: right; min-width: 0;
-  }
-  .resp-table td::before {
-    content: attr(data-l);
-    color: var(--faint); font-size: 11.5px; text-align: left;
-    flex-shrink: 0; font-weight: 400;
-  }
-  /* 名称列作为卡片标题突出显示 */
-  .resp-table td[data-k="name"],
-  .resp-table td[data-l="名称 / 代码"],
-  .resp-table td[data-l="名称"] {
-    font-size: 15px; padding-bottom: 6px; margin-bottom: 2px;
-    border-bottom: 1px dashed rgba(58,50,38,.9);
-  }
-  .resp-table td[data-k="name"]::before,
-  .resp-table td[data-l="名称 / 代码"]::before,
-  .resp-table td[data-l="名称"]::before { display: none; }
-  .resp-table td[data-k="name"] { justify-content: flex-start; }
+  .resp-table { font-size: 12.5px; }
+  .resp-table th, .resp-table td { padding: 7px 9px; }
 
-  /* 次要列在手机上隐藏，避免卡片过长 */
-  #posTable td[data-k="spark"] { display: none; }
-  #posTable td[data-k="rk"] { display: none; }
-  #posTable td[data-k="delta"] { display: none; }
-  /* 手机端让建议止损/止盈两列排在最显眼位置 */
-  #posTable td[data-k="stop"],
-  #posTable td[data-k="tp"] {
-    background: rgba(210,163,95,.07); margin-top: 4px;
-    padding: 5px 8px; border-radius: 5px;
+  /* 表头竖向吸顶（站点没有固定顶栏，直接贴顶即可） */
+  .resp-table thead th {
+    position: sticky; top: 0; z-index: 3;
+    background: var(--card2); box-shadow: inset 0 -1px 0 var(--line);
   }
 
-  /* 分组标题行 / 操作参考副行：整行平铺，不加列名 */
-  .resp-table tr.group-row { background: var(--card3); padding: 7px 13px; }
-  .resp-table tr.group-row td { display: block; text-align: left; padding: 0; }
-  .resp-table tr.group-row td::before { display: none; }
-  .resp-table tr.sub-row { padding: 0 0 4px; background: transparent; border: none; margin-top: -6px; }
-  .resp-table tr.sub-row td { display: block; text-align: left; padding: 0; }
-  .resp-table tr.sub-row td::before { display: none; }
-  .resp-table tr.detail td { display: block; text-align: left; padding: 0; }
-  .resp-table tr.detail td::before { display: none; }
+  /* 「名称」列横向冻结：滑到右边仍然知道在看哪只票 */
+  #posTable thead th:nth-child(2),
+  #posTable tbody tr[data-code] > td:nth-child(2),
+  #diagTable thead th:nth-child(2),
+  #diagTable tbody tr:not(.sub-row) > td:nth-child(2),
+  #watchTable thead th:nth-child(2),
+  #watchTable tbody tr:not(.group-row):not(.sub-row) > td:nth-child(2) {
+    position: sticky; left: 0; z-index: 2;
+    background: var(--card); box-shadow: 1px 0 0 var(--line);
+  }
+  #posTable thead th:nth-child(2),
+  #diagTable thead th:nth-child(2),
+  #watchTable thead th:nth-child(2) { z-index: 4; background: var(--card2); }
+  /* 悬停时冻结列跟着行一起变色，避免出现色块断层 */
+  #posTable tbody tr:hover > td:nth-child(2),
+  #diagTable tbody tr:hover > td:nth-child(2),
+  #watchTable tbody tr:hover > td:nth-child(2) { background: var(--card2); }
 
-  /* 关键信号在卡片里左对齐更易读 */
-  .resp-table td[data-l="关键信号"] { flex-direction: column; align-items: stretch; text-align: left; gap: 3px; }
-  .resp-table td[data-l="关键信号"]::before { margin-bottom: 2px; }
+  /* 分组行 / 副行 / 展开明细仍然是整行平铺 */
+  .resp-table tr.group-row td,
+  .resp-table tr.sub-row td,
+  .resp-table tr.detail td { position: static; box-shadow: none; }
+
+  /* 滑动提示只在窄屏出现 */
+  .scroll-hint { display: block; }
 
   .advice { font-size: 12.5px; }
 }

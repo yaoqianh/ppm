@@ -4,8 +4,8 @@
 <meta charset="UTF-8" data-page-node-id="GjRMGRR0Cp9Otzmb4Ib5L7"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="FGnQKuv7798Ntx8KBEqNcB"/>
 <title>持仓追踪 · 辅助决策看板</title>
-<meta name="description" content="A股/港股持仓追踪与辅助决策看板：持仓明细、五维择时、每日评分趋势、调仓记录与盈亏统计" data-page-node-id="KngpcSDFZxYOKCBpcN8iRP"/>
-<link rel="stylesheet" href="assets/style.css" data-page-node-id="fMrjL2C6YiW7qqKz2XJaVh"/>
+<meta name="description" content="A股/港股持仓追踪与辅助决策看板：持仓明细、五维择时、调仓记录与盈亏统计" data-page-node-id="KngpcSDFZxYOKCBpcN8iRP"/>
+<link rel="stylesheet" href="assets/style.css?v=cf68a48e" data-page-node-id="fMrjL2C6YiW7qqKz2XJaVh"/>
 </head>
 <body data-page-node-id="CGO8pWHREK46GYmSNn8Myr">
 <div class="wrap" data-page-node-id="MRDtyalPMkGCAhn1FTofon">
@@ -22,7 +22,6 @@
   <nav class="tabs" id="tabs" data-page-node-id="wZzB7A7DV13KsuDvpAOFuC">
     <a href="#overview" class="on" data-page-node-id="F8DP7Fy4hB7nksQ8HJpwCb">概览</a>
     <a href="#timing" data-page-node-id="VnZnPXGmkMpRC0hztRwNE4">大盘择时</a>
-    <a href="#trend" data-page-node-id="uhcAAKafBxJUvpxZNleP0T">评分趋势</a>
     <a href="#holdings" data-page-node-id="5KKPon5pVe1CUfeK1bjdy7">持仓明细</a>
     <a href="#diag" data-page-node-id="FIRHMqQbVBKYAZY1ZuR2HW">持仓诊断</a>
     <a href="#watch" data-page-node-id="FmLvEtSJWMey8e0zO1nKC5">自选扫描</a>
@@ -48,30 +47,12 @@
     <div class="grid g2" id="indexes" style="margin-top:14px" data-page-node-id="LduU5OHNb4Maxdrl393bFx"></div>
   </section>
 
-  <!-- ============ 评分趋势 ============ -->
-  <section id="trend" data-page-node-id="5Tvdaz9n3I1K7tiKHR6JDe">
-    <h2 data-page-node-id="Iko5zPBxuqa8WrG7FE4gqx">每日评分变化趋势<span class="sub" data-page-node-id="mirlJib0facHBAfder39oH">点击图例可切换显示</span></h2>
-    <div class="chart-card" data-page-node-id="BI9nXBJibi4AYTzTc0YFPl">
-      <div class="range-bar" id="rangeBar" data-page-node-id="YYNEvKKqEiiiz9VVNJ028h">
-        <button data-n="20" class="on" data-page-node-id="tkEzREiV3WZxh8NDTvdEci">近20日</button>
-        <button data-n="40" data-page-node-id="Njh02JP6DrhFGVwTffC3IL">近40日</button>
-        <button data-n="0" data-page-node-id="TdOJfgbDpuwE7zylj8J3d4">全部</button>
-      </div>
-      <div id="chart" data-page-node-id="D9AFPZ98EaKVrwD5fKDxUk"></div>
-      <div class="chart-legend" id="legend" data-page-node-id="piGAvBGjof3nJsODKMACmZ"></div>
-    </div>
-
-    <div class="card" style="margin-top:14px" data-page-node-id="l9N0liYtW9BSQpRHLbjAif">
-      <div style="font-size:13px;color:var(--dim);margin-bottom:8px" data-page-node-id="6QZ59UULlmOiEE7KEI4zCb">大盘择时评分走势</div>
-      <div id="timingChart" data-page-node-id="uQEykj6BFUrGV0XpyRlC7q"></div>
-    </div>
-  </section>
-
   <!-- ============ 持仓明细 ============ -->
   <section id="holdings" data-page-node-id="ML9DRfZg5XIDcQeAQXv0Xn">
     <h2 data-page-node-id="VKLx5WoxFd73k8jpKveuwI">持仓明细<span class="sub" data-page-node-id="nYYX7zi3tfkZfJyjO0JTBv">代码 / 名称 / 数量 / 成本 / 现价 / 浮动盈亏 / 权重 / 状态评分</span></h2>
     <div class="card" data-page-node-id="4QymzlkLbmEVSpXzkcA4cl">
-      <div class="tw" data-page-node-id="IAtB6rz2zTBBW6Qzpm3nX9">
+      <div class="scroll-hint" data-page-node-id="scrollHint">← 左右滑动查看全部列，「名称」列已固定 →</div>
+        <div class="tw" data-page-node-id="IAtB6rz2zTBBW6Qzpm3nX9">
         <table id="posTable" class="resp-table" data-page-node-id="uXHU4F5E82NLFm3izhhZHo">
           <thead data-page-node-id="iPUiqChBb5blntKQn40Bje"><tr id="posHead" data-page-node-id="GFivaZ5MRz3NGKmiNzj1se"></tr></thead>
           <tbody id="posBody" data-page-node-id="quWtRpuRmpVE07VM1JsGU1"></tbody>
@@ -84,7 +65,8 @@
   <section id="diag" data-page-node-id="fnbgKz1so3UQUi9Tx7Llmb">
     <h2 data-page-node-id="WcvxOWdQj6DPD7uB1HDqMn">持仓诊断<span class="sub" data-page-node-id="RnGcFVLsRpdGfDfwqVRhJr">四套模板评分 + 关键信号 + 操作参考</span></h2>
     <div class="card" data-page-node-id="wGvGzorv03HWhG9m3l0BOw">
-      <div class="tw" data-page-node-id="OsM5KMvbaYHZmlaQFnt1Ir">
+      <div class="scroll-hint" data-page-node-id="scrollHint">← 左右滑动查看全部列，「名称」列已固定 →</div>
+        <div class="tw" data-page-node-id="OsM5KMvbaYHZmlaQFnt1Ir">
         <table id="diagTable" class="resp-table" data-page-node-id="Fqfk2xz048943jUdlFItlp">
           <thead data-page-node-id="YHwZrUWlpcGnBKi9Up5p1W"><tr id="diagHead" data-page-node-id="wfUbrAEyTbMqRzFrukVfZ9"></tr></thead>
           <tbody id="diagBody" data-page-node-id="xBBepnDuEOdissbAqQN0bl"></tbody>
@@ -97,7 +79,8 @@
   <section id="trades" class="advanced-block" data-page-node-id="VCLY7XCWL3BqGDbFDGnbkD">
     <h2 data-page-node-id="vIMROq3YUMDN6WKRaJcM6p">历史调仓记录<span class="sub" data-page-node-id="u6kqENXLDSQSoeGWXO752x">买入 / 卖出流水与已实现盈亏</span></h2>
     <div class="card" data-page-node-id="c4xskIbgfXroHez0Ryui93">
-      <div class="tw" data-page-node-id="JsCmHrmNLdQLu9UVo8fAaJ">
+      <div class="scroll-hint" data-page-node-id="scrollHint">← 左右滑动查看全部列，「名称」列已固定 →</div>
+        <div class="tw" data-page-node-id="JsCmHrmNLdQLu9UVo8fAaJ">
         <table id="tradeTable" class="resp-table" data-page-node-id="Wqz0EqtpYovhlA9NfjCjgV">
           <thead data-page-node-id="E3CCir4xBReVb3rpEEScD2"><tr id="tradeHead" data-page-node-id="V08SndoeEq4ovGXBCXTPt8"></tr></thead>
           <tbody id="tradeBody" data-page-node-id="4TWbu3CiJjYTRsC5FMTtFV"></tbody>
@@ -110,7 +93,8 @@
   <section id="watch" data-page-node-id="G5d8koy01rNxNDwSg6SFCT">
     <h2 data-page-node-id="TbxbGFiA4htzO6Lt8fIgbS">自选股技术面扫描<span class="sub" id="watchSub" data-page-node-id="7ZDu9CftXDSr0XHCMa3DfP"></span></h2>
     <div class="card" data-page-node-id="RVWjutXbhKGAK0LYiaWYeI">
-      <div class="tw" data-page-node-id="AF7N08lKxhTvsgNJoSwj8y">
+      <div class="scroll-hint" data-page-node-id="scrollHint">← 左右滑动查看全部列，「名称」列已固定 →</div>
+        <div class="tw" data-page-node-id="AF7N08lKxhTvsgNJoSwj8y">
         <table id="watchTable" class="resp-table" data-page-node-id="XkT2okdXXNbBGGCK5P7TLe">
           <thead data-page-node-id="oLXBvlzHIJTj88b0dERvEo"><tr id="watchHead" data-page-node-id="94wIqqeWykkPKArlo6Of2l"></tr></thead>
           <tbody id="watchBody" data-page-node-id="VitAFjmm3QqYPGLs4P3vN9"></tbody>
@@ -148,6 +132,6 @@
 
 <div class="toast" id="toast" data-page-node-id="3P3dOhHHaxSJyYPAOZoCEm"></div>
 
-<script src="assets/app.js"></script>
+<script src="assets/app.js?v=8857e364"></script>
 </body>
 </html>

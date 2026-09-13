@@ -24,7 +24,8 @@
 
   "fundamentals": {
     "auto_fetch": true,
-    "note": "true = 每次 run_update 时自动从东方财富补 A 股财报（ROE/营收YoY/归母YoY/净利率）。\n手工维护的 data/fundamentals.json 优先，仅填补缺失字段。\n港股与 ETF 该接口无数据：港股需手工维护，ETF 本就无财报。"
+    "persist": true,
+    "note": "true = 每次 run_update 时自动从东方财富补 A 股财报（ROE/营收YoY/归母YoY/净利率）。\n手工维护的 data/fundamentals.json 优先，仅填补缺失字段。\n港股与 ETF 该接口无数据：港股需手工维护，ETF 本就无财报。\npersist=true 会把本轮抓到的财报写回 data/fundamentals.json 作为缓存，\n云端 runner（GitHub Actions）访问不到东财时可沿用上次结果。"
   },
 
   "market": {

@@ -13,6 +13,11 @@ on:
       - 'data/trades.json'
       - 'data/fundamentals.json'
       - 'config/**'
+      # 前端或引擎代码变了也要立刻重新部署，否则要等到下一个定时班次才生效
+      - 'index.html'
+      - 'assets/**'
+      - 'engine/**'
+      - 'run_update.py'
   # 也可以在 GitHub 网页上点「Run workflow」手动触发
   workflow_dispatch:
 

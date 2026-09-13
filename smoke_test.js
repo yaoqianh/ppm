@@ -8,6 +8,7 @@ const ROOT = __dirname;
 const html = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
 const appjs = fs.readFileSync(path.join(ROOT, 'assets', 'app.js'), 'utf8');
 const dataTxt = fs.readFileSync(path.join(ROOT, 'data', 'dashboard.json'), 'utf8');
+const cssTxt = fs.readFileSync(path.join(ROOT, 'assets', 'style.css'), 'utf8');
 
 const errors = [];
 const dom = new JSDOM(html, { runScripts: 'outside-only', url: 'http://localhost:8000/', pretendToBeVisual: true });
@@ -45,12 +46,8 @@ setTimeout(() => {
   check('择时五维条已渲染', $$('#regime .bar-row').length === 5);
   check('择时总分非空', /^\d+/.test($('#regime').textContent.trim()) || $('#regime').textContent.includes('/ 100'));
   check('指数卡 5 张', $$('#indexes .card').length === 5);
-  check('评分趋势图为 SVG', $('#chart svg') !== null);
-  check('趋势图例 = 持仓数', $$('#legend .lg').length === nHold, $$('#legend .lg').length + '');
-  check('择时走势图为 SVG', $('#timingChart svg') !== null);
-
   // 表格
-  check('持仓明细表头 16 列', $$('#posHead th').length === 16);
+  check('持仓明细表头 15 列', $$('#posHead th').length === 15);
   check('持仓明细行数 = 持仓数', $$('#posBody tr[data-code]').length === nHold);
   check('持仓明细含完整字段', (() => {
     const t = $('#posBody tr[data-code]').textContent;
@@ -67,6 +64,13 @@ setTimeout(() => {
     Array.from(posTds).map(td => td.getAttribute('data-l')).filter(Boolean).join('/'));
   check('持仓诊断副行有 sub-row 标记', $$('#diagBody tr.sub-row').length === nHold);
   check('自选分组行有 group-row 标记', $$('#watchBody tr.group-row').length === 3);
+
+  // 手机端：表格保持表格结构（横向滑动 + 表头吸顶 + 名称列冻结），不再是堆叠卡片
+  check('手机端滑动提示 4 处', $$('.scroll-hint').length === 4, $$('.scroll-hint').length + ' 处');
+  check('手机端不再把行拆成卡片', !/\.resp-table tbody tr\s*\{[^}]*display:\s*block/.test(cssTxt));
+  check('手机端表头吸顶规则存在', /\.resp-table thead th\s*\{[^}]*position:\s*sticky/.test(cssTxt.replace(/\s+/g, ' ')));
+  check('手机端名称列冻结规则存在',
+    cssTxt.includes('#posTable tbody tr[data-code] > td:nth-child(2)') && cssTxt.includes('position: sticky; left: 0'));
 
   // 展开维度明细
   const firstRow = $('#posBody tr[data-code]');
@@ -104,17 +108,6 @@ setTimeout(() => {
   check('停用维度后分数重算', JSON.stringify(after) !== JSON.stringify(after2) &&
     $$('#posBody tr[data-code]').length === nHold, `${after.join('/')} → ${after2.join('/')}`);
 
-  // 图例切换（renderCharts 会重建节点，需重新查询）
-  const firstKey = $$('#legend .lg')[0].dataset.k;
-  $$('#legend .lg')[0].dispatchEvent(new w.MouseEvent('click', { bubbles: true }));
-  const lgNow = $$('#legend .lg').find(x => x.dataset.k === firstKey);
-  check('图例可切换隐藏', lgNow && !lgNow.classList.contains('on'), firstKey);
-
-  // 时间范围切换
-  const rb = $$('#rangeBar button')[2];
-  rb.dispatchEvent(new w.MouseEvent('click', { bubbles: true }));
-  check('时间范围可切换', rb.classList.contains('on') && $('#chart svg') !== null);
-
   // 高级数据：默认隐藏 stats/trades/templates，按钮可切换
   const advBtn = $('#btnAdvanced');
   check('高级数据按钮存在', !!advBtn);
@@ -131,15 +124,14 @@ setTimeout(() => {
 
   // 三环集团改为趋势模板（数据端 + UI 双重验证）
   const dashData = JSON.parse(dataTxt);
-  const sanDash = dashData.holdings.find(h => h.name === '三环集团');
-  check('三环集团模板为 trend（数据）', sanDash && sanDash.template === 'trend', sanDash && sanDash.template);
-  // 持仓明细表中显示为「趋势跟踪」
-  const sanTr = $$('#posBody tr[data-code]').find(r => {
-    const nm = r.querySelector('td:nth-child(2) b')?.textContent || '';
-    return nm.includes('三环');
-  });
-  const sanTag = sanTr ? sanTr.querySelector('td:nth-child(3) .tag')?.textContent : '';
-  check('三环集团 UI 标签为「趋势跟踪」', sanTag === '趋势跟踪', sanTag);
+  // 持仓模板必须是四套模板之一（不再绑定某只个股，避免每次调仓都要改断言）
+  const LEGAL_TPL = ['trend', 'longterm', 'divergence', 'exit'];
+  const badTpl = dashData.holdings.filter(h => !LEGAL_TPL.includes(h.template));
+  check('持仓模板均合法', badTpl.length === 0, badTpl.map(h => `${h.name}:${h.template}`).join(','));
+  // 清仓股应回到自选观察列表，且前端能渲染出来
+  const watchNames = (dashData.watchlist || []).map(w => w.name);
+  check('三环集团已回到自选（数据）', watchNames.includes('三环集团'));
+  check('三环集团已回到自选（界面）', $('#watchBody').textContent.includes('三环集团'));
 
   check('全流程后仍无 JS 错误', errors.length === 0, errors.join(' | '));
   console.log('\n冒烟测试结束。');

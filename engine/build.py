@@ -311,15 +311,26 @@ def build_dashboard(verbose: bool = True, backfill: bool = True, force: bool = F
     holdings = positions.get("holdings", [])
     watchlist = positions.get("watchlist", [])
 
+    errors: List[str] = []
+
     # A 股财报：手工值优先，缺失项用东财接口自动补齐（港股/ETF 该接口无数据，仍走手工）
     if settings.get("fundamentals", {}).get("auto_fetch", True):
         try:
             auto_fund = FUND.fetch_a_share_fundamentals(
                 [x["code"] for x in holdings + watchlist], verbose=verbose)
             fund_map = FUND.merge_fundamentals(fund_map, auto_fund)
+            # 缓存回写：把本轮抓到的财报固化到 data/fundamentals.json。
+            # 云端 runner（如 GitHub Actions）访问不到东财时，仍可沿用上一次的财报结果，
+            # 手工维护的值永远优先，不会被自动值覆盖。
+            if auto_fund and settings.get("fundamentals", {}).get("persist", True):
+                cache_doc = dict(fund_doc)
+                cache_doc["data"] = fund_map
+                if fund_map != fund_doc.get("data", {}):
+                    _write(os.path.join(DATA_DIR, "fundamentals.json"), cache_doc)
+                    if verbose:
+                        print(f"    [财报] 已缓存 {len(fund_map)} 只到 data/fundamentals.json")
         except Exception as e:
             errors.append(f"A股财报自动抓取失败: {type(e).__name__}: {e}")
-    errors: List[str] = []
 
     def log(*a):
         if verbose:

@@ -16,8 +16,6 @@ let OVR = {};             // 本地覆盖（localStorage）
 let EFF = null;           // 生效配置
 
 const LS_KEY = 'pd_score_cfg_v1';
-const PALETTE = ['#d2a35f', '#c9634f', '#7d94ad', '#6f9e7d', '#9b8ec4',
-                 '#c9873f', '#5f9bb5', '#a8b56a', '#bf7b8a', '#88a0b8'];
 const TN_FULL = { trend: '趋势跟踪', longterm: '长线监控', divergence: '背离反转', exit: '退出通道', fundamental: '基本面' };
 
 /* ------------------------------------------------------------- 工具 */
@@ -142,62 +140,6 @@ function liveTiming() {
   return { total, pos, note };
 }
 
-/* ------------------------------------------------------------- 迷你走势图 */
-
-function sparkSVG(data, w = 78, h = 22, color) {
-  const pts = (data || []).filter(isNum);
-  if (pts.length < 2) return '<span class="faint">—</span>';
-  const mn = Math.min(...pts), mx = Math.max(...pts), rg = (mx - mn) || 1;
-  const p = pts.map((v, i) => `${(i / (pts.length - 1) * w).toFixed(1)},${(h - 2 - (v - mn) / rg * (h - 5)).toFixed(1)}`).join(' ');
-  const c = color || (pts[pts.length - 1] >= pts[0] ? '#c9634f' : '#6f9e7d');
-  return `<svg class="spark" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">
-    <polyline points="${p}" fill="none" stroke="${c}" stroke-width="1.4" opacity=".85"/></svg>`;
-}
-
-/* ------------------------------------------------------------- 折线图 */
-
-const W = 1000, H = 300, PAD = { l: 42, r: 14, t: 12, b: 30 };
-let chartState = { n: 20, hidden: {} };
-
-function lineChart(dates, series, opts = {}) {
-  // series: [{key, name, values, color}]
-  const n = dates.length;
-  if (n < 2) return '<div class="empty">历史数据不足，多运行几天 run_update.py 后即可生成趋势</div>';
-
-  const iw = W - PAD.l - PAD.r, ih = H - PAD.t - PAD.b;
-  const ymin = opts.ymin != null ? opts.ymin : 0;
-  const ymax = opts.ymax != null ? opts.ymax : 100;
-  const X = i => PAD.l + (n === 1 ? iw / 2 : i / (n - 1) * iw);
-  const Y = v => PAD.t + ih - (clamp(v, ymin, ymax) - ymin) / (ymax - ymin) * ih;
-
-  let g = '';
-  for (let t = 0; t <= 4; t++) {
-    const v = ymin + (ymax - ymin) * t / 4;
-    g += `<line x1="${PAD.l}" y1="${Y(v).toFixed(1)}" x2="${W - PAD.r}" y2="${Y(v).toFixed(1)}" stroke="#3a3226" stroke-width="1"/>
-          <text x="${PAD.l - 8}" y="${(Y(v) + 4).toFixed(1)}" fill="#6b6152" font-size="11" text-anchor="end">${v.toFixed(0)}</text>`;
-  }
-
-  const step = Math.max(1, Math.floor(n / 6));
-  let xt = '';
-  for (let i = 0; i < n; i += step) {
-    xt += `<text x="${X(i).toFixed(1)}" y="${H - 9}" fill="#6b6152" font-size="10.5" text-anchor="middle">${esc(dates[i].slice(5))}</text>`;
-  }
-
-  let paths = '';
-  for (const s of series) {
-    const seg = s.values.map((v, i) => (isNum(v) ? `${X(i).toFixed(1)},${Y(v).toFixed(1)}` : null)).filter(Boolean);
-    if (seg.length < 1) continue;
-    paths += `<polyline points="${seg.join(' ')}" fill="none" stroke="${s.color}" stroke-width="1.7" opacity=".92" stroke-linejoin="round"/>`;
-    const li = s.values.reduce((acc, v, i) => (isNum(v) ? i : acc), -1);
-    if (li >= 0) paths += `<circle cx="${X(li).toFixed(1)}" cy="${Y(s.values[li]).toFixed(1)}" r="3.2" fill="${s.color}"/>`;
-  }
-
-  return `<svg class="chart-svg" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" data-chart="1">
-    ${g}${xt}${paths}
-    <line id="cross" x1="0" y1="${PAD.t}" x2="0" y2="${PAD.t + ih}" stroke="#d2a35f" stroke-width="1" opacity="0"/>
-    </svg>`;
-}
-
 /* ------------------------------------------------------------- 渲染 */
 
 function renderSummary() {
@@ -285,33 +227,6 @@ function renderIndexes() {
     </div></div>`).join('');
 }
 
-function renderCharts() {
-  const hist = DATA.history || {};
-  const dates = hist.dates || [];
-  if (dates.length < 2) {
-    $('#chart').innerHTML = '<div class="empty">暂无历史数据</div>';
-    $('#timingChart').innerHTML = '';
-    return;
-  }
-  const n = chartState.n > 0 ? Math.min(chartState.n, dates.length) : dates.length;
-  const d = dates.slice(-n);
-
-  const series = DATA.holdings.map((h, i) => ({
-    key: h.code, name: h.name, color: PALETTE[i % PALETTE.length],
-    values: (hist.series[h.code] || []).slice(-n),
-  })).filter(s => !chartState.hidden[s.key]);
-
-  $('#chart').innerHTML = lineChart(d, series);
-  $('#legend').innerHTML = DATA.holdings.map((h, i) => {
-    const on = !chartState.hidden[h.code];
-    return `<span class="lg ${on ? 'on' : ''}" data-k="${esc(h.code)}" style="${on ? `color:${PALETTE[i % PALETTE.length]}` : ''}">
-      <i></i>${esc(h.name)}</span>`;
-  }).join('');
-
-  const tv = (hist.timing || []).slice(-n);
-  $('#timingChart').innerHTML = lineChart(d, [{ key: 'timing', name: '大盘择时', color: '#d2a35f', values: tv }]);
-}
-
 function renderPositions() {
   const cols = [
     ['rk', '#', false], ['name', '名称 / 代码', true], ['tpl', '策略模板', true],
@@ -319,7 +234,7 @@ function renderPositions() {
     ['chg', '今日涨跌', true], ['mv', '市值(¥)', true], ['pnl', '浮动盈亏', true],
     ['weight', '权重', true], ['score', '状态评分', true], ['delta', '评分变动', true],
     ['stop', '建议止损', true], ['tp', '建议止盈', true],
-    ['status', '状态', false], ['spark', '走势', false],
+    ['status', '状态', false],
   ];
   $('#posHead').innerHTML = cols.map(([k, t, s]) =>
     `<th class="${s ? 'sortable' : ''}" data-k="${k}">${t}</th>`).join('');
@@ -345,9 +260,8 @@ function renderPositions() {
       <td class="num">${stopTP_cell(h)}</td>
       <td class="num">${takeProfit_cell(h)}</td>
       <td><span class="badge ${badgeCls(lv.score)}">${esc(lv.status)}</span></td>
-      <td>${sparkSVG(h.spark)}</td>
     </tr>
-    <tr class="detail" data-for="${esc(h.code)}" style="display:none"><td></td><td colspan="15">
+    <tr class="detail" data-for="${esc(h.code)}" style="display:none"><td></td><td colspan="14">
       <div class="dimbox" id="${boxId(h.code)}"></div>
     </td></tr>`;
   }).join('');
@@ -718,25 +632,6 @@ function closeCfg() {
   $('#mask').classList.remove('on');
 }
 
-/* ------------------------------------------------------------- 图表交互 */
-
-function bindChartInteractions() {
-  $('#rangeBar').onclick = e => {
-    const b = e.target.closest('button');
-    if (!b) return;
-    chartState.n = Number(b.dataset.n);
-    $$('#rangeBar button').forEach(x => x.classList.toggle('on', x === b));
-    renderCharts();
-  };
-  $('#legend').onclick = e => {
-    const s = e.target.closest('.lg');
-    if (!s) return;
-    const k = s.dataset.k;
-    chartState.hidden[k] = !chartState.hidden[k];
-    renderCharts();
-  };
-}
-
 /* ------------------------------------------------------------- 主流程 */
 
 /**
@@ -766,7 +661,6 @@ function renderAll() {
   renderWeights();
   renderRegime();
   renderIndexes();
-  renderCharts();
   renderPositions();
   renderDiag();
   renderTrades();
@@ -781,7 +675,6 @@ function boot(data) {
   loadOverride();
   recompute();
   renderAll();
-  bindChartInteractions();
 
   $('#btnCfg').onclick = openCfg;
   $('#btnClose').onclick = closeCfg;
@@ -819,16 +712,18 @@ function boot(data) {
     toast('已导出，覆盖 config/score_config.json 即可永久生效');
   };
 
-  // 导航高亮
+  // 导航高亮（老环境 / jsdom 里没有 IntersectionObserver，降级为不滚动高亮即可）
   const secs = $$('section[id]');
   const links = $$('#tabs a');
-  const io = new IntersectionObserver(es => {
-    es.forEach(e => {
-      if (!e.isIntersecting) return;
-      links.forEach(l => l.classList.toggle('on', l.getAttribute('href') === '#' + e.target.id));
-    });
-  }, { rootMargin: '-70px 0px -70% 0px' });
-  secs.forEach(s => io.observe(s));
+  if (typeof IntersectionObserver === 'function') {
+    const io = new IntersectionObserver(es => {
+      es.forEach(e => {
+        if (!e.isIntersecting) return;
+        links.forEach(l => l.classList.toggle('on', l.getAttribute('href') === '#' + e.target.id));
+      });
+    }, { rootMargin: '-70px 0px -70% 0px' });
+    secs.forEach(s => io.observe(s));
+  }
 }
 
 function start() {

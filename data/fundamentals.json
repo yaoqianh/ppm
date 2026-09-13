@@ -1,17 +1,272 @@
 {
-  "_note": "基本面明细（ROE / 净利率 / 营收YoY / 归母净利YoY / PE / PB）。ROE、营收、归母、净利率来自财报，免费行情接口不提供，需要手工维护或由 AI 定期更新；PE 与 PB 会在每次 run_update.py 时自动从腾讯行情接口覆盖刷新（A股可用）。缺失的维度会从评分分母中剔除，不会按 0 分处理。",
-  "_source_warning": "本文件初始值取自原看板展示的财报摘要；其中 net_margin 为按行业常识补齐的估算值，请核对后修正。",
-  "_auto": "A 股（.SH/.SZ/.BJ）会在每次 run_update.py 时自动从东方财富 datacenter 补财报（engine/fundamentals.py），本文件中的手工值优先、仅填补缺失字段。港股该接口不覆盖，需手工维护。ETF 无财报，属正常缺失。",
-  "_todo_hk": "以下 7 只港股无自动数据源，如需纳入基本面评分请手工填 roe/net_margin/rev_yoy/profit_yoy：00100.HK MINIMAX-W、06082.HK 壁仞科技、02513.HK 智谱、00981.HK 中芯国际、01810.HK 小米集团-W、01024.HK 快手-W、09988.HK 阿里巴巴-W。",
-
-  "data": {
-    "00700.HK":  { "roe": 19.9, "net_margin": 30.0, "rev_yoy": 10.0,  "profit_yoy": 10.0, "pe": null, "pb": null, "as_of": "2026Q2", "source": "migrated" },
-    "002472.SZ": { "roe": 11.5, "net_margin": 12.0, "rev_yoy": 8.0,   "profit_yoy": 2.0,  "pe": null, "pb": null, "as_of": "2026Q2", "source": "migrated" },
-    "600941.SH": { "roe": 11.2, "net_margin": 13.0, "rev_yoy": -1.0,  "profit_yoy": -6.0, "pe": null, "pb": null, "as_of": "2026Q2", "source": "migrated" },
-    "300059.SZ": { "roe": 17.0, "net_margin": 65.0, "rev_yoy": 44.0,  "profit_yoy": 45.0, "pe": null, "pb": null, "as_of": "2026Q2", "source": "migrated" },
-    "600036.SH": { "roe": 11.7, "net_margin": 45.0, "rev_yoy": 5.0,   "profit_yoy": 2.0,  "pe": null, "pb": null, "as_of": "2026Q2", "source": "migrated" },
-    "002558.SZ": { "roe": null, "net_margin": null, "rev_yoy": null,  "profit_yoy": null, "pe": null, "pb": null, "as_of": null,    "source": "待补充财报明细" },
-    "513180.SH": { "roe": null, "net_margin": null, "rev_yoy": null,  "profit_yoy": null, "pe": null, "pb": null, "as_of": null,    "source": "ETF 不适用" },
-    "512710.SH": { "roe": null, "net_margin": null, "rev_yoy": null,  "profit_yoy": null, "pe": null, "pb": null, "as_of": null,    "source": "ETF 不适用" }
+ "_note": "基本面明细（ROE / 净利率 / 营收YoY / 归母净利YoY / PE / PB）。ROE、营收、归母、净利率来自财报，免费行情接口不提供，需要手工维护或由 AI 定期更新；PE 与 PB 会在每次 run_update.py 时自动从腾讯行情接口覆盖刷新（A股可用）。缺失的维度会从评分分母中剔除，不会按 0 分处理。",
+ "_source_warning": "本文件初始值取自原看板展示的财报摘要；其中 net_margin 为按行业常识补齐的估算值，请核对后修正。",
+ "_auto": "A 股（.SH/.SZ/.BJ）会在每次 run_update.py 时自动从东方财富 datacenter 补财报（engine/fundamentals.py），本文件中的手工值优先、仅填补缺失字段。港股该接口不覆盖，需手工维护。ETF 无财报，属正常缺失。",
+ "_todo_hk": "以下 7 只港股无自动数据源，如需纳入基本面评分请手工填 roe/net_margin/rev_yoy/profit_yoy：00100.HK MINIMAX-W、06082.HK 壁仞科技、02513.HK 智谱、00981.HK 中芯国际、01810.HK 小米集团-W、01024.HK 快手-W、09988.HK 阿里巴巴-W。",
+ "data": {
+  "00700.HK": {
+   "roe": 19.9,
+   "net_margin": 30.0,
+   "rev_yoy": 10.0,
+   "profit_yoy": 10.0,
+   "pe": null,
+   "pb": null,
+   "as_of": "2026Q2",
+   "source": "migrated"
+  },
+  "002472.SZ": {
+   "roe": 11.5,
+   "net_margin": 12.0,
+   "rev_yoy": 8.0,
+   "profit_yoy": 2.0,
+   "pe": null,
+   "pb": null,
+   "as_of": "2026Q2",
+   "source": "migrated"
+  },
+  "600941.SH": {
+   "roe": 11.2,
+   "net_margin": 13.0,
+   "rev_yoy": -1.0,
+   "profit_yoy": -6.0,
+   "pe": null,
+   "pb": null,
+   "as_of": "2026Q2",
+   "source": "migrated"
+  },
+  "300059.SZ": {
+   "roe": 17.0,
+   "net_margin": 65.0,
+   "rev_yoy": 44.0,
+   "profit_yoy": 45.0,
+   "pe": null,
+   "pb": null,
+   "as_of": "2026Q2",
+   "source": "migrated"
+  },
+  "600036.SH": {
+   "roe": 11.7,
+   "net_margin": 45.0,
+   "rev_yoy": 5.0,
+   "profit_yoy": 2.0,
+   "pe": null,
+   "pb": null,
+   "as_of": "2026Q2",
+   "source": "migrated"
+  },
+  "002558.SZ": {
+   "roe": 26.44,
+   "net_margin": 45.73,
+   "rev_yoy": 182.0797292305,
+   "profit_yoy": 175.96,
+   "pe": null,
+   "pb": null,
+   "as_of": "2026-06-30",
+   "source": "待补充财报明细+auto"
+  },
+  "513180.SH": {
+   "roe": null,
+   "net_margin": null,
+   "rev_yoy": null,
+   "profit_yoy": null,
+   "pe": null,
+   "pb": null,
+   "as_of": null,
+   "source": "ETF 不适用"
+  },
+  "512710.SH": {
+   "roe": null,
+   "net_margin": null,
+   "rev_yoy": null,
+   "profit_yoy": null,
+   "pe": null,
+   "pb": null,
+   "as_of": null,
+   "source": "ETF 不适用"
+  },
+  "000725.SZ": {
+   "roe": 7.64,
+   "net_margin": 5.09,
+   "rev_yoy": 1.8307997684,
+   "profit_yoy": 61.62,
+   "as_of": "2026-06-30",
+   "source": "eastmoney-auto"
+  },
+  "688981.SH": {
+   "roe": 5.8,
+   "net_margin": 11.56,
+   "rev_yoy": 19.435688378,
+   "profit_yoy": 94.2,
+   "as_of": "2026-06-30",
+   "source": "eastmoney-auto"
+  },
+  "688825.SH": {
+   "roe": 162.12,
+   "net_margin": 51.63,
+   "rev_yoy": 873.6417332025,
+   "profit_yoy": 3427.7569143657,
+   "as_of": "2026-06-30",
+   "source": "eastmoney-auto"
+  },
+  "688256.SH": {
+   "roe": 36.1,
+   "net_margin": 38.54,
+   "rev_yoy": 108.1331369113,
+   "profit_yoy": 122.61,
+   "as_of": "2026-06-30",
+   "source": "eastmoney-auto"
+  },
+  "603986.SH": {
+   "roe": 46.26,
+   "net_margin": 59.29,
+   "rev_yoy": 178.6722977786,
+   "profit_yoy": 1091.5,
+   "as_of": "2026-06-30",
+   "source": "eastmoney-auto"
+  },
+  "603259.SH": {
+   "roe": 26.38,
+   "net_margin": 38.34,
+   "rev_yoy": 38.9349828598,
+   "profit_yoy": 29.43,
+   "as_of": "2026-06-30",
+   "source": "eastmoney-auto"
+  },
+  "601919.SH": {
+   "roe": 11.4,
+   "net_margin": 11.99,
+   "rev_yoy": 2.5870029553,
+   "profit_yoy": -23.48,
+   "as_of": "2026-06-30",
+   "source": "eastmoney-auto"
+  },
+  "601899.SH": {
+   "roe": 39.2,
+   "net_margin": 20.17,
+   "rev_yoy": 15.7816890732,
+   "profit_yoy": 68.17,
+   "as_of": "2026-06-30",
+   "source": "eastmoney-auto"
+  },
+  "601777.SH": {
+   "roe": 1.52,
+   "net_margin": 1.53,
+   "rev_yoy": 22.3596303447,
+   "profit_yoy": 151.25,
+   "as_of": "2026-06-30",
+   "source": "eastmoney-auto"
+  },
+  "601088.SH": {
+   "roe": 11.66,
+   "net_margin": 15.17,
+   "rev_yoy": 7.9322551775,
+   "profit_yoy": 4.1,
+   "as_of": "2026-06-30",
+   "source": "eastmoney-auto"
+  },
+  "600900.SH": {
+   "roe": 13.1,
+   "net_margin": 38.9,
+   "rev_yoy": 3.3562259885,
+   "profit_yoy": 13.02,
+   "as_of": "2026-06-30",
+   "source": "eastmoney-auto"
+  },
+  "600875.SH": {
+   "roe": 11.72,
+   "net_margin": 7.02,
+   "rev_yoy": 1.24,
+   "profit_yoy": 42.07,
+   "as_of": "2026-06-30",
+   "source": "eastmoney-auto"
+  },
+  "600150.SH": {
+   "roe": 13.42,
+   "net_margin": 10.87,
+   "rev_yoy": 26.005331272,
+   "profit_yoy": 163.51,
+   "as_of": "2026-06-30",
+   "source": "eastmoney-auto"
+  },
+  "301183.SZ": {
+   "roe": 17.38,
+   "net_margin": 17.33,
+   "rev_yoy": 33.3551472014,
+   "profit_yoy": 71.57,
+   "as_of": "2026-06-30",
+   "source": "eastmoney-auto"
+  },
+  "300896.SZ": {
+   "roe": 15.24,
+   "net_margin": 48.81,
+   "rev_yoy": -6.4223448786,
+   "profit_yoy": -24.84,
+   "as_of": "2026-06-30",
+   "source": "eastmoney-auto"
+  },
+  "300750.SZ": {
+   "roe": 24.16,
+   "net_margin": 15.63,
+   "rev_yoy": 54.8003691485,
+   "profit_yoy": 41.98,
+   "as_of": "2026-06-30",
+   "source": "eastmoney-auto"
+  },
+  "300408.SZ": {
+   "roe": 17.22,
+   "net_margin": 30.08,
+   "rev_yoy": 54.824030357,
+   "profit_yoy": 56.18,
+   "as_of": "2026-06-30",
+   "source": "eastmoney-auto"
+  },
+  "300308.SZ": {
+   "roe": 75.24,
+   "net_margin": 32.68,
+   "rev_yoy": 182.4913813287,
+   "profit_yoy": 241.7,
+   "as_of": "2026-06-30",
+   "source": "eastmoney-auto"
+  },
+  "300124.SZ": {
+   "roe": 15.38,
+   "net_margin": 11.39,
+   "rev_yoy": 20.3121582778,
+   "profit_yoy": -5.35,
+   "as_of": "2026-06-30",
+   "source": "eastmoney-auto"
+  },
+  "002714.SZ": {
+   "roe": -14.96,
+   "net_margin": -10.23,
+   "rev_yoy": -22.3016379839,
+   "profit_yoy": -157.72,
+   "as_of": "2026-06-30",
+   "source": "eastmoney-auto"
+  },
+  "000938.SZ": {
+   "roe": 26.64,
+   "net_margin": 3.41,
+   "rev_yoy": 33.9296150712,
+   "profit_yoy": 108.18,
+   "as_of": "2026-06-30",
+   "source": "eastmoney-auto"
+  },
+  "000800.SZ": {
+   "roe": 2.3,
+   "net_margin": 0.82,
+   "rev_yoy": 33.8058898613,
+   "profit_yoy": 1459.16,
+   "as_of": "2026-06-30",
+   "source": "eastmoney-auto"
+  },
+  "002050.SZ": {
+   "roe": 12.5,
+   "net_margin": 12.1,
+   "rev_yoy": 3.9180559553,
+   "profit_yoy": -3.12,
+   "as_of": "2026-06-30",
+   "source": "eastmoney-auto"
   }
+ }
 }
