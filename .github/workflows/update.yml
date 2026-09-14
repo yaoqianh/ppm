@@ -3,6 +3,7 @@ name: 每日更新持仓看板
 on:
   # 每交易日北京时间 15:30 与 17:30 各跑一次（GitHub cron 用 UTC，UTC+8）
   # 跑两次是为了防止 GitHub 定时任务排队延迟导致错过收盘数据；同一天重复运行不会产生重复快照
+  # 注意：GitHub 的定时任务可能被延迟（实测出现过延迟到 22:17 北京时间），所以别指望它分秒不差
   schedule:
     - cron: '30 7,9 * * 1-5'
   # 手动改了持仓 / 调仓 / 评分配置后，推送即自动重算并重新部署
@@ -18,6 +19,8 @@ on:
       - 'assets/**'
       - 'engine/**'
       - 'run_update.py'
+      # 改工作流本身也应该触发一次，便于验证修复
+      - '.github/workflows/**'
   # 也可以在 GitHub 网页上点「Run workflow」手动触发
   workflow_dispatch:
 
@@ -66,10 +69,22 @@ jobs:
             git push
           fi
 
+      # 只把前端真正需要的文件放进发布目录：
+      # 产物更小（跳过 .git / engine / 源数据），也顺带避免把持仓源文件当静态资源暴露出去
+      - name: 整理发布目录
+        run: |
+          rm -rf _site
+          mkdir -p _site/data _site/assets
+          cp index.html _site/
+          cp assets/style.css assets/app.js _site/assets/
+          cp data/dashboard.json _site/data/
+          echo "发布内容："
+          find _site -type f | sort
+
       - name: 打包站点
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
-          path: .
+          path: _site
 
   deploy:
     needs: update
@@ -80,4 +95,4 @@ jobs:
     steps:
       - name: 部署到 GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
