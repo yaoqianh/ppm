@@ -11,7 +11,7 @@ run_update.py 调用 build_dashboard()，每天收盘后跑一次即可。
 import json
 import os
 import sys
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from typing import Dict, List, Optional, Any
 
 from . import quote as Q
@@ -760,7 +760,8 @@ def build_dashboard(verbose: bool = True, backfill: bool = True, force: bool = F
     ]
 
     dashboard = {
-        "updated_at": datetime.now().strftime("%Y-%m-%d %H:%M") + " (UTC+8)",
+        # 明确换算北京时间：云端 runner 时区是 UTC，直接用 datetime.now() 会差 8 小时
+        "updated_at": (datetime.now(timezone.utc) + timedelta(hours=8)).strftime("%Y-%m-%d %H:%M") + " (UTC+8)",
         "as_of": as_of,
         "summary": summary,
         "portfolio": portfolio,
