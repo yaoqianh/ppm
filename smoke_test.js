@@ -43,6 +43,17 @@ setTimeout(() => {
   const nHold = require('./data/dashboard.json').holdings.length;
   check('统计卡 8 张', $$('#stats .stat').length === 8, $$('#stats .stat').length + ' 张');
   check('权重分布条已渲染', $$('#weights .bar-row').length === nHold);
+  // 持仓结构（长线价值 / 中线波段）
+  check('持仓结构已渲染', $$('#styleSplit .bar-row').length >= 2 &&
+    $('#styleSplit').textContent.includes('长线价值') && $('#styleSplit').textContent.includes('中线波段'),
+    $$('#styleSplit .bar-row').map(r => r.querySelector('.lb').textContent.trim()).join('/'));
+  check('结构占比与持仓模板一致', (() => {
+    const sp = (JSON.parse(dataTxt).portfolio || {}).style_split || [];
+    const sum = sp.reduce((a, s) => a + (s.pct || 0), 0);
+    const cnt = sp.reduce((a, s) => a + s.count, 0);
+    return sp.length >= 2 && Math.abs(sum - 100) < 0.5 && cnt === nHold;
+  })(), JSON.stringify(((JSON.parse(dataTxt).portfolio || {}).style_split || []).map(s => `${s.name}${s.pct}%`)));
+  check('摘要含结构占比', /结构 长线价值\d+%/.test($('#summary').textContent));
   check('择时五维条已渲染', $$('#regime .bar-row').length === 5);
   check('择时总分非空', /^\d+/.test($('#regime').textContent.trim()) || $('#regime').textContent.includes('/ 100'));
   check('指数卡 5 张', $$('#indexes .card').length === 5);

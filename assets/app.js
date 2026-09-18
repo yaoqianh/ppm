@@ -188,6 +188,33 @@ function renderWeights() {
   }).join('');
 }
 
+function renderStyleSplit() {
+  const rows = (DATA.portfolio && DATA.portfolio.style_split) || [];
+  const box = $('#styleSplit');
+  if (!box) return;
+  if (!rows.length) { box.innerHTML = '<div class="empty">暂无持仓</div>'; return; }
+  const COLOR = { longterm: 'var(--blue)', trend: 'var(--amber)', other: 'var(--faint)' };
+  const NOTE = {
+    longterm: '长线价值：按基本面/估值持有，回撤容忍度高，看评分与止损纪律',
+    trend: '中线波段：跟趋势做波段，破位（跌破 MA20/吊灯止损）就该走',
+    other: '其他模板（背离/退出通道），不计入上面两类',
+  };
+  box.innerHTML = rows.map(r => `<div class="bar-row">
+      <span class="lb">${esc(r.name)}</span>
+      <div class="bar-track">
+        <div class="bar-fill" style="width:${isNum(r.pct) ? r.pct.toFixed(1) : 0}%;background:${COLOR[r.key] || 'var(--faint)'}"></div>
+      </div>
+      <span class="bar-v">${isNum(r.pct) ? r.pct.toFixed(1) + '%' : '—'}</span>
+      <span class="bar-d">${r.count} 只 · 市值 ${money(r.mv)} · 盈亏 ${moneyFull(r.pnl_amt)}　${esc((r.codes || []).join('、'))}</span>
+    </div>`).join('')
+    + `<div class="style-note">${rows.map(r => esc(NOTE[r.key] || '')).filter(Boolean).join('<br>')}</div>`;
+
+  const sub = $('#styleSplitSub');
+  if (sub) {
+    sub.textContent = rows.map(r => `${r.name} ${isNum(r.pct) ? r.pct.toFixed(0) : '—'}%`).join('　/　');
+  }
+}
+
 function renderRegime() {
   const t = liveTiming();
   const dims = DATA.timing.dims;
@@ -659,6 +686,7 @@ function renderAll() {
   renderSummary();
   renderStats();
   renderWeights();
+  renderStyleSplit();
   renderRegime();
   renderIndexes();
   renderPositions();

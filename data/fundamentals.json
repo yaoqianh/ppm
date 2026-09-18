@@ -283,6 +283,14 @@
    "profit_yoy": -140.96,
    "as_of": "2026-06-30",
    "source": "eastmoney-auto"
+  },
+  "603990.SH": {
+   "roe": 1.58,
+   "net_margin": 5.39,
+   "rev_yoy": -8.9045895807,
+   "profit_yoy": -76.58,
+   "as_of": "2026-06-30",
+   "source": "eastmoney-auto"
   }
  }
 }

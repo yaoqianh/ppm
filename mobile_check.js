@@ -114,6 +114,7 @@ const check = (name, cond, extra = '') => {
 
   await page.evaluate(() => { document.querySelector('#watchTable').closest('.tw').scrollLeft = 0; });
   await shot('#watch .card', PREFIX + '手机端-自选扫描.png');
+  await shot('.card:has(#styleSplit)', PREFIX + '手机端-持仓结构.png');
 
   // 4) 桌面端回归：改动只应影响窄屏
   const desk = await ctx.newPage();

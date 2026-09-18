@@ -1,17 +1,17 @@
 {
  "version": "1.1",
  "as_of": "2026-09-16",
- "note": "2026-09-16 按截图更新：新增茂莱光学200股；双环传动减至2000股、汇川技术减至100股（成本用券商摊薄口径）。持仓7只。",
+ "note": "2026-09-18 按截图更新：新增半导体设备ETF/麦迪科技/游戏ETF国泰(均趋势模板)、腾讯加至400股、百度加至850股、汇川买回300股至400股；茂莱光学改为趋势模板。持仓10只。",
  "holdings": [
   {
    "code": "00700.HK",
    "name": "腾讯控股",
    "template": "longterm",
-   "shares": 300,
-   "cost": 441.1378,
+   "shares": 400,
+   "cost": 440.342,
    "currency": "HKD",
    "market": null,
-   "note": ""
+   "note": "2026-09-18 加仓100股；成本由券商总盈亏反算"
   },
   {
    "code": "002472.SZ",
@@ -37,21 +37,21 @@
    "code": "09888.HK",
    "name": "百度集团-W",
    "template": "longterm",
-   "shares": 800,
-   "cost": 90.8971,
+   "shares": 850,
+   "cost": 90.5995,
    "currency": "HKD",
    "market": null,
-   "note": "2026-09-11 加仓100股；截图成本CNY 78.1715按0.86汇率还原为港币"
+   "note": "2026-09-18 加仓50股；成本由券商总盈亏反算"
   },
   {
    "code": "300124.SZ",
    "name": "汇川技术",
    "template": "longterm",
-   "shares": 100,
-   "cost": 67.2505,
+   "shares": 400,
+   "cost": 55.953,
    "currency": "CNY",
    "market": null,
-   "note": "2026-09-16 减仓300股，券商摊薄成本"
+   "note": "2026-09-18 买回300股，成本回落"
   },
   {
    "code": "600036.SH",
@@ -66,12 +66,42 @@
   {
    "code": "688502.SH",
    "name": "茂莱光学",
-   "template": "longterm",
+   "template": "trend",
    "shares": 200,
    "cost": 417.0523,
    "currency": "CNY",
    "market": null,
-   "note": "2026-09-16 新买入（科创板，光学元件）"
+   "note": "2026-09-16 买入；09-18 定为趋势（中线波段）持仓"
+  },
+  {
+   "code": "561980.SH",
+   "name": "半导体设备ETF",
+   "template": "trend",
+   "shares": 60000,
+   "cost": 0.688162,
+   "currency": "CNY",
+   "market": null,
+   "note": "2026-09-18 新买入（趋势/中线波段）"
+  },
+  {
+   "code": "603990.SH",
+   "name": "麦迪科技",
+   "template": "trend",
+   "shares": 1700,
+   "cost": 19.8535,
+   "currency": "CNY",
+   "market": null,
+   "note": "2026-09-18 新买入（趋势/中线波段）"
+  },
+  {
+   "code": "516010.SH",
+   "name": "游戏ETF国泰",
+   "template": "trend",
+   "shares": 10000,
+   "cost": 1.0665,
+   "currency": "CNY",
+   "market": null,
+   "note": "2026-09-18 新买入（趋势/中线波段）"
   }
  ],
  "watchlist": [
@@ -153,11 +183,6 @@
   {
    "code": "603986.SH",
    "name": "兆易创新",
-   "group": "AI产业链"
-  },
-  {
-   "code": "561980.SH",
-   "name": "半导体设备ETF",
    "group": "AI产业链"
   },
   {

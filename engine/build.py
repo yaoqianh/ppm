@@ -548,6 +548,32 @@ def build_dashboard(verbose: bool = True, backfill: bool = True, force: bool = F
     for x in out_holdings:
         x["weight"] = _round((x["mv"] or 0) / total_mv * 100, 1) if total_mv else None
 
+    # ---------- 持仓风格结构（长线价值 / 中线波段） ----------
+    # 按模板归口：longterm = 长线价值；trend = 中线波段；
+    # divergence / exit 这类非常规模板单独归到"其他"，避免被误读成中线。
+    STYLE_OF = {
+        "longterm": ("longterm", "长线价值"),
+        "trend": ("trend", "中线波段"),
+    }
+    style_map: Dict[str, dict] = {}
+    for x in out_holdings:
+        key, label = STYLE_OF.get(x.get("template"), ("other", "其他"))
+        s = style_map.setdefault(key, {"key": key, "name": label, "count": 0,
+                                       "mv": 0.0, "pnl_amt": 0.0, "codes": []})
+        s["count"] += 1
+        s["mv"] += x["mv"] or 0
+        s["pnl_amt"] += x["pnl_amt"] or 0
+        s["codes"].append(x["name"])
+    style_split = []
+    for key in ("longterm", "trend", "other"):
+        s = style_map.get(key)
+        if not s:
+            continue
+        s["mv"] = _round(s["mv"], 0)
+        s["pnl_amt"] = _round(s["pnl_amt"], 0)
+        s["pct"] = _round(s["mv"] / total_mv * 100, 1) if total_mv else None
+        style_split.append(s)
+
     # ---------- 已实现盈亏（FIFO） ----------
     trades = sorted(trades_doc.get("trades", []), key=lambda t: t.get("date", ""))
     lots: Dict[str, List[List[float]]] = {}
@@ -712,6 +738,7 @@ def build_dashboard(verbose: bool = True, backfill: bool = True, force: bool = F
         "deep_loss": deep,
         "high_score_names": hi,
         "low_score_names": lo,
+        "style_split": style_split,
         "currency": "CNY",
     }
 
@@ -743,6 +770,9 @@ def build_dashboard(verbose: bool = True, backfill: bool = True, force: bool = F
     if deep:
         parts.append("深套(≤" + str(cfg.get('thresholds', {}).get('deep_loss_pct', -20)) + "%)：" +
                      "、".join(f"{d['name']}{d['pnl']:.0f}%" for d in deep))
+    if style_split:
+        parts.append("结构 " + " / ".join(
+            f"{s['name']}{s['pct']:.0f}%" for s in style_split if s.get("pct") is not None))
     summary = "｜".join(p for p in parts if p) + "。"
 
     templates_out = []
