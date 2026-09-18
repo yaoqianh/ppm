@@ -17,6 +17,7 @@ import re
 import time
 import urllib.request
 import urllib.error
+from datetime import datetime, timedelta, timezone
 from typing import Dict, List, Optional
 
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0 Safari/537.36"
@@ -177,6 +178,56 @@ def _parse_realtime_line(line: str) -> Optional[dict]:
     return d
 
 
+def beijing_now() -> datetime:
+    """当前北京时间（云端 runner 时区是 UTC，不能直接用 datetime.now()）"""
+    return datetime.now(timezone.utc) + timedelta(hours=8)
+
+
+def _close_minute(code: str) -> int:
+    """该市场"已收盘"的分钟门槛（北京时间）：港股 16:05，A 股 15:05"""
+    return (16 * 60 + 5) if str(code).upper().endswith(".HK") else (15 * 60 + 5)
+
+
+def _in_session(code: str) -> bool:
+    """当前是否处在交易日盘中（含集合竞价），即"当日行情还没定盘" """
+    now = beijing_now()
+    if now.weekday() >= 5:          # 周六日不会产生当日行情
+        return False
+    return (now.hour * 60 + now.minute) < _close_minute(code)
+
+
+def trim_forming_bar(code: str, bars: List[dict]) -> List[dict]:
+    """丢掉"当天还没走完"的那根 K 线。
+
+    A 股在盘中就会返回当日的临时 K 线，若直接拿去算均线/评分，等于用半根 K 线。
+    港股一般要收盘后才出当日 K 线，所以这里通常是空操作。
+    """
+    if not bars:
+        return bars
+    if _in_session(code) and bars[-1].get("date") == beijing_now().strftime("%Y-%m-%d"):
+        return bars[:-1]
+    return bars
+
+
+def _normalize_unopened(d: dict) -> dict:
+    """未开盘 / 盘中 / 停牌时，把"最新价"回退到昨收。
+
+    为什么需要：开盘前（A 股 9:15–9:25 集合竞价、港股 9:00–9:30 竞价）接口返回的
+    `price` 是**竞价虚拟撮合价**，不是成交价，此时 `open`/`volume` 均为 0；
+    盘中返回的则是**没走完的当日价**。这两种都不该被当成"最近一个交易日的收盘价"。
+    判据：open/volume 为 0（未成交），或当前仍在该市场盘中（按北京时间）。
+    """
+    if d.get("error"):
+        return d
+    no_trade = not d.get("open") or not d.get("volume")
+    if (no_trade or _in_session(d.get("code") or d.get("symbol") or "")) and d.get("prev_close"):
+        d["price"] = d["prev_close"]
+        d["change"] = 0.0
+        d["change_pct"] = 0.0
+        d["pre_trade"] = True
+    return d
+
+
 def fetch_realtime(codes: List[str], batch: int = 40) -> Dict[str, dict]:
     """批量拉取实时行情，返回 {原始code: 行情dict}"""
     out: Dict[str, dict] = {}
@@ -202,7 +253,7 @@ def fetch_realtime(codes: List[str], batch: int = 40) -> Dict[str, dict]:
                 out[c] = {"code": c, "error": "未返回该标的数据"}
             else:
                 d["code"] = c
-                out[c] = d
+                out[c] = _normalize_unopened(d)
     return out
 
 

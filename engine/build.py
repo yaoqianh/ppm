@@ -349,10 +349,22 @@ def build_dashboard(verbose: bool = True, backfill: bool = True, force: bool = F
     log(f"[取数] 日线（{kline_days}日）…")
     klines: Dict[str, List[dict]] = {}
     for i, c in enumerate(sorted(set(all_codes + idx_codes))):
-        kl = Q.fetch_kline(c, kline_days)
+        # A 股在盘中会返回"当天还没走完"的临时 K 线（open/volume 都有值），
+        # 拿它算均线/评分等于用半根 K 线，所以先剔掉（港股一般收盘后才出当日 K 线）
+        kl = Q.trim_forming_bar(c, Q.fetch_kline(c, kline_days))
         if not kl:
             errors.append(f"{c} 日线获取失败")
         klines[c] = kl
+
+    # 行情若还没定盘（盘前集合竞价 / 盘中，quote 侧已把最新价回退到昨收并打了 pre_trade），
+    # 这里的涨跌幅要用"最近一个已完成交易日"的数据自算，否则看板会显示 0.00% 或未完成的当日涨跌。
+    for _c, _rt in rt_all.items():
+        if not _rt.get("pre_trade"):
+            continue
+        _b = klines.get(_c) or []
+        if len(_b) >= 2 and _b[-2]["close"]:
+            _rt["change_pct"] = (_b[-1]["close"] / _b[-2]["close"] - 1) * 100
+            _rt["change"] = 0.0
 
     # ---------- 基准与指数 ----------
     bench_bars = klines.get(bench_code) or []

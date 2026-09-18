@@ -138,6 +138,26 @@ https://<你的用户名>.github.io/portfolio-dashboard/
 
 ---
 
+## 四、排错：数据更新了但网页没变
+
+先分清是「数据没抓」还是「部署失败」——看那次运行的两个 job：
+
+| 现象 | 原因 | 处理 |
+|---|---|---|
+| `update` job 的「提交更新后的数据」成功，但 `打包站点` 失败 | GitHub artifact 服务返回 `Failed to FinalizeArtifact: (403) Forbidden`，deploy 被跳过（数据已在仓库里，只是没发布） | 已把 `upload-pages-artifact` v3→**v5**、`deploy-pages` v4→**v5**（新 artifact 后端修复了这类 403）。若再遇到，先重跑一次；仍失败就在网页上点 Re-run failed jobs |
+| 定时任务时间对不上（例如北京时间 22:17 才跑） | GitHub 的 `schedule` 本身就是「尽力而为」，高峰期可能延迟数小时 | 已排 15:30 与 17:30 两班兜底；极端延迟只能靠手动 Run workflow |
+| 页面数据是旧的但 job 全绿 | 浏览器缓存 | 数据请求带时间戳不会缓存；HTML/CSS 由 `stamp_assets.py` 的 `?v=` 指纹控制 |
+
+**只发布前端产物**：`整理发布目录` 步骤把 `index.html` + `assets/` + `data/dashboard.json`
+拷到 `_site/` 再上传。所以线上**不再**暴露 `data/positions.json`、`data/trades.json`、`engine/` 源码
+（它们在 GitHub 仓库里仍可见，因为仓库是公开的）。
+
+**手动补跑**：仓库 → Actions → 每日更新持仓看板 → Run workflow；或本地改完数据后
+用 `gh_commit.py` 提交（推送 `data/**`、`engine/**`、`index.html`、`assets/**`、`.github/workflows/**`
+都会触发）。
+
+---
+
 ## 五、手动更新 / 本地依旧可用
 
 - 云端随时补跑：GitHub → Actions → *每日更新持仓看板* → **Run workflow**。
