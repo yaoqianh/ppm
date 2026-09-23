@@ -209,21 +209,36 @@ def trim_forming_bar(code: str, bars: List[dict]) -> List[dict]:
     return bars
 
 
-def _normalize_unopened(d: dict) -> dict:
-    """未开盘 / 盘中 / 停牌时，把"最新价"回退到昨收。
+def parse_trade_date(t: str) -> Optional[str]:
+    """把行情时间戳解析成 YYYY-MM-DD。
 
-    为什么需要：开盘前（A 股 9:15–9:25 集合竞价、港股 9:00–9:30 竞价）接口返回的
-    `price` 是**竞价虚拟撮合价**，不是成交价，此时 `open`/`volume` 均为 0；
-    盘中返回的则是**没走完的当日价**。这两种都不该被当成"最近一个交易日的收盘价"。
-    判据：open/volume 为 0（未成交），或当前仍在该市场盘中（按北京时间）。
+    接口给两种格式：A 股/ETF `20260922161436`，港股 `2026/09/22 16:08:18`。
+    """
+    t = (t or "").strip()
+    if not t:
+        return None
+    digits = re.sub(r"\D", "", t)
+    if len(digits) < 8:
+        return None
+    return f"{digits[0:4]}-{digits[4:6]}-{digits[6:8]}"
+
+
+def _normalize_unopened(d: dict) -> dict:
+    """标记「行情未定盘」，但**不再改写价格**。
+
+    背景（踩过两次坑，务必看完）：
+    - 开盘前接口返回的 price 是集合竞价虚拟撮合价；
+    - 更隐蔽的是：开盘前接口会把 `prev_close` 也回退成**上一个交易日**的收盘价
+      （例如 9/23 早上 9:04 查询，price=prev_close=9/21 收盘价，
+      而 K 线里 9/22 的收盘价已经存在）——此时若"回退到 prev_close"就会写进过期价格。
+
+    所以这里只做标记，价格一律交给 `fetch_kline` 的最后一根已完成 K 线裁决，
+    见 build.py 的 `_resolve_quote_by_kline`。
     """
     if d.get("error"):
         return d
-    no_trade = not d.get("open") or not d.get("volume")
-    if (no_trade or _in_session(d.get("code") or d.get("symbol") or "")) and d.get("prev_close"):
-        d["price"] = d["prev_close"]
-        d["change"] = 0.0
-        d["change_pct"] = 0.0
+    d["trade_date"] = parse_trade_date(d.get("time"))
+    if not d.get("open") or not d.get("volume"):
         d["pre_trade"] = True
     return d
 

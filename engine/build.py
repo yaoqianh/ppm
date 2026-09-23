@@ -356,15 +356,31 @@ def build_dashboard(verbose: bool = True, backfill: bool = True, force: bool = F
             errors.append(f"{c} 日线获取失败")
         klines[c] = kl
 
-    # 行情若还没定盘（盘前集合竞价 / 盘中，quote 侧已把最新价回退到昨收并打了 pre_trade），
-    # 这里的涨跌幅要用"最近一个已完成交易日"的数据自算，否则看板会显示 0.00% 或未完成的当日涨跌。
+    # 行情若还没定盘（盘前 / 盘中 / 行情落后一个交易日），一律以「最后一根已完成 K 线」为准。
+    # 注意：不能用行情的 prev_close 兜底 —— 开盘前接口会把 prev_close 也回退成前一日收盘价
+    # （9/23 早 9:04 实测：price=prev_close=9/21 收盘，而 K 线里 9/22 收盘已存在）。
     for _c, _rt in rt_all.items():
-        if not _rt.get("pre_trade"):
+        if _rt.get("error"):
             continue
         _b = klines.get(_c) or []
-        if len(_b) >= 2 and _b[-2]["close"]:
-            _rt["change_pct"] = (_b[-1]["close"] / _b[-2]["close"] - 1) * 100
-            _rt["change"] = 0.0
+        if not _b:
+            continue
+        _last = _b[-1]
+        _prev = _b[-2] if len(_b) > 1 else None
+        _closed = not Q._in_session(_c)
+        _quote_is_latest = _rt.get("trade_date") == _last.get("date")
+        if _quote_is_latest and _closed and _rt.get("price"):
+            # 行情就是最后一根已收盘 K 线的当日行情：采用行情（含更细的当日涨跌口径）
+            _rt.setdefault("prev_close", (_prev or {}).get("close"))
+            continue
+        # 其余情况（盘前、盘中、行情落后）：用 K 线重构
+        _rt["price"] = _last.get("close")
+        _rt["prev_close"] = (_prev or {}).get("close") or _rt.get("prev_close")
+        if _prev and _prev.get("close"):
+            _rt["change_pct"] = (_last["close"] / _prev["close"] - 1) * 100
+            _rt["change"] = _last["close"] - _prev["close"]
+        _rt["pre_trade"] = True
+        _rt["from_kline"] = True
 
     # ---------- 基准与指数 ----------
     bench_bars = klines.get(bench_code) or []
