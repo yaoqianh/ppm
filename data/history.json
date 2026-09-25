@@ -10183,6 +10183,966 @@
      }
     }
    }
+  },
+  {
+   "date": "2026-09-25",
+   "scores": {
+    "00700.HK": 81.3,
+    "002472.SZ": 52.7,
+    "600941.SH": 54.3,
+    "09888.HK": 70.7,
+    "300124.SZ": 66.6,
+    "600036.SH": 54.5,
+    "688502.SH": 38.3,
+    "561980.SH": 33.1,
+    "603990.SH": 15.0,
+    "516010.SH": 18.3
+   },
+   "timing": 34.2,
+   "total_mv": 546169.0,
+   "total_pnl_pct": 3.68,
+   "dims": {
+    "00700.HK": {
+     "trend": {
+      "structure": {
+       "score": 8.0,
+       "detail": "均线部分多头 8/15；MA20 走平/下行 0/10"
+      },
+      "momentum": {
+       "score": 10.0,
+       "detail": "未突破20日高点463.4 0/15；RS强于沪深300 +0.0pct 10/15"
+      },
+      "volume": {
+       "score": 1.4,
+       "detail": "量能不足(量比0.3) 0/15"
+      },
+      "filter": {
+       "score": 0.0,
+       "detail": "沪深300空头(大盘滤网不通过) 0/8；股价处于长周期空头区 0/7"
+      },
+      "position": {
+       "score": 0.0,
+       "detail": "距52周高点677.7 -36%"
+      }
+     },
+     "longterm": {
+      "valuation": {
+       "score": 35.0,
+       "detail": "PE/价格分位10%(窗口252日) → 35分"
+      },
+      "cushion": {
+       "score": 20.0,
+       "detail": "距52周低点411 +6.2% → 20分"
+      },
+      "weekly": {
+       "score": 8.0,
+       "detail": "周线MACD多头 +8；⚠卖出纪律: 跌破年线MA250且3日未收回"
+      },
+      "quality": {
+       "score": 19.6,
+       "detail": "基本面质量 → 19.6分"
+      },
+      "discipline": {
+       "score": 8.5,
+       "detail": "止损缓冲中等(距 1.1×ATR)｜未破止损｜TP1 过远(距17.6×ATR)｜持仓22日 < 阈值180日的一半"
+      }
+     },
+     "divergence": {
+      "w_impulse": {
+       "score": 20.0,
+       "detail": "周线强力系统 蓝 → 20分"
+      },
+      "d_impulse": {
+       "score": 0.0,
+       "detail": "日线强力系统 蓝 → 0分"
+      },
+      "price_value": {
+       "score": 10.0,
+       "detail": "价格处于EMA13~26区间内 10分"
+      },
+      "false_break": {
+       "score": 10.0,
+       "detail": "已发生冲高回落(假突破) 10分"
+      },
+      "divergence_ok": {
+       "score": 20.0,
+       "detail": "日线MACD柱底背离 +1；周线MACD柱底背离 +1"
+      }
+     },
+     "fundamental": {
+      "roe": {
+       "score": 10.0,
+       "detail": "ROE年化+19.9% → ROE≥15% +10"
+      },
+      "net_margin": {
+       "score": 5.0,
+       "detail": "净利率+30.0% → 净利率≥20% +5"
+      },
+      "rev_yoy": {
+       "score": 5.0,
+       "detail": "营收YoY+10.0% → 营收YoY≥0% +5"
+      },
+      "profit_yoy": {
+       "score": 5.0,
+       "detail": "归母YoY+10.0% → 归母YoY≥0% +5"
+      },
+      "pe": {
+       "score": 5.0,
+       "detail": "PE(TTM)15.95 → PE 15–30 +5"
+      },
+      "pb": {
+       "score": null,
+       "detail": "PB— → 无数据"
+      }
+     }
+    },
+    "002472.SZ": {
+     "trend": {
+      "structure": {
+       "score": 25.0,
+       "detail": "均线多头排列 15/15；MA20 上行 10/10"
+      },
+      "momentum": {
+       "score": 23.0,
+       "detail": "逼近20日新高(39.49, 差距<3%) 8/15；RS强于沪深300 +12.9pct 15/15"
+      },
+      "volume": {
+       "score": 15.0,
+       "detail": "突破放量(量比2.2) 15/15"
+      },
+      "filter": {
+       "score": 0.0,
+       "detail": "沪深300空头(大盘滤网不通过) 0/8；股价处于长周期空头区 0/7"
+      },
+      "position": {
+       "score": 6.3,
+       "detail": "距52周高点53.04 -27%"
+      }
+     },
+     "longterm": {
+      "valuation": {
+       "score": 21.0,
+       "detail": "PE/价格分位39%(窗口252日) → 21分"
+      },
+      "cushion": {
+       "score": 17.3,
+       "detail": "距52周低点34.13 +14.1% → 17.3分"
+      },
+      "weekly": {
+       "score": 4.0,
+       "detail": "⚠卖出纪律: 跌破年线MA250且3日未收回；年线上行 +4"
+      },
+      "quality": {
+       "score": 10.2,
+       "detail": "基本面质量 → 10.2分"
+      },
+      "discipline": {
+       "score": 6.5,
+       "detail": "止损贴近(距 0.6×ATR)｜未破止损｜TP1 过远(距8.4×ATR)｜持仓22日 < 阈值180日的一半"
+      }
+     },
+     "divergence": {
+      "w_impulse": {
+       "score": 10.0,
+       "detail": "周线强力系统 绿 → 10分"
+      },
+      "d_impulse": {
+       "score": 10.0,
+       "detail": "日线强力系统 绿 → 10分"
+      },
+      "price_value": {
+       "score": 0.0,
+       "detail": "价格高于EMA13~26区间 0分"
+      },
+      "false_break": {
+       "score": 20.0,
+       "detail": "逼近前高, 假突破将要发生 20分"
+      },
+      "divergence_ok": {
+       "score": 20.0,
+       "detail": "日线MACD柱底背离 +1；周线MACD柱底背离 +1"
+      }
+     },
+     "fundamental": {
+      "roe": {
+       "score": 5.0,
+       "detail": "ROE年化+11.5% → ROE≥8% +5"
+      },
+      "net_margin": {
+       "score": 0.0,
+       "detail": "净利率+12.0% → 净利率 0~20% +0"
+      },
+      "rev_yoy": {
+       "score": 5.0,
+       "detail": "营收YoY+8.0% → 营收YoY≥0% +5"
+      },
+      "profit_yoy": {
+       "score": 5.0,
+       "detail": "归母YoY+2.0% → 归母YoY≥0% +5"
+      },
+      "pe": {
+       "score": 5.0,
+       "detail": "PE(TTM)26.04 → PE 15–30 +5"
+      },
+      "pb": {
+       "score": 0.0,
+       "detail": "PB3.19 → PB 1.5–8 +0"
+      }
+     }
+    },
+    "600941.SH": {
+     "trend": {
+      "structure": {
+       "score": 0.0,
+       "detail": "均线空头排列 0/15；MA20 走平/下行 0/10"
+      },
+      "momentum": {
+       "score": 10.0,
+       "detail": "未突破20日高点101 0/15；RS强于沪深300 +3.5pct 10/15"
+      },
+      "volume": {
+       "score": 8.0,
+       "detail": "放量但未突破(量比1.2) 8/15"
+      },
+      "filter": {
+       "score": 7.0,
+       "detail": "沪深300空头(大盘滤网不通过) 0/8；股价处于长周期多头区 7/7"
+      },
+      "position": {
+       "score": 15.0,
+       "detail": "距52周高点107.409 -9%"
+      }
+     },
+     "longterm": {
+      "valuation": {
+       "score": 12.0,
+       "detail": "PE/价格分位58%(窗口252日) → 12分"
+      },
+      "cushion": {
+       "score": 17.2,
+       "detail": "距52周低点85.38 +14.1% → 17.2分"
+      },
+      "weekly": {
+       "score": 16.0,
+       "detail": "周线MACD多头 +8；位于年线上方 +8"
+      },
+      "quality": {
+       "score": 5.6,
+       "detail": "基本面质量 → 5.6分"
+      },
+      "discipline": {
+       "score": 10.0,
+       "detail": "止损安全(距 2.2×ATR)｜未破止损｜TP1 过远(距5.5×ATR)｜持仓22日 < 阈值180日的一半"
+      }
+     },
+     "divergence": {
+      "w_impulse": {
+       "score": 0.0,
+       "detail": "周线强力系统 蓝 → 0分"
+      },
+      "d_impulse": {
+       "score": 10.0,
+       "detail": "日线强力系统 绿 → 10分"
+      },
+      "price_value": {
+       "score": 0.0,
+       "detail": "价格高于EMA13~26区间 0分"
+      },
+      "false_break": {
+       "score": 0.0,
+       "detail": "无假突破结构 0分"
+      },
+      "divergence_ok": {
+       "score": 10.0,
+       "detail": "周线MACD柱底背离 +1"
+      }
+     },
+     "fundamental": {
+      "roe": {
+       "score": 5.0,
+       "detail": "ROE年化+11.2% → ROE≥8% +5"
+      },
+      "net_margin": {
+       "score": 0.0,
+       "detail": "净利率+13.0% → 净利率 0~20% +0"
+      },
+      "rev_yoy": {
+       "score": -5.0,
+       "detail": "营收YoY-1.0% → 营收YoY为负 −5"
+      },
+      "profit_yoy": {
+       "score": -5.0,
+       "detail": "归母YoY-6.0% → 归母YoY为负 −5"
+      },
+      "pe": {
+       "score": 5.0,
+       "detail": "PE(TTM)16.04 → PE 15–30 +5"
+      },
+      "pb": {
+       "score": 5.0,
+       "detail": "PB1.49 → PB<1.5 +5"
+      }
+     }
+    },
+    "09888.HK": {
+     "trend": {
+      "structure": {
+       "score": 0.0,
+       "detail": "均线空头排列 0/15；MA20 走平/下行 0/10"
+      },
+      "momentum": {
+       "score": 2.0,
+       "detail": "未突破20日高点98 0/15；RS弱于沪深300 -6.8pct 2/15"
+      },
+      "volume": {
+       "score": 1.7,
+       "detail": "量能不足(量比0.3) 0/15"
+      },
+      "filter": {
+       "score": 0.0,
+       "detail": "沪深300空头(大盘滤网不通过) 0/8；股价处于长周期空头区 0/7"
+      },
+      "position": {
+       "score": 0.0,
+       "detail": "距52周高点161.2 -47%"
+      }
+     },
+     "longterm": {
+      "valuation": {
+       "score": 35.0,
+       "detail": "PE/价格分位0%(窗口252日) → 35分"
+      },
+      "cushion": {
+       "score": 20.0,
+       "detail": "距52周低点84.3 +1.2% → 20分"
+      },
+      "weekly": {
+       "score": 0.0,
+       "detail": "⚠卖出纪律: 跌破年线MA250且3日未收回"
+      },
+      "quality": {
+       "score": null,
+       "detail": "基本面质量数据不足"
+      },
+      "discipline": {
+       "score": 6.5,
+       "detail": "止损贴近(距 0.8×ATR)｜未破止损｜TP1 过远(距22.0×ATR)｜持仓15日 < 阈值180日的一半"
+      }
+     },
+     "divergence": {
+      "w_impulse": {
+       "score": 20.0,
+       "detail": "周线强力系统 蓝 → 20分"
+      },
+      "d_impulse": {
+       "score": 0.0,
+       "detail": "日线强力系统 红 → 0分"
+      },
+      "price_value": {
+       "score": 20.0,
+       "detail": "价格低于EMA13~26区间 20分"
+      },
+      "false_break": {
+       "score": 0.0,
+       "detail": "无假突破结构 0分"
+      },
+      "divergence_ok": {
+       "score": 20.0,
+       "detail": "日线MACD柱底背离 +1；周线MACD柱底背离 +1"
+      }
+     },
+     "fundamental": {
+      "roe": {
+       "score": null,
+       "detail": "ROE年化— → 无数据"
+      },
+      "net_margin": {
+       "score": null,
+       "detail": "净利率— → 无数据"
+      },
+      "rev_yoy": {
+       "score": null,
+       "detail": "营收YoY— → 无数据"
+      },
+      "profit_yoy": {
+       "score": null,
+       "detail": "归母YoY— → 无数据"
+      },
+      "pe": {
+       "score": 0.0,
+       "detail": "PE(TTM)37.49 → PE 30–80 +0"
+      },
+      "pb": {
+       "score": null,
+       "detail": "PB— → 无数据"
+      }
+     }
+    },
+    "300124.SZ": {
+     "trend": {
+      "structure": {
+       "score": 0.0,
+       "detail": "均线空头排列 0/15；MA20 走平/下行 0/10"
+      },
+      "momentum": {
+       "score": 0.0,
+       "detail": "未突破20日高点62.67 0/15；RS弱于沪深300 -12.4pct 0/15"
+      },
+      "volume": {
+       "score": 3.0,
+       "detail": "量能不足(量比0.6) 0/15"
+      },
+      "filter": {
+       "score": 0.0,
+       "detail": "沪深300空头(大盘滤网不通过) 0/8；股价处于长周期空头区 0/7"
+      },
+      "position": {
+       "score": 0.0,
+       "detail": "距52周高点90.5 -43%"
+      }
+     },
+     "longterm": {
+      "valuation": {
+       "score": 35.0,
+       "detail": "PE/价格分位1%(窗口252日) → 35分"
+      },
+      "cushion": {
+       "score": 20.0,
+       "detail": "距52周低点49.95 +3.9% → 20分"
+      },
+      "weekly": {
+       "score": 0.0,
+       "detail": "⚠卖出纪律: 跌破年线MA250且3日未收回"
+      },
+      "quality": {
+       "score": 13.1,
+       "detail": "基本面质量 → 13.1分"
+      },
+      "discipline": {
+       "score": 6.5,
+       "detail": "止损缓冲中等(距 1.1×ATR)｜未破止损｜TP1 过远(距24.4×ATR)｜建仓日未知(无法做时间止损评分)"
+      }
+     },
+     "divergence": {
+      "w_impulse": {
+       "score": 0.0,
+       "detail": "周线强力系统 红 → 0分"
+      },
+      "d_impulse": {
+       "score": 0.0,
+       "detail": "日线强力系统 蓝 → 0分"
+      },
+      "price_value": {
+       "score": 20.0,
+       "detail": "价格低于EMA13~26区间 20分"
+      },
+      "false_break": {
+       "score": 0.0,
+       "detail": "无假突破结构 0分"
+      },
+      "divergence_ok": {
+       "score": 10.0,
+       "detail": "周线MACD柱底背离 +1"
+      }
+     },
+     "fundamental": {
+      "roe": {
+       "score": 10.0,
+       "detail": "ROE年化+15.4% → ROE≥15% +10"
+      },
+      "net_margin": {
+       "score": 0.0,
+       "detail": "净利率+11.4% → 净利率 0~20% +0"
+      },
+      "rev_yoy": {
+       "score": 10.0,
+       "detail": "营收YoY+20.3% → 营收YoY≥20% +10"
+      },
+      "profit_yoy": {
+       "score": -5.0,
+       "detail": "归母YoY-5.3% → 归母YoY为负 −5"
+      },
+      "pe": {
+       "score": 5.0,
+       "detail": "PE(TTM)28.74 → PE 15–30 +5"
+      },
+      "pb": {
+       "score": 0.0,
+       "detail": "PB3.81 → PB 1.5–8 +0"
+      }
+     }
+    },
+    "600036.SH": {
+     "trend": {
+      "structure": {
+       "score": 10.0,
+       "detail": "均线空头排列 0/15；MA20 上行 10/10"
+      },
+      "momentum": {
+       "score": 23.0,
+       "detail": "逼近20日新高(41.83, 差距<3%) 8/15；RS强于沪深300 +6.9pct 15/15"
+      },
+      "volume": {
+       "score": 5.2,
+       "detail": "量能不足(量比1.0) 0/15"
+      },
+      "filter": {
+       "score": 7.0,
+       "detail": "沪深300空头(大盘滤网不通过) 0/8；股价处于长周期多头区 7/7"
+      },
+      "position": {
+       "score": 15.0,
+       "detail": "距52周高点41.83 -3%"
+      }
+     },
+     "longterm": {
+      "valuation": {
+       "score": 2.0,
+       "detail": "PE/价格分位85%(窗口252日) → 2分"
+      },
+      "cushion": {
+       "score": 14.2,
+       "detail": "距52周低点34.277 +18.7% → 14.2分"
+      },
+      "weekly": {
+       "score": 20.0,
+       "detail": "周线MACD多头 +8；位于年线上方 +8；年线上行 +4"
+      },
+      "quality": {
+       "score": 12.8,
+       "detail": "基本面质量 → 12.8分"
+      },
+      "discipline": {
+       "score": 12.0,
+       "detail": "止损缓冲中等(距 1.9×ATR)｜未破止损｜已触及 TP1(距-0.2×ATR)｜持仓22日 < 阈值180日的一半"
+      }
+     },
+     "divergence": {
+      "w_impulse": {
+       "score": 0.0,
+       "detail": "周线强力系统 蓝 → 0分"
+      },
+      "d_impulse": {
+       "score": 0.0,
+       "detail": "日线强力系统 红 → 0分"
+      },
+      "price_value": {
+       "score": 10.0,
+       "detail": "价格处于EMA13~26区间内 10分"
+      },
+      "false_break": {
+       "score": 20.0,
+       "detail": "逼近前高, 假突破将要发生 20分"
+      },
+      "divergence_ok": {
+       "score": 10.0,
+       "detail": "周线MACD柱底背离 +1"
+      }
+     },
+     "fundamental": {
+      "roe": {
+       "score": 5.0,
+       "detail": "ROE年化+11.7% → ROE≥8% +5"
+      },
+      "net_margin": {
+       "score": 5.0,
+       "detail": "净利率+45.0% → 净利率≥20% +5"
+      },
+      "rev_yoy": {
+       "score": 5.0,
+       "detail": "营收YoY+5.0% → 营收YoY≥0% +5"
+      },
+      "profit_yoy": {
+       "score": 5.0,
+       "detail": "归母YoY+2.0% → 归母YoY≥0% +5"
+      },
+      "pe": {
+       "score": 10.0,
+       "detail": "PE(TTM)6.76 → PE≤15 +10"
+      },
+      "pb": {
+       "score": 5.0,
+       "detail": "PB0.9 → PB<1.5 +5"
+      }
+     }
+    },
+    "688502.SH": {
+     "trend": {
+      "structure": {
+       "score": 15.0,
+       "detail": "均线多头排列 15/15；MA20 走平/下行 0/10"
+      },
+      "momentum": {
+       "score": 18.0,
+       "detail": "逼近20日新高(457.89, 差距<3%) 8/15；RS强于沪深300 +2.1pct 10/15"
+      },
+      "volume": {
+       "score": 8.0,
+       "detail": "放量但未突破(量比1.5) 8/15"
+      },
+      "filter": {
+       "score": 0.0,
+       "detail": "沪深300空头(大盘滤网不通过) 0/8；股价处于长周期空头区 0/7"
+      },
+      "position": {
+       "score": 0.0,
+       "detail": "距52周高点709.49 -37%"
+      },
+      "discipline": {
+       "score": 3.0,
+       "detail": "⚠ 已触及或跌破止损(距 0.4×ATR)｜未破止损｜TP1 过远(距9.6×ATR)｜建仓日未知(无法做时间止损评分)"
+      }
+     },
+     "longterm": {
+      "valuation": {
+       "score": 5.0,
+       "detail": "PE/价格分位72%(窗口252日) → 5分"
+      },
+      "cushion": {
+       "score": 0.0,
+       "detail": "距52周低点285.821 +55.6% → 0分"
+      },
+      "weekly": {
+       "score": 12.0,
+       "detail": "位于年线上方 +8；年线上行 +4"
+      },
+      "quality": {
+       "score": 4.1,
+       "detail": "基本面质量 → 4.1分"
+      }
+     },
+     "divergence": {
+      "w_impulse": {
+       "score": 10.0,
+       "detail": "周线强力系统 绿 → 10分"
+      },
+      "d_impulse": {
+       "score": 10.0,
+       "detail": "日线强力系统 绿 → 10分"
+      },
+      "price_value": {
+       "score": 0.0,
+       "detail": "价格高于EMA13~26区间 0分"
+      },
+      "false_break": {
+       "score": 20.0,
+       "detail": "逼近前高, 假突破将要发生 20分"
+      },
+      "divergence_ok": {
+       "score": 0.0,
+       "detail": "无有效背离结构 0分"
+      }
+     },
+     "fundamental": {
+      "roe": {
+       "score": -15.0,
+       "detail": "ROE年化-2.1% → ROE亏损 −15"
+      },
+      "net_margin": {
+       "score": -10.0,
+       "detail": "净利率-3.1% → 净利率为负 −10"
+      },
+      "rev_yoy": {
+       "score": 10.0,
+       "detail": "营收YoY+34.0% → 营收YoY≥20% +10"
+      },
+      "profit_yoy": {
+       "score": -15.0,
+       "detail": "归母YoY-141.0% → 归母YoY≤−30% −15"
+      },
+      "pe": {
+       "score": -5.0,
+       "detail": "PE(TTM)148089 → PE>80 −5"
+      },
+      "pb": {
+       "score": -5.0,
+       "detail": "PB19.81 → PB>8 −5"
+      }
+     }
+    },
+    "561980.SH": {
+     "trend": {
+      "structure": {
+       "score": 15.0,
+       "detail": "均线多头排列 15/15；MA20 走平/下行 0/10"
+      },
+      "momentum": {
+       "score": 5.0,
+       "detail": "未突破20日高点0.716 0/15；RS弱于沪深300 -0.9pct 5/15"
+      },
+      "volume": {
+       "score": 3.7,
+       "detail": "量能不足(量比0.7) 0/15"
+      },
+      "filter": {
+       "score": 7.0,
+       "detail": "沪深300空头(大盘滤网不通过) 0/8；股价处于长周期多头区 7/7"
+      },
+      "position": {
+       "score": 2.9,
+       "detail": "距52周高点0.98 -31%"
+      },
+      "discipline": {
+       "score": 4.5,
+       "detail": "止损贴近(距 0.8×ATR)｜未破止损｜TP1 过远(距10.3×ATR)｜建仓日未知(无法做时间止损评分)"
+      }
+     },
+     "longterm": {
+      "valuation": {
+       "score": 5.0,
+       "detail": "价格分位76%(窗口252日) → 5分"
+      },
+      "cushion": {
+       "score": 0.0,
+       "detail": "距52周低点0.313 +115.7% → 0分"
+      },
+      "weekly": {
+       "score": 12.0,
+       "detail": "位于年线上方 +8；年线上行 +4"
+      },
+      "quality": {
+       "score": null,
+       "detail": "ETF 不适用"
+      }
+     },
+     "divergence": {
+      "w_impulse": {
+       "score": 0.0,
+       "detail": "周线强力系统 蓝 → 0分"
+      },
+      "d_impulse": {
+       "score": 0.0,
+       "detail": "日线强力系统 红 → 0分"
+      },
+      "price_value": {
+       "score": 20.0,
+       "detail": "价格低于EMA13~26区间 20分"
+      },
+      "false_break": {
+       "score": 10.0,
+       "detail": "已发生冲高回落(假突破) 10分"
+      },
+      "divergence_ok": {
+       "score": 0.0,
+       "detail": "无有效背离结构 0分"
+      }
+     },
+     "fundamental": {
+      "roe": {
+       "score": null,
+       "detail": "ROE年化— → ETF 不适用"
+      },
+      "net_margin": {
+       "score": null,
+       "detail": "净利率— → ETF 不适用"
+      },
+      "rev_yoy": {
+       "score": null,
+       "detail": "营收YoY— → ETF 不适用"
+      },
+      "profit_yoy": {
+       "score": null,
+       "detail": "归母YoY— → ETF 不适用"
+      },
+      "pe": {
+       "score": null,
+       "detail": "PE(TTM)— → 无PE"
+      },
+      "pb": {
+       "score": null,
+       "detail": "PB— → ETF 不适用"
+      }
+     }
+    },
+    "603990.SH": {
+     "trend": {
+      "structure": {
+       "score": 0.0,
+       "detail": "均线空头排列 0/15；MA20 走平/下行 0/10"
+      },
+      "momentum": {
+       "score": 0.0,
+       "detail": "未突破20日高点24.35 0/15；RS弱于沪深300 -11.9pct 0/15"
+      },
+      "volume": {
+       "score": 3.2,
+       "detail": "量能不足(量比0.6) 0/15"
+      },
+      "filter": {
+       "score": 0.0,
+       "detail": "沪深300空头(大盘滤网不通过) 0/8；股价处于长周期空头区 0/7"
+      },
+      "position": {
+       "score": 8.5,
+       "detail": "距52周高点25.03 -24%"
+      },
+      "discipline": {
+       "score": 5.5,
+       "detail": "止损贴近(距 0.5×ATR)｜未破止损｜TP1 较远(距4.7×ATR)｜建仓日未知(无法做时间止损评分)"
+      }
+     },
+     "longterm": {
+      "valuation": {
+       "score": 5.0,
+       "detail": "PE/价格分位72%(窗口252日) → 5分"
+      },
+      "cushion": {
+       "score": 0.6,
+       "detail": "距52周低点13.74 +39.2% → 0.6分"
+      },
+      "weekly": {
+       "score": 12.0,
+       "detail": "位于年线上方 +8；年线上行 +4"
+      },
+      "quality": {
+       "score": 0.0,
+       "detail": "基本面质量 → 0.0分"
+      }
+     },
+     "divergence": {
+      "w_impulse": {
+       "score": 0.0,
+       "detail": "周线强力系统 红 → 0分"
+      },
+      "d_impulse": {
+       "score": 0.0,
+       "detail": "日线强力系统 红 → 0分"
+      },
+      "price_value": {
+       "score": 20.0,
+       "detail": "价格低于EMA13~26区间 20分"
+      },
+      "false_break": {
+       "score": 0.0,
+       "detail": "无假突破结构 0分"
+      },
+      "divergence_ok": {
+       "score": 0.0,
+       "detail": "无有效背离结构 0分"
+      }
+     },
+     "fundamental": {
+      "roe": {
+       "score": 0.0,
+       "detail": "ROE年化+1.6% → ROE 0~8% +0"
+      },
+      "net_margin": {
+       "score": 0.0,
+       "detail": "净利率+5.4% → 净利率 0~20% +0"
+      },
+      "rev_yoy": {
+       "score": -5.0,
+       "detail": "营收YoY-8.9% → 营收YoY为负 −5"
+      },
+      "profit_yoy": {
+       "score": -15.0,
+       "detail": "归母YoY-76.6% → 归母YoY≤−30% −15"
+      },
+      "pe": {
+       "score": -5.0,
+       "detail": "PE(TTM)334.19 → PE>80 −5"
+      },
+      "pb": {
+       "score": 0.0,
+       "detail": "PB6.93 → PB 1.5–8 +0"
+      }
+     }
+    },
+    "516010.SH": {
+     "trend": {
+      "structure": {
+       "score": 0.0,
+       "detail": "均线空头排列 0/15；MA20 走平/下行 0/10"
+      },
+      "momentum": {
+       "score": 10.0,
+       "detail": "未突破20日高点1.154 0/15；RS强于沪深300 +2.4pct 10/15"
+      },
+      "volume": {
+       "score": 3.5,
+       "detail": "量能不足(量比0.7) 0/15"
+      },
+      "filter": {
+       "score": 0.0,
+       "detail": "沪深300空头(大盘滤网不通过) 0/8；股价处于长周期空头区 0/7"
+      },
+      "position": {
+       "score": 0.0,
+       "detail": "距52周高点1.746 -40%"
+      },
+      "discipline": {
+       "score": 7.5,
+       "detail": "止损缓冲中等(距 1.3×ATR)｜未破止损｜TP1 较远(距4.0×ATR)｜建仓日未知(无法做时间止损评分)"
+      }
+     },
+     "longterm": {
+      "valuation": {
+       "score": 35.0,
+       "detail": "价格分位4%(窗口252日) → 35分"
+      },
+      "cushion": {
+       "score": 20.0,
+       "detail": "距52周低点0.98 +7.4% → 20分"
+      },
+      "weekly": {
+       "score": 8.0,
+       "detail": "周线MACD多头 +8；⚠卖出纪律: 跌破年线MA250且3日未收回"
+      },
+      "quality": {
+       "score": null,
+       "detail": "ETF 不适用"
+      }
+     },
+     "divergence": {
+      "w_impulse": {
+       "score": 0.0,
+       "detail": "周线强力系统 红 → 0分"
+      },
+      "d_impulse": {
+       "score": 0.0,
+       "detail": "日线强力系统 红 → 0分"
+      },
+      "price_value": {
+       "score": 20.0,
+       "detail": "价格低于EMA13~26区间 20分"
+      },
+      "false_break": {
+       "score": 0.0,
+       "detail": "无假突破结构 0分"
+      },
+      "divergence_ok": {
+       "score": 20.0,
+       "detail": "日线MACD柱底背离 +1；周线MACD柱底背离 +1"
+      }
+     },
+     "fundamental": {
+      "roe": {
+       "score": null,
+       "detail": "ROE年化— → ETF 不适用"
+      },
+      "net_margin": {
+       "score": null,
+       "detail": "净利率— → ETF 不适用"
+      },
+      "rev_yoy": {
+       "score": null,
+       "detail": "营收YoY— → ETF 不适用"
+      },
+      "profit_yoy": {
+       "score": null,
+       "detail": "归母YoY— → ETF 不适用"
+      },
+      "pe": {
+       "score": null,
+       "detail": "PE(TTM)— → 无PE"
+      },
+      "pb": {
+       "score": null,
+       "detail": "PB— → ETF 不适用"
+      }
+     }
+    }
+   }
   }
  ]
 }
