@@ -8291,7 +8291,7 @@
        "detail": "未突破20日高点463.4 0/15；RS强于沪深300 +0.0pct 10/15"
       },
       "volume": {
-       "score": 5.6,
+       "score": 5.5,
        "detail": "量能不足(量比1.1) 0/15"
       },
       "filter": {
@@ -8366,7 +8366,7 @@
       },
       "pe": {
        "score": 5.0,
-       "detail": "PE(TTM)16.11 → PE 15–30 +5"
+       "detail": "PE(TTM)16.13 → PE 15–30 +5"
       },
       "pb": {
        "score": null,
@@ -8460,7 +8460,7 @@
       },
       "pe": {
        "score": 0.0,
-       "detail": "PE(TTM)37.6 → PE 30–80 +0"
+       "detail": "PE(TTM)37.65 → PE 30–80 +0"
       },
       "pb": {
        "score": null,
@@ -8554,11 +8554,11 @@
       },
       "pe": {
        "score": 5.0,
-       "detail": "PE(TTM)25.73 → PE 15–30 +5"
+       "detail": "PE(TTM)25.83 → PE 15–30 +5"
       },
       "pb": {
        "score": 0.0,
-       "detail": "PB3.15 → PB 1.5–8 +0"
+       "detail": "PB3.16 → PB 1.5–8 +0"
       }
      }
     },
@@ -8648,7 +8648,7 @@
       },
       "pe": {
        "score": 5.0,
-       "detail": "PE(TTM)16.09 → PE 15–30 +5"
+       "detail": "PE(TTM)16.11 → PE 15–30 +5"
       },
       "pb": {
        "score": 5.0,
@@ -8836,11 +8836,11 @@
       },
       "pe": {
        "score": 10.0,
-       "detail": "PE(TTM)13.64 → PE≤15 +10"
+       "detail": "PE(TTM)13.73 → PE≤15 +10"
       },
       "pb": {
        "score": 0.0,
-       "detail": "PB2.78 → PB 1.5–8 +0"
+       "detail": "PB2.8 → PB 1.5–8 +0"
       }
      }
     },
@@ -9024,11 +9024,11 @@
       },
       "pe": {
        "score": 5.0,
-       "detail": "PE(TTM)16.92 → PE 15–30 +5"
+       "detail": "PE(TTM)16.97 → PE 15–30 +5"
       },
       "pb": {
        "score": 0.0,
-       "detail": "PB1.7 → PB 1.5–8 +0"
+       "detail": "PB1.71 → PB 1.5–8 +0"
       }
      }
     }
