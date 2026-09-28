@@ -1,27 +1,37 @@
 {
  "version": "1.1",
- "as_of": "2026-09-16",
- "note": "2026-09-18 按截图更新：新增半导体设备ETF/麦迪科技/游戏ETF国泰(均趋势模板)、腾讯加至400股、百度加至850股、汇川买回300股至400股；茂莱光学改为趋势模板。持仓10只。",
+ "as_of": "2026-09-28",
+ "note": "2026-09-28 按截图更新：清仓茂莱光学/麦迪科技/汇川技术/招商银行；新买入巨人网络1500股、东方电气400股；腾讯400股、百度950股、双环1700股、半导体设备ETF 80000股、游戏ETF国泰30000股。持仓8只。行情数据由 Actions 每交易日自动更新。",
  "holdings": [
   {
    "code": "00700.HK",
    "name": "腾讯控股",
    "template": "longterm",
    "shares": 400,
-   "cost": 440.342,
+   "cost": 437.1473,
    "currency": "HKD",
    "market": null,
-   "note": "2026-09-18 加仓100股；成本由券商总盈亏反算"
+   "note": "2026-09-28 截图：400股，成本按截图 CNY 375.9467 折回"
+  },
+  {
+   "code": "09888.HK",
+   "name": "百度集团-W",
+   "template": "longterm",
+   "shares": 950,
+   "cost": 90.2256,
+   "currency": "HKD",
+   "market": null,
+   "note": "2026-09-28 加仓至950股（+100），成本按截图折回"
   },
   {
    "code": "002472.SZ",
    "name": "双环传动",
    "template": "longterm",
-   "shares": 2000,
-   "cost": 34.7004,
+   "shares": 1700,
+   "cost": 33.9569,
    "currency": "CNY",
    "market": null,
-   "note": "2026-09-16 减仓200股，券商摊薄成本"
+   "note": "2026-09-28 减仓至1700股（-300）"
   },
   {
    "code": "600941.SH",
@@ -31,77 +41,47 @@
    "cost": 75.8593,
    "currency": "CNY",
    "market": null,
-   "note": "2026-09-10 减仓100股，摊薄成本"
-  },
-  {
-   "code": "09888.HK",
-   "name": "百度集团-W",
-   "template": "longterm",
-   "shares": 850,
-   "cost": 90.5995,
-   "currency": "HKD",
-   "market": null,
-   "note": "2026-09-18 加仓50股；成本由券商总盈亏反算"
-  },
-  {
-   "code": "300124.SZ",
-   "name": "汇川技术",
-   "template": "longterm",
-   "shares": 400,
-   "cost": 55.953,
-   "currency": "CNY",
-   "market": null,
-   "note": "2026-09-18 买回300股，成本回落"
-  },
-  {
-   "code": "600036.SH",
-   "name": "招商银行",
-   "template": "longterm",
-   "shares": 100,
-   "cost": 26.548,
-   "currency": "CNY",
-   "market": null,
-   "note": "2026-09-10 减仓400股，摊薄成本"
-  },
-  {
-   "code": "688502.SH",
-   "name": "茂莱光学",
-   "template": "trend",
-   "shares": 200,
-   "cost": 417.0523,
-   "currency": "CNY",
-   "market": null,
-   "note": "2026-09-16 买入；09-18 定为趋势（中线波段）持仓"
+   "note": "2026-09-28 未变；9/29 股权登记、9/30 除权（每股2.51元）"
   },
   {
    "code": "561980.SH",
    "name": "半导体设备ETF",
    "template": "trend",
-   "shares": 60000,
-   "cost": 0.688162,
+   "shares": 80000,
+   "cost": 0.6812,
    "currency": "CNY",
    "market": null,
-   "note": "2026-09-18 新买入（趋势/中线波段）"
+   "note": "2026-09-28 加仓至80000股（+20000）"
   },
   {
-   "code": "603990.SH",
-   "name": "麦迪科技",
+   "code": "002558.SZ",
+   "name": "巨人网络",
    "template": "trend",
-   "shares": 1700,
-   "cost": 19.8535,
+   "shares": 1500,
+   "cost": 23.6673,
    "currency": "CNY",
    "market": null,
-   "note": "2026-09-18 新买入（趋势/中线波段）"
+   "note": "2026-09-28 新买入（游戏板块，趋势模板）"
   },
   {
    "code": "516010.SH",
    "name": "游戏ETF国泰",
    "template": "trend",
-   "shares": 10000,
-   "cost": 1.0665,
+   "shares": 30000,
+   "cost": 1.07,
    "currency": "CNY",
    "market": null,
-   "note": "2026-09-18 新买入（趋势/中线波段）"
+   "note": "2026-09-28 加仓至30000股（+20000）"
+  },
+  {
+   "code": "600875.SH",
+   "name": "东方电气",
+   "template": "longterm",
+   "shares": 400,
+   "cost": 22.7927,
+   "currency": "CNY",
+   "market": null,
+   "note": "2026-09-28 新买入（原自选价值组）"
   }
  ],
  "watchlist": [
@@ -216,12 +196,6 @@
    "group": "AI产业链"
   },
   {
-   "code": "002558.SZ",
-   "name": "巨人网络",
-   "group": "AI产业链",
-   "note": "2026-09-10 清仓后加回观察；游戏AI"
-  },
-  {
    "code": "01024.HK",
    "name": "快手-W",
    "group": "AI产业链"
@@ -229,11 +203,6 @@
   {
    "code": "09988.HK",
    "name": "阿里巴巴-W",
-   "group": "价值"
-  },
-  {
-   "code": "600875.SH",
-   "name": "东方电气",
    "group": "价值"
   },
   {
@@ -273,6 +242,30 @@
    "name": "东方财富",
    "group": "周期",
    "note": "2026-09-13 清仓后加回观察；互联网券商，原长线模板"
+  },
+  {
+   "code": "300124.SZ",
+   "name": "汇川技术",
+   "group": "周期",
+   "note": "2026-09-28 清仓后加回观察"
+  },
+  {
+   "code": "600036.SH",
+   "name": "招商银行",
+   "group": "价值",
+   "note": "2026-09-28 清仓后加回观察"
+  },
+  {
+   "code": "688502.SH",
+   "name": "茂莱光学",
+   "group": "AI产业链",
+   "note": "2026-09-28 清仓后加回观察"
+  },
+  {
+   "code": "603990.SH",
+   "name": "麦迪科技",
+   "group": "周期",
+   "note": "2026-09-28 清仓后加回观察"
   }
  ]
 }
