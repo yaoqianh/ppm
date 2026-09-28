@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-09-28 11:12 (UTC+8)",
+ "updated_at": "2026-09-28 11:14 (UTC+8)",
  "as_of": "2026-09-25",
  "summary": "大盘防守(3成以下)｜持仓8只｜高分(≥70)2只腾讯控股、百度集团-W｜低分(<40)3只半导体设备ETF、巨人网络、游戏ETF国泰｜趋势/广度/量能共振走弱, 少动多看｜总市值约47.5万，第一大持仓腾讯控股占32%、前三占60%，持仓分散度尚可｜结构 长线价值74% / 中线波段26%。",
  "portfolio": {
@@ -473,7 +473,7 @@
      },
      "pe": {
       "score": 0.0,
-      "detail": "PE(TTM)37.56 → PE 30–80 +0"
+      "detail": "PE(TTM)37.58 → PE 30–80 +0"
      },
      "pb": {
       "score": null,
@@ -670,11 +670,11 @@
      },
      "pe": {
       "score": 5.0,
-      "detail": "PE(TTM)25.87 → PE 15–30 +5"
+      "detail": "PE(TTM)25.9 → PE 15–30 +5"
      },
      "pb": {
       "score": 0.0,
-      "detail": "PB3.16 → PB 1.5–8 +0"
+      "detail": "PB3.17 → PB 1.5–8 +0"
      }
     }
    },
@@ -778,7 +778,7 @@
     "trend": 40.0,
     "longterm": 54.3,
     "divergence": 20.0,
-    "fundamental": 55.0,
+    "fundamental": 50.0,
     "exit": null
    },
    "dims": {
@@ -793,7 +793,7 @@
      },
      "volume": {
       "score": 8.0,
-      "detail": "放量但未突破(量比1.3) 8/15"
+      "detail": "放量但未突破(量比1.5) 8/15"
      },
      "filter": {
       "score": 7.0,
@@ -867,11 +867,11 @@
      },
      "pe": {
       "score": 5.0,
-      "detail": "PE(TTM)16.12 → PE 15–30 +5"
+      "detail": "PE(TTM)16.14 → PE 15–30 +5"
      },
      "pb": {
-      "score": 5.0,
-      "detail": "PB1.49 → PB<1.5 +5"
+      "score": 0.0,
+      "detail": "PB1.5 → PB 1.5–8 +0"
      }
     }
    },
@@ -1262,11 +1262,11 @@
      },
      "pe": {
       "score": 10.0,
-      "detail": "PE(TTM)13.69 → PE≤15 +10"
+      "detail": "PE(TTM)13.72 → PE≤15 +10"
      },
      "pb": {
       "score": 0.0,
-      "detail": "PB2.79 → PB 1.5–8 +0"
+      "detail": "PB2.8 → PB 1.5–8 +0"
      }
     }
    },
@@ -1759,7 +1759,7 @@
    "atr": 0.365,
    "ma20": 28.265,
    "ma60": 28.146,
-   "volume_ratio": 1.91,
+   "volume_ratio": 1.88,
    "scores": {
     "trend": 70.0,
     "longterm": 52.1,
@@ -1862,11 +1862,11 @@
      },
      "pe": {
       "score": 5.0,
-      "detail": "PE(TTM)19.32 → PE 15–30 +5"
+      "detail": "PE(TTM)19.31 → PE 15–30 +5"
      },
      "pb": {
       "score": 0.0,
-      "detail": "PB3.24 → PB 1.5–8 +0"
+      "detail": "PB3.23 → PB 1.5–8 +0"
      }
     }
    },
@@ -1884,7 +1884,7 @@
    "atr": 1.065,
    "ma20": 47.311,
    "ma60": 45.361,
-   "volume_ratio": 1.39,
+   "volume_ratio": 1.37,
    "scores": {
     "trend": 58.0,
     "longterm": 35.8,
@@ -1987,7 +1987,7 @@
      },
      "pe": {
       "score": 5.0,
-      "detail": "PE(TTM)19.36 → PE 15–30 +5"
+      "detail": "PE(TTM)19.37 → PE 15–30 +5"
      },
      "pb": {
       "score": 0.0,
@@ -2009,7 +2009,7 @@
    "atr": 1.019,
    "ma20": 42.203,
    "ma60": 40.168,
-   "volume_ratio": 2.05,
+   "volume_ratio": 2.02,
    "scores": {
     "trend": 35.3,
     "longterm": 42.5,
@@ -2134,7 +2134,7 @@
    "atr": 0.369,
    "ma20": 16.398,
    "ma60": 15.706,
-   "volume_ratio": 1.41,
+   "volume_ratio": 1.39,
    "scores": {
     "trend": 43.0,
     "longterm": 36.4,
@@ -2259,7 +2259,7 @@
    "atr": 1.543,
    "ma20": 34.716,
    "ma60": 36.316,
-   "volume_ratio": 1.71,
+   "volume_ratio": 1.68,
    "scores": {
     "trend": 32.9,
     "longterm": 34.2,
@@ -2362,11 +2362,11 @@
      },
      "pe": {
       "score": 0.0,
-      "detail": "PE(TTM)32.01 → PE 30–80 +0"
+      "detail": "PE(TTM)32.09 → PE 30–80 +0"
      },
      "pb": {
       "score": 0.0,
-      "detail": "PB5.04 → PB 1.5–8 +0"
+      "detail": "PB5.05 → PB 1.5–8 +0"
      }
     }
    },
@@ -2384,7 +2384,7 @@
    "atr": 16.704,
    "ma20": 259.315,
    "ma60": 215.997,
-   "volume_ratio": 1.94,
+   "volume_ratio": 1.92,
    "scores": {
     "trend": 77.0,
     "longterm": 43.6,
@@ -2487,7 +2487,7 @@
      },
      "pe": {
       "score": -5.0,
-      "detail": "PE(TTM)164.61 → PE>80 −5"
+      "detail": "PE(TTM)164.57 → PE>80 −5"
      },
      "pb": {
       "score": -5.0,
@@ -2509,7 +2509,7 @@
    "atr": 5.716,
    "ma20": 158.03,
    "ma60": 145.475,
-   "volume_ratio": 1.37,
+   "volume_ratio": 1.35,
    "scores": {
     "trend": 70.0,
     "longterm": 45.0,
@@ -2612,7 +2612,7 @@
      },
      "pe": {
       "score": 5.0,
-      "detail": "PE(TTM)22.64 → PE 15–30 +5"
+      "detail": "PE(TTM)22.67 → PE 15–30 +5"
      },
      "pb": {
       "score": 0.0,
@@ -2634,7 +2634,7 @@
    "atr": 1.109,
    "ma20": 32.585,
    "ma60": 31.753,
-   "volume_ratio": 1.7,
+   "volume_ratio": 1.67,
    "scores": {
     "trend": 19.2,
     "longterm": 64.7,
@@ -2737,11 +2737,11 @@
      },
      "pe": {
       "score": 10.0,
-      "detail": "PE(TTM)11.51 → PE≤15 +10"
+      "detail": "PE(TTM)11.54 → PE≤15 +10"
      },
      "pb": {
       "score": 0.0,
-      "detail": "PB4.08 → PB 1.5–8 +0"
+      "detail": "PB4.09 → PB 1.5–8 +0"
      }
     }
    },
@@ -2759,7 +2759,7 @@
    "atr": 31.956,
    "ma20": 300.3,
    "ma60": 284.353,
-   "volume_ratio": 2.62,
+   "volume_ratio": 2.57,
    "scores": {
     "trend": 20.0,
     "longterm": 40.0,
@@ -2884,7 +2884,7 @@
    "atr": 3.239,
    "ma20": 39.15,
    "ma60": 38.389,
-   "volume_ratio": 1.32,
+   "volume_ratio": 1.3,
    "scores": {
     "trend": 26.0,
     "longterm": 16.3,
@@ -3009,7 +3009,7 @@
    "atr": 51.807,
    "ma20": 1086.861,
    "ma60": 1156.905,
-   "volume_ratio": 1.6,
+   "volume_ratio": 1.58,
    "scores": {
     "trend": 56.8,
     "longterm": 45.0,
@@ -3112,11 +3112,11 @@
      },
      "pe": {
       "score": -5.0,
-      "detail": "PE(TTM)193.81 → PE>80 −5"
+      "detail": "PE(TTM)194.56 → PE>80 −5"
      },
      "pb": {
       "score": -5.0,
-      "detail": "PB47.54 → PB>8 −5"
+      "detail": "PB47.73 → PB>8 −5"
      }
     }
    },
@@ -3134,7 +3134,7 @@
    "atr": 97.003,
    "ma20": 861.625,
    "ma60": 1111.558,
-   "volume_ratio": 1.4,
+   "volume_ratio": 1.37,
    "scores": {
     "trend": 8.0,
     "longterm": 34.7,
@@ -3259,7 +3259,7 @@
    "atr": 1.038,
    "ma20": 26.901,
    "ma60": 27.054,
-   "volume_ratio": 1.47,
+   "volume_ratio": 1.46,
    "scores": {
     "trend": 13.0,
     "longterm": 73.7,
@@ -3384,7 +3384,7 @@
    "atr": 4.154,
    "ma20": 121.362,
    "ma60": 132.008,
-   "volume_ratio": 1.52,
+   "volume_ratio": 1.5,
    "scores": {
     "trend": 30.3,
     "longterm": 39.3,
@@ -3487,11 +3487,11 @@
      },
      "pe": {
       "score": -5.0,
-      "detail": "PE(TTM)137.43 → PE>80 −5"
+      "detail": "PE(TTM)137.81 → PE>80 −5"
      },
      "pb": {
       "score": 0.0,
-      "detail": "PB5.78 → PB 1.5–8 +0"
+      "detail": "PB5.79 → PB 1.5–8 +0"
      }
     }
    },
@@ -3509,7 +3509,7 @@
    "atr": 0.027,
    "ma20": 0.674,
    "ma60": 0.678,
-   "volume_ratio": 2.28,
+   "volume_ratio": 2.25,
    "scores": {
     "trend": 55.2,
     "longterm": 22.7,
@@ -3526,7 +3526,7 @@
    "signals": [
     "均线多头排列 15/15；MA20 上行 10/10",
     "未突破20日高点0.728 0/15；RS强于沪深300 +4.3pct 10/15",
-    "突破放量(量比2.3) 15/15",
+    "突破放量(量比2.2) 15/15",
     "沪深300空头(大盘滤网不通过) 0/8；股价处于长周期空头区 0/7",
     "距52周高点0.944 -28%"
    ],
@@ -3542,7 +3542,7 @@
      },
      "volume": {
       "score": 15.0,
-      "detail": "突破放量(量比2.3) 15/15"
+      "detail": "突破放量(量比2.2) 15/15"
      },
      "filter": {
       "score": 0.0,
@@ -3634,15 +3634,15 @@
    "atr": 18.758,
    "ma20": 383.624,
    "ma60": 433.589,
-   "volume_ratio": 1.19,
+   "volume_ratio": 1.17,
    "scores": {
-    "trend": 18.9,
+    "trend": 18.8,
     "longterm": 45.0,
     "divergence": 30.0,
     "fundamental": 85.0,
     "exit": null
    },
-   "score": 18.9,
+   "score": 18.8,
    "lscore": 45.0,
    "dscore": 30.0,
    "fscore": 85.0,
@@ -3666,7 +3666,7 @@
       "detail": "未突破20日高点413.43 0/15；RS弱于沪深300 -2.5pct 5/15"
      },
      "volume": {
-      "score": 5.9,
+      "score": 5.8,
       "detail": "量能不足(量比1.2) 0/15"
      },
      "filter": {
@@ -3737,11 +3737,11 @@
      },
      "pe": {
       "score": 0.0,
-      "detail": "PE(TTM)32.05 → PE 30–80 +0"
+      "detail": "PE(TTM)32.12 → PE 30–80 +0"
      },
      "pb": {
       "score": 0.0,
-      "detail": "PB6.78 → PB 1.5–8 +0"
+      "detail": "PB6.8 → PB 1.5–8 +0"
      }
     }
    },
@@ -3759,7 +3759,7 @@
    "atr": 0.226,
    "ma20": 5.708,
    "ma60": 6.063,
-   "volume_ratio": 1.42,
+   "volume_ratio": 1.4,
    "scores": {
     "trend": 33.0,
     "longterm": 24.2,
@@ -3862,11 +3862,11 @@
      },
      "pe": {
       "score": 5.0,
-      "detail": "PE(TTM)27.48 → PE 15–30 +5"
+      "detail": "PE(TTM)27.58 → PE 15–30 +5"
      },
      "pb": {
       "score": 0.0,
-      "detail": "PB1.62 → PB 1.5–8 +0"
+      "detail": "PB1.63 → PB 1.5–8 +0"
      }
     }
    },
@@ -3884,7 +3884,7 @@
    "atr": 0.019,
    "ma20": 0.616,
    "ma60": 0.649,
-   "volume_ratio": 2.34,
+   "volume_ratio": 2.31,
    "scores": {
     "trend": 59.3,
     "longterm": 34.4,
@@ -4009,7 +4009,7 @@
    "atr": 2.631,
    "ma20": 56.391,
    "ma60": null,
-   "volume_ratio": 1.24,
+   "volume_ratio": 1.23,
    "scores": {
     "trend": 36.0,
     "longterm": 37.0,
@@ -4112,11 +4112,11 @@
      },
      "pe": {
       "score": 0.0,
-      "detail": "PE(TTM)44.88 → PE 30–80 +0"
+      "detail": "PE(TTM)44.95 → PE 30–80 +0"
      },
      "pb": {
       "score": -5.0,
-      "detail": "PB18.27 → PB>8 −5"
+      "detail": "PB18.29 → PB>8 −5"
      }
     }
    },
@@ -4134,24 +4134,24 @@
    "atr": 1.345,
    "ma20": 37.888,
    "ma60": 35.46,
-   "volume_ratio": 1.5,
+   "volume_ratio": 1.47,
    "scores": {
-    "trend": 77.0,
+    "trend": 70.0,
     "longterm": 48.6,
     "divergence": 20.0,
     "fundamental": 80.0,
     "exit": null
    },
-   "score": 77.0,
+   "score": 70.0,
    "lscore": 48.6,
    "dscore": 20.0,
    "fscore": 80.0,
-   "status": "强势",
-   "advice": "趋势完好, 回踩MA20不破可介入或持有",
+   "status": "转强",
+   "advice": "趋势转强, 可分批跟进, 守好止损",
    "signals": [
     "均线多头排列 15/15；MA20 上行 10/10",
     "未突破20日高点41.18 0/15；RS强于沪深300 +14.5pct 15/15",
-    "突破放量(量比1.5) 15/15",
+    "放量但未突破(量比1.5) 8/15",
     "沪深300空头(大盘滤网不通过) 0/8；股价处于长周期多头区 7/7",
     "距52周高点43.055 -12%"
    ],
@@ -4166,8 +4166,8 @@
       "detail": "未突破20日高点41.18 0/15；RS强于沪深300 +14.5pct 15/15"
      },
      "volume": {
-      "score": 15.0,
-      "detail": "突破放量(量比1.5) 15/15"
+      "score": 8.0,
+      "detail": "放量但未突破(量比1.5) 8/15"
      },
      "filter": {
       "score": 7.0,
@@ -4237,11 +4237,11 @@
      },
      "pe": {
       "score": 5.0,
-      "detail": "PE(TTM)20.47 → PE 15–30 +5"
+      "detail": "PE(TTM)20.51 → PE 15–30 +5"
      },
      "pb": {
       "score": 0.0,
-      "detail": "PB1.88 → PB 1.5–8 +0"
+      "detail": "PB1.89 → PB 1.5–8 +0"
      }
     }
    },
@@ -4259,7 +4259,7 @@
    "atr": 10.654,
    "ma20": 329.474,
    "ma60": 364.825,
-   "volume_ratio": 1.35,
+   "volume_ratio": 1.33,
    "scores": {
     "trend": 8.0,
     "longterm": 77.7,
@@ -4276,7 +4276,7 @@
    "signals": [
     "均线空头排列 0/15；MA20 走平/下行 0/10",
     "未突破20日高点371.25 0/15；RS弱于沪深300 -17.2pct 0/15",
-    "放量但未突破(量比1.4) 8/15",
+    "放量但未突破(量比1.3) 8/15",
     "沪深300空头(大盘滤网不通过) 0/8；股价处于长周期空头区 0/7",
     "距52周高点467.348 -37%"
    ],
@@ -4292,7 +4292,7 @@
      },
      "volume": {
       "score": 8.0,
-      "detail": "放量但未突破(量比1.4) 8/15"
+      "detail": "放量但未突破(量比1.3) 8/15"
      },
      "filter": {
       "score": 0.0,
@@ -4384,7 +4384,7 @@
    "atr": 47.957,
    "ma20": 884.955,
    "ma60": 957.969,
-   "volume_ratio": 2.1,
+   "volume_ratio": 2.08,
    "scores": {
     "trend": 55.0,
     "longterm": 45.0,
@@ -4487,11 +4487,11 @@
      },
      "pe": {
       "score": 0.0,
-      "detail": "PE(TTM)47 → PE 30–80 +0"
+      "detail": "PE(TTM)47.13 → PE 30–80 +0"
      },
      "pb": {
       "score": -5.0,
-      "detail": "PB24.12 → PB>8 −5"
+      "detail": "PB24.18 → PB>8 −5"
      }
     }
    },
@@ -4509,7 +4509,7 @@
    "atr": 1.098,
    "ma20": 31.73,
    "ma60": 38.189,
-   "volume_ratio": 2.29,
+   "volume_ratio": 2.26,
    "scores": {
     "trend": 17.0,
     "longterm": 73.3,
@@ -4612,7 +4612,7 @@
      },
      "pe": {
       "score": 10.0,
-      "detail": "PE(TTM)6.38 → PE≤15 +10"
+      "detail": "PE(TTM)6.39 → PE≤15 +10"
      },
      "pb": {
       "score": null,
@@ -4634,15 +4634,15 @@
    "atr": 3.93,
    "ma20": 109.235,
    "ma60": 114.068,
-   "volume_ratio": 0.94,
+   "volume_ratio": 0.92,
    "scores": {
-    "trend": 17.7,
+    "trend": 17.6,
     "longterm": 73.1,
     "divergence": 50.0,
     "fundamental": 55.0,
     "exit": null
    },
-   "score": 17.7,
+   "score": 17.6,
    "lscore": 73.1,
    "dscore": 50.0,
    "fscore": 55.0,
@@ -4666,7 +4666,7 @@
       "detail": "未突破20日高点118.3 0/15；RS弱于沪深300 -0.7pct 5/15"
      },
      "volume": {
-      "score": 4.7,
+      "score": 4.6,
       "detail": "量能不足(量比0.9) 0/15"
      },
      "filter": {
@@ -4759,7 +4759,7 @@
    "atr": 0.145,
    "ma20": 8.088,
    "ma60": 7.782,
-   "volume_ratio": 1.64,
+   "volume_ratio": 1.61,
    "scores": {
     "trend": 78.0,
     "longterm": 44.8,
@@ -4884,7 +4884,7 @@
    "atr": 0.242,
    "ma20": 8.033,
    "ma60": 8.011,
-   "volume_ratio": 3.41,
+   "volume_ratio": 3.36,
    "scores": {
     "trend": 43.0,
     "longterm": 63.2,
@@ -4987,7 +4987,7 @@
      },
      "pe": {
       "score": -5.0,
-      "detail": "PE(TTM)287.3 → PE>80 −5"
+      "detail": "PE(TTM)287.65 → PE>80 −5"
      },
      "pb": {
       "score": 0.0,
@@ -5009,7 +5009,7 @@
    "atr": 2.569,
    "ma20": 91.226,
    "ma60": 95.395,
-   "volume_ratio": 0.85,
+   "volume_ratio": 0.84,
    "scores": {
     "trend": 22.2,
     "longterm": 66.9,
@@ -5112,7 +5112,7 @@
      },
      "pe": {
       "score": 5.0,
-      "detail": "PE(TTM)25.44 → PE 15–30 +5"
+      "detail": "PE(TTM)25.45 → PE 15–30 +5"
      },
      "pb": {
       "score": 0.0,
@@ -5134,15 +5134,15 @@
    "atr": 1.123,
    "ma20": 35.584,
    "ma60": 37.86,
-   "volume_ratio": 1.15,
+   "volume_ratio": 1.13,
    "scores": {
-    "trend": 23.8,
+    "trend": 23.6,
     "longterm": 66.2,
     "divergence": 30.0,
     "fundamental": 55.0,
     "exit": null
    },
-   "score": 23.8,
+   "score": 23.6,
    "lscore": 66.2,
    "dscore": 30.0,
    "fscore": 55.0,
@@ -5166,7 +5166,7 @@
       "detail": "未突破20日高点37.25 0/15；RS强于沪深300 +2.1pct 10/15"
      },
      "volume": {
-      "score": 5.8,
+      "score": 5.6,
       "detail": "量能不足(量比1.1) 0/15"
      },
      "filter": {
@@ -5237,11 +5237,11 @@
      },
      "pe": {
       "score": 0.0,
-      "detail": "PE(TTM)37.44 → PE 30–80 +0"
+      "detail": "PE(TTM)37.49 → PE 30–80 +0"
      },
      "pb": {
       "score": 0.0,
-      "detail": "PB4.6 → PB 1.5–8 +0"
+      "detail": "PB4.61 → PB 1.5–8 +0"
      }
     }
    },
@@ -5259,7 +5259,7 @@
    "atr": 0.01,
    "ma20": 0.559,
    "ma60": 0.586,
-   "volume_ratio": 1.53,
+   "volume_ratio": 1.5,
    "scores": {
     "trend": 20.0,
     "longterm": 73.3,
@@ -5384,7 +5384,7 @@
    "atr": 7.336,
    "ma20": 120.374,
    "ma60": 118.568,
-   "volume_ratio": 1.21,
+   "volume_ratio": 1.2,
    "scores": {
     "trend": 57.5,
     "longterm": 39.0,
@@ -5487,11 +5487,11 @@
      },
      "pe": {
       "score": 0.0,
-      "detail": "PE(TTM)70.13 → PE 30–80 +0"
+      "detail": "PE(TTM)70.48 → PE 30–80 +0"
      },
      "pb": {
       "score": -5.0,
-      "detail": "PB10.26 → PB>8 −5"
+      "detail": "PB10.31 → PB>8 −5"
      }
     }
    },
@@ -5509,15 +5509,15 @@
    "atr": 0.355,
    "ma20": 18.747,
    "ma60": 19.471,
-   "volume_ratio": 1.51,
+   "volume_ratio": 1.49,
    "scores": {
-    "trend": 20.0,
+    "trend": 13.0,
     "longterm": 80.0,
     "divergence": 40.0,
     "fundamental": 90.0,
     "exit": null
    },
-   "score": 20.0,
+   "score": 13.0,
    "lscore": 80.0,
    "dscore": 40.0,
    "fscore": 90.0,
@@ -5526,7 +5526,7 @@
    "signals": [
     "均线空头排列 0/15；MA20 走平/下行 0/10",
     "未突破20日高点19.65 0/15；RS弱于沪深300 -2.7pct 5/15",
-    "突破放量(量比1.5) 15/15",
+    "放量但未突破(量比1.5) 8/15",
     "沪深300空头(大盘滤网不通过) 0/8；股价处于长周期空头区 0/7",
     "距52周高点28.4 -36%"
    ],
@@ -5541,8 +5541,8 @@
       "detail": "未突破20日高点19.65 0/15；RS弱于沪深300 -2.7pct 5/15"
      },
      "volume": {
-      "score": 15.0,
-      "detail": "突破放量(量比1.5) 15/15"
+      "score": 8.0,
+      "detail": "放量但未突破(量比1.5) 8/15"
      },
      "filter": {
       "score": 0.0,
@@ -5612,7 +5612,7 @@
      },
      "pe": {
       "score": 5.0,
-      "detail": "PE(TTM)19.42 → PE 15–30 +5"
+      "detail": "PE(TTM)19.44 → PE 15–30 +5"
      },
      "pb": {
       "score": 0.0,
@@ -5634,7 +5634,7 @@
    "atr": 1.464,
    "ma20": 55.823,
    "ma60": 60.126,
-   "volume_ratio": 1.77,
+   "volume_ratio": 1.74,
    "scores": {
     "trend": 15.0,
     "longterm": 68.1,
@@ -5651,7 +5651,7 @@
    "signals": [
     "均线空头排列 0/15；MA20 走平/下行 0/10",
     "未突破20日高点62.67 0/15；RS弱于沪深300 -12.4pct 0/15",
-    "突破放量(量比1.8) 15/15",
+    "突破放量(量比1.7) 15/15",
     "沪深300空头(大盘滤网不通过) 0/8；股价处于长周期空头区 0/7",
     "距52周高点90.5 -43%"
    ],
@@ -5667,7 +5667,7 @@
      },
      "volume": {
       "score": 15.0,
-      "detail": "突破放量(量比1.8) 15/15"
+      "detail": "突破放量(量比1.7) 15/15"
      },
      "filter": {
       "score": 0.0,
@@ -5737,7 +5737,7 @@
      },
      "pe": {
       "score": 5.0,
-      "detail": "PE(TTM)29.22 → PE 15–30 +5"
+      "detail": "PE(TTM)29.24 → PE 15–30 +5"
      },
      "pb": {
       "score": 0.0,
@@ -5759,7 +5759,7 @@
    "atr": 0.647,
    "ma20": 40.902,
    "ma60": 39.325,
-   "volume_ratio": 1.48,
+   "volume_ratio": 1.46,
    "scores": {
     "trend": 63.0,
     "longterm": 49.0,
@@ -5862,7 +5862,7 @@
      },
      "pe": {
       "score": 10.0,
-      "detail": "PE(TTM)6.76 → PE≤15 +10"
+      "detail": "PE(TTM)6.77 → PE≤15 +10"
      },
      "pb": {
       "score": 5.0,
@@ -5884,7 +5884,7 @@
    "atr": 25.16,
    "ma20": 425.981,
    "ma60": 435.436,
-   "volume_ratio": 1.71,
+   "volume_ratio": 1.68,
    "scores": {
     "trend": 48.0,
     "longterm": 21.1,
@@ -5987,7 +5987,7 @@
      },
      "pe": {
       "score": -5.0,
-      "detail": "PE(TTM)136418 → PE>80 −5"
+      "detail": "PE(TTM)136398 → PE>80 −5"
      },
      "pb": {
       "score": -5.0,
@@ -6009,15 +6009,15 @@
    "atr": 1.136,
    "ma20": 20.508,
    "ma60": 20.531,
-   "volume_ratio": 0.98,
+   "volume_ratio": 0.97,
    "scores": {
-    "trend": 13.4,
+    "trend": 13.3,
     "longterm": 17.6,
     "divergence": 20.0,
     "fundamental": 25.0,
     "exit": null
    },
-   "score": 13.4,
+   "score": 13.3,
    "lscore": 17.6,
    "dscore": 20.0,
    "fscore": 25.0,
@@ -6041,7 +6041,7 @@
       "detail": "未突破20日高点24.35 0/15；RS弱于沪深300 -11.9pct 0/15"
      },
      "volume": {
-      "score": 4.9,
+      "score": 4.8,
       "detail": "量能不足(量比1.0) 0/15"
      },
      "filter": {
@@ -6112,7 +6112,7 @@
      },
      "pe": {
       "score": -5.0,
-      "detail": "PE(TTM)325.62 → PE>80 −5"
+      "detail": "PE(TTM)325.97 → PE>80 −5"
      },
      "pb": {
       "score": 0.0,

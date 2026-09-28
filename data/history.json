@@ -8460,7 +8460,7 @@
       },
       "pe": {
        "score": 0.0,
-       "detail": "PE(TTM)37.56 → PE 30–80 +0"
+       "detail": "PE(TTM)37.58 → PE 30–80 +0"
       },
       "pb": {
        "score": null,
@@ -8554,11 +8554,11 @@
       },
       "pe": {
        "score": 5.0,
-       "detail": "PE(TTM)25.87 → PE 15–30 +5"
+       "detail": "PE(TTM)25.9 → PE 15–30 +5"
       },
       "pb": {
        "score": 0.0,
-       "detail": "PB3.16 → PB 1.5–8 +0"
+       "detail": "PB3.17 → PB 1.5–8 +0"
       }
      }
     },
@@ -8574,7 +8574,7 @@
       },
       "volume": {
        "score": 8.0,
-       "detail": "放量但未突破(量比1.3) 8/15"
+       "detail": "放量但未突破(量比1.5) 8/15"
       },
       "filter": {
        "score": 7.0,
@@ -8648,11 +8648,11 @@
       },
       "pe": {
        "score": 5.0,
-       "detail": "PE(TTM)16.12 → PE 15–30 +5"
+       "detail": "PE(TTM)16.14 → PE 15–30 +5"
       },
       "pb": {
-       "score": 5.0,
-       "detail": "PB1.49 → PB<1.5 +5"
+       "score": 0.0,
+       "detail": "PB1.5 → PB 1.5–8 +0"
       }
      }
     },
@@ -8836,11 +8836,11 @@
       },
       "pe": {
        "score": 10.0,
-       "detail": "PE(TTM)13.69 → PE≤15 +10"
+       "detail": "PE(TTM)13.72 → PE≤15 +10"
       },
       "pb": {
        "score": 0.0,
-       "detail": "PB2.79 → PB 1.5–8 +0"
+       "detail": "PB2.8 → PB 1.5–8 +0"
       }
      }
     },
