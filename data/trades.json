@@ -454,6 +454,102 @@
    "fee": 0,
    "type": "normal",
    "note": "新买入（价格按截图摊薄成本折算，成交日/成交价请核对）"
+  },
+  {
+   "date": "2026-09-29",
+   "side": "sell",
+   "code": "06082.HK",
+   "name": "壁仞科技",
+   "shares": 1000,
+   "price": 36.6664,
+   "currency": "HKD",
+   "fee": 0,
+   "type": "normal",
+   "note": "清仓（价格按券商清仓盈亏 +696.96 反推）"
+  },
+  {
+   "date": "2026-10-08",
+   "side": "sell",
+   "code": "561980.SH",
+   "name": "半导体设备ETF",
+   "shares": 80000,
+   "price": 0.6099,
+   "currency": "CNY",
+   "fee": 0,
+   "type": "normal",
+   "note": "清仓（价格按券商清仓盈亏 -5,702.04 反推）"
+  },
+  {
+   "date": "2026-10-09",
+   "side": "sell",
+   "code": "600941.SH",
+   "name": "中国移动",
+   "shares": 100,
+   "price": 78.8694,
+   "currency": "CNY",
+   "fee": 0,
+   "type": "normal",
+   "note": "减仓100股（成交价未知，按最早批次成本入账）"
+  },
+  {
+   "date": "2026-10-09",
+   "side": "buy",
+   "code": "00700.HK",
+   "name": "腾讯控股",
+   "shares": 100,
+   "price": 413.8845,
+   "currency": "HKD",
+   "fee": 0,
+   "type": "normal",
+   "note": "价格由前后摊薄成本反推（成交价请核对）"
+  },
+  {
+   "date": "2026-10-09",
+   "side": "buy",
+   "code": "09888.HK",
+   "name": "百度集团-W",
+   "shares": 150,
+   "price": 82.0907,
+   "currency": "HKD",
+   "fee": 0,
+   "type": "normal",
+   "note": "价格由前后摊薄成本反推（成交价请核对）"
+  },
+  {
+   "date": "2026-10-09",
+   "side": "buy",
+   "code": "002558.SZ",
+   "name": "巨人网络",
+   "shares": 1500,
+   "price": 22.1935,
+   "currency": "CNY",
+   "fee": 0,
+   "type": "normal",
+   "note": "价格由前后摊薄成本反推（成交价请核对）"
+  },
+  {
+   "date": "2026-10-09",
+   "side": "buy",
+   "code": "516010.SH",
+   "name": "游戏ETF国泰",
+   "shares": 10000,
+   "price": 1.0236,
+   "currency": "CNY",
+   "fee": 0,
+   "type": "normal",
+   "note": "价格由前后摊薄成本反推（成交价请核对）"
+  },
+  {
+   "date": "2026-10-09",
+   "side": "buy",
+   "code": "600875.SH",
+   "name": "东方电气",
+   "shares": 800,
+   "price": 23.2802,
+   "currency": "CNY",
+   "fee": 0,
+   "type": "normal",
+   "note": "价格由前后摊薄成本反推（成交价请核对）"
   }
  ]
 }

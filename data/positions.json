@@ -1,27 +1,37 @@
 {
  "version": "1.1",
- "as_of": "2026-09-28",
- "note": "2026-09-28 按截图更新：新增壁仞科技1000股（港股）；其余8只数量成本未变。持仓9只。",
+ "as_of": "2026-10-09",
+ "note": "2026-10-09 按截图更新：清仓壁仞科技(9/29)、半导体设备ETF(10/8)；腾讯加至500股、百度1100股、巨人网络3000股、游戏ETF 40000股、东方电气1200股、中国移动减至500股；巨人网络与游戏ETF改为长线持仓。持仓7只。",
  "holdings": [
   {
    "code": "00700.HK",
    "name": "腾讯控股",
    "template": "longterm",
-   "shares": 400,
-   "cost": 437.1473,
+   "shares": 500,
+   "cost": 432.4948,
    "currency": "HKD",
    "market": null,
-   "note": "2026-09-28 截图：400股，成本按截图 CNY 375.9467 折回"
+   "note": "2026-10-09 加仓至500股；成本按截图折回"
   },
   {
    "code": "09888.HK",
    "name": "百度集团-W",
    "template": "longterm",
-   "shares": 950,
-   "cost": 90.2256,
+   "shares": 1100,
+   "cost": 89.1163,
    "currency": "HKD",
    "market": null,
-   "note": "2026-09-28 加仓至950股（+100），成本按截图折回"
+   "note": "2026-10-09 加仓至1100股；成本按截图折回"
+  },
+  {
+   "code": "002558.SZ",
+   "name": "巨人网络",
+   "template": "longterm",
+   "shares": 3000,
+   "cost": 22.9304,
+   "currency": "CNY",
+   "market": null,
+   "note": "2026-10-09 加仓至3000股；**改为长线持仓**（用户指示）"
   },
   {
    "code": "002472.SZ",
@@ -31,67 +41,37 @@
    "cost": 33.9569,
    "currency": "CNY",
    "market": null,
-   "note": "2026-09-28 减仓至1700股（-300）"
+   "note": "2026-10-09 未变"
   },
   {
    "code": "600941.SH",
    "name": "中国移动",
    "template": "longterm",
-   "shares": 600,
-   "cost": 75.8593,
+   "shares": 500,
+   "cost": 68.4311,
    "currency": "CNY",
    "market": null,
-   "note": "2026-09-28 未变；9/29 股权登记、9/30 除权（每股2.51元）"
-  },
-  {
-   "code": "561980.SH",
-   "name": "半导体设备ETF",
-   "template": "trend",
-   "shares": 80000,
-   "cost": 0.6812,
-   "currency": "CNY",
-   "market": null,
-   "note": "2026-09-28 加仓至80000股（+20000）"
-  },
-  {
-   "code": "002558.SZ",
-   "name": "巨人网络",
-   "template": "trend",
-   "shares": 1500,
-   "cost": 23.6673,
-   "currency": "CNY",
-   "market": null,
-   "note": "2026-09-28 新买入（游戏板块，趋势模板）"
+   "note": "2026-10-09 减仓至500股（-100）"
   },
   {
    "code": "516010.SH",
    "name": "游戏ETF国泰",
-   "template": "trend",
-   "shares": 30000,
-   "cost": 1.07,
+   "template": "longterm",
+   "shares": 40000,
+   "cost": 1.0584,
    "currency": "CNY",
    "market": null,
-   "note": "2026-09-28 加仓至30000股（+20000）"
+   "note": "2026-10-09 加仓至40000股；**改为长线持仓**（用户指示）"
   },
   {
    "code": "600875.SH",
    "name": "东方电气",
    "template": "longterm",
-   "shares": 400,
-   "cost": 22.7927,
+   "shares": 1200,
+   "cost": 23.1177,
    "currency": "CNY",
    "market": null,
-   "note": "2026-09-28 新买入（原自选价值组）"
-  },
-  {
-   "code": "06082.HK",
-   "name": "壁仞科技",
-   "template": "longterm",
-   "shares": 1000,
-   "cost": 35.8559,
-   "currency": "HKD",
-   "market": null,
-   "note": "2026-09-28 新买入（港股，AI芯片；成本按截图 CNY 30.8361 折回）"
+   "note": "2026-10-09 加仓至1200股"
   }
  ],
  "watchlist": [
@@ -271,6 +251,18 @@
    "name": "麦迪科技",
    "group": "周期",
    "note": "2026-09-28 清仓后加回观察"
+  },
+  {
+   "code": "06082.HK",
+   "name": "壁仞科技",
+   "group": "AI产业链",
+   "note": "2026-09-29 清仓后加回观察"
+  },
+  {
+   "code": "561980.SH",
+   "name": "半导体设备ETF",
+   "group": "AI产业链",
+   "note": "2026-10-08 清仓后加回观察"
   }
  ]
 }

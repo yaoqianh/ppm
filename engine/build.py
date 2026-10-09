@@ -571,6 +571,7 @@ def build_dashboard(verbose: bool = True, backfill: bool = True, force: bool = F
         "longterm": ("longterm", "长线价值"),
         "trend": ("trend", "中线波段"),
     }
+    STYLE_OF_DEFAULT_NAMES = {"longterm": "长线价值", "trend": "中线波段", "other": "其他"}
     style_map: Dict[str, dict] = {}
     for x in out_holdings:
         key, label = STYLE_OF.get(x.get("template"), ("other", "其他"))
@@ -583,8 +584,13 @@ def build_dashboard(verbose: bool = True, backfill: bool = True, force: bool = F
     style_split = []
     for key in ("longterm", "trend", "other"):
         s = style_map.get(key)
-        if not s:
-            continue
+        if s is None:
+            # 长线/中线这两类即使当期没有持仓也保留一行（显示 0%），
+            # 这样"结构"卡片always能一眼看出两类仓位比例，不会因为某类清空而消失
+            if key == "other":
+                continue
+            s = {"key": key, "name": STYLE_OF_DEFAULT_NAMES[key], "count": 0,
+                 "mv": 0.0, "pnl_amt": 0.0, "codes": []}
         s["mv"] = _round(s["mv"], 0)
         s["pnl_amt"] = _round(s["pnl_amt"], 0)
         s["pct"] = _round(s["mv"] / total_mv * 100, 1) if total_mv else None
