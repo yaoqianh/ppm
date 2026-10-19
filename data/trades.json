@@ -204,6 +204,42 @@
    "note": "新买入（价格按截图摊薄成本折算，成交价请核对）"
   },
   {
+   "date": "2026-09-13",
+   "side": "sell",
+   "code": "300059.SZ",
+   "name": "东方财富",
+   "shares": 2000,
+   "price": 19.2242,
+   "currency": "CNY",
+   "fee": 0,
+   "type": "normal",
+   "note": "持仓核对校准（成交价未知，按成本入账以免虚增已实现盈亏）"
+  },
+  {
+   "date": "2026-09-13",
+   "side": "sell",
+   "code": "300408.SZ",
+   "name": "三环集团",
+   "shares": 200,
+   "price": 98.3007,
+   "currency": "CNY",
+   "fee": 0,
+   "type": "normal",
+   "note": "持仓核对校准（成交价未知，按成本入账以免虚增已实现盈亏）"
+  },
+  {
+   "date": "2026-09-16",
+   "side": "buy",
+   "code": "688502.SH",
+   "name": "茂莱光学",
+   "shares": 200,
+   "price": 417.0523,
+   "currency": "CNY",
+   "fee": 0,
+   "type": "baseline",
+   "note": "迁移基线（按持仓摊薄成本补录，成交价请核对）"
+  },
+  {
    "date": "2026-09-18",
    "side": "buy",
    "code": "00700.HK",
@@ -228,18 +264,6 @@
    "note": "迁移基线（按持仓摊薄成本补录，成交价请核对）"
   },
   {
-   "date": "2026-09-24",
-   "side": "buy",
-   "code": "002558.SZ",
-   "name": "巨人网络",
-   "shares": 1000,
-   "price": 24.011,
-   "currency": "CNY",
-   "fee": 0,
-   "type": "baseline",
-   "note": "迁移基线（按持仓摊薄成本补录，成交价请核对）"
-  },
-  {
    "date": "2026-09-18",
    "side": "buy",
    "code": "516010.SH",
@@ -258,18 +282,6 @@
    "name": "半导体设备ETF",
    "shares": 60000,
    "price": 0.688162,
-   "currency": "CNY",
-   "fee": 0,
-   "type": "baseline",
-   "note": "迁移基线（按持仓摊薄成本补录，成交价请核对）"
-  },
-  {
-   "date": "2026-09-16",
-   "side": "buy",
-   "code": "688502.SH",
-   "name": "茂莱光学",
-   "shares": 200,
-   "price": 417.0523,
    "currency": "CNY",
    "fee": 0,
    "type": "baseline",
@@ -300,28 +312,16 @@
    "note": "迁移基线（按持仓摊薄成本补录，成交价请核对）"
   },
   {
-   "date": "2026-09-13",
-   "side": "sell",
-   "code": "300059.SZ",
-   "name": "东方财富",
-   "shares": 2000,
-   "price": 19.2242,
+   "date": "2026-09-24",
+   "side": "buy",
+   "code": "002558.SZ",
+   "name": "巨人网络",
+   "shares": 1000,
+   "price": 24.011,
    "currency": "CNY",
    "fee": 0,
-   "type": "normal",
-   "note": "持仓核对校准（成交价未知，按成本入账以免虚增已实现盈亏）"
-  },
-  {
-   "date": "2026-09-13",
-   "side": "sell",
-   "code": "300408.SZ",
-   "name": "三环集团",
-   "shares": 200,
-   "price": 98.3007,
-   "currency": "CNY",
-   "fee": 0,
-   "type": "normal",
-   "note": "持仓核对校准（成交价未知，按成本入账以免虚增已实现盈亏）"
+   "type": "baseline",
+   "note": "迁移基线（按持仓摊薄成本补录，成交价请核对）"
   },
   {
    "date": "2026-09-24",
@@ -550,6 +550,102 @@
    "fee": 0,
    "type": "normal",
    "note": "价格由前后摊薄成本反推（成交价请核对）"
+  },
+  {
+   "date": "2026-10-13",
+   "side": "buy",
+   "code": "09888.HK",
+   "name": "百度集团-W",
+   "shares": 50,
+   "price": 81.5985,
+   "currency": "HKD",
+   "fee": 0,
+   "type": "normal",
+   "note": "价格由前后摊薄成本反推（成交日/成交价请核对）"
+  },
+  {
+   "date": "2026-10-13",
+   "side": "buy",
+   "code": "516010.SH",
+   "name": "游戏ETF国泰",
+   "shares": 5000,
+   "price": 0.9999,
+   "currency": "CNY",
+   "fee": 0,
+   "type": "normal",
+   "note": "价格由前后摊薄成本反推（成交日/成交价请核对）"
+  },
+  {
+   "date": "2026-10-13",
+   "side": "sell",
+   "code": "600875.SH",
+   "name": "东方电气",
+   "shares": 1200,
+   "price": 23.1135,
+   "currency": "CNY",
+   "fee": 0,
+   "type": "normal",
+   "note": "清仓（成交价未提供，按成本入账以免虚增盈亏）"
+  },
+  {
+   "date": "2026-10-20",
+   "side": "buy",
+   "code": "09888.HK",
+   "name": "百度集团-W",
+   "shares": 150,
+   "price": 78.4469,
+   "currency": "HKD",
+   "fee": 0,
+   "type": "normal",
+   "note": "价格由前后摊薄成本反推（成交日/成交价请核对）"
+  },
+  {
+   "date": "2026-10-20",
+   "side": "buy",
+   "code": "002558.SZ",
+   "name": "巨人网络",
+   "shares": 1000,
+   "price": 21.4904,
+   "currency": "CNY",
+   "fee": 0,
+   "type": "normal",
+   "note": "价格由前后摊薄成本反推（成交日/成交价请核对）"
+  },
+  {
+   "date": "2026-10-20",
+   "side": "buy",
+   "code": "06082.HK",
+   "name": "壁仞科技",
+   "shares": 1200,
+   "price": 27.9121,
+   "currency": "HKD",
+   "fee": 0,
+   "type": "normal",
+   "note": "价格由前后摊薄成本反推（成交日/成交价请核对）"
+  },
+  {
+   "date": "2026-10-20",
+   "side": "buy",
+   "code": "002472.SZ",
+   "name": "双环传动",
+   "shares": 300,
+   "price": 32.8,
+   "currency": "CNY",
+   "fee": 0,
+   "type": "normal",
+   "note": "2026-10 双环先低位加仓300股、后减仓500股（成交价按成本变动反解，请核对）"
+  },
+  {
+   "date": "2026-10-20",
+   "side": "sell",
+   "code": "002472.SZ",
+   "name": "双环传动",
+   "shares": 500,
+   "price": 35.7636,
+   "currency": "CNY",
+   "fee": 0,
+   "type": "normal",
+   "note": "2026-10 双环先低位加仓300股、后减仓500股（成交价按成本变动反解，请核对）"
   }
  ]
 }
