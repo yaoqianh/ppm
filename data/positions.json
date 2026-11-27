@@ -1,77 +1,97 @@
 {
  "version": "1.1",
- "as_of": "2026-10-20",
- "note": "2026-10-20 按截图更新：重新买入壁仞科技1200股；百度加至1300股、巨人网络加至4000股；双环传动减至1500股；腾讯500/中国移动500/游戏ETF 45000份未变。持仓7只。",
+ "as_of": "2026-11-27",
+ "note": "2026-11-27 按截图更新：新买紫金矿业4000股、红利低波ETF易方达28000份、科创创业ETF易方达44000份；腾讯加至900股、巨人网络5000股、游戏ETF 50000份；百度减至1000股、双环减至100股、中国移动减至100股；壁仞科技11/25清仓。持仓9只。",
  "holdings": [
   {
    "code": "00700.HK",
    "name": "腾讯控股",
    "template": "longterm",
-   "shares": 500,
-   "cost": 432.4948,
+   "shares": 900,
+   "cost": 405.474,
    "currency": "HKD",
    "market": null,
-   "note": "2026-10-20 未变（500股）"
+   "note": "2026-11-27 加仓至900股（+400）"
   },
   {
    "code": "09888.HK",
    "name": "百度集团-W",
    "template": "longterm",
-   "shares": 1300,
-   "cost": 87.596,
+   "shares": 1000,
+   "cost": 90.8159,
    "currency": "HKD",
    "market": null,
-   "note": "2026-10-20 加仓至1300股（+150）"
+   "note": "2026-11-27 减仓至1000股（-300）"
   },
   {
    "code": "002558.SZ",
    "name": "巨人网络",
    "template": "longterm",
-   "shares": 4000,
-   "cost": 22.5704,
+   "shares": 5000,
+   "cost": 21.8703,
    "currency": "CNY",
    "market": null,
-   "note": "2026-10-20 加仓至4000股（+1000）"
-  },
-  {
-   "code": "002472.SZ",
-   "name": "双环传动",
-   "template": "longterm",
-   "shares": 1500,
-   "cost": 33.1233,
-   "currency": "CNY",
-   "market": null,
-   "note": "2026-10-20 减仓至1500股（-200）"
-  },
-  {
-   "code": "600941.SH",
-   "name": "中国移动",
-   "template": "longterm",
-   "shares": 500,
-   "cost": 68.4311,
-   "currency": "CNY",
-   "market": null,
-   "note": "2026-10-20 未变（500股）"
+   "note": "2026-11-27 加仓至5000股（+1000）"
   },
   {
    "code": "516010.SH",
    "name": "游戏ETF国泰",
    "template": "longterm",
-   "shares": 45000,
-   "cost": 1.0519,
+   "shares": 50000,
+   "cost": 1.0404,
    "currency": "CNY",
    "market": null,
-   "note": "2026-10-20 未变（45000份）"
+   "note": "2026-11-27 加仓至50000份（+5000）"
   },
   {
-   "code": "06082.HK",
-   "name": "壁仞科技",
+   "code": "002472.SZ",
+   "name": "双环传动",
    "template": "longterm",
-   "shares": 1200,
-   "cost": 27.9121,
-   "currency": "HKD",
+   "shares": 100,
+   "cost": -82.8039,
+   "currency": "CNY",
    "market": null,
-   "note": "2026-10-20 重新买入1200股（9/29曾清仓）；成本按截图 CNY 24.0044 折回"
+   "note": "2026-11-27 减仓至100股（-1400）；摊薄成本为负（累计盈利已超剩余成本）"
+  },
+  {
+   "code": "600941.SH",
+   "name": "中国移动",
+   "template": "longterm",
+   "shares": 100,
+   "cost": -52.1031,
+   "currency": "CNY",
+   "market": null,
+   "note": "2026-11-27 减仓至100股（-400）；摊薄成本为负"
+  },
+  {
+   "code": "601899.SH",
+   "name": "紫金矿业",
+   "template": "longterm",
+   "shares": 4000,
+   "cost": 26.1835,
+   "currency": "CNY",
+   "market": null,
+   "note": "2026-11-27 新买入（原自选价值组）"
+  },
+  {
+   "code": "563020.SH",
+   "name": "红利低波ETF易方达",
+   "template": "longterm",
+   "shares": 28000,
+   "cost": 1.2331,
+   "currency": "CNY",
+   "market": null,
+   "note": "2026-11-27 新买入"
+  },
+  {
+   "code": "159781.SZ",
+   "name": "科创创业ETF易方达",
+   "template": "longterm",
+   "shares": 44000,
+   "cost": 0.724,
+   "currency": "CNY",
+   "market": null,
+   "note": "2026-11-27 新买入（当日买 2000 在途，可用 42000）"
   }
  ],
  "watchlist": [
@@ -109,11 +129,6 @@
    "code": "603259.SH",
    "name": "药明康德",
    "group": "周期"
-  },
-  {
-   "code": "601899.SH",
-   "name": "紫金矿业",
-   "group": "价值"
   },
   {
    "code": "00100.HK",
@@ -263,6 +278,12 @@
    "name": "东方电气",
    "group": "价值",
    "note": "2026-10-13 清仓后加回观察"
+  },
+  {
+   "code": "06082.HK",
+   "name": "壁仞科技",
+   "group": "AI产业链",
+   "note": "2026-11-25 清仓后加回观察"
   }
  ]
 }

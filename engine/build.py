@@ -368,10 +368,21 @@ def build_dashboard(verbose: bool = True, backfill: bool = True, force: bool = F
         _last = _b[-1]
         _prev = _b[-2] if len(_b) > 1 else None
         _closed = not Q._in_session(_c)
-        _quote_is_latest = _rt.get("trade_date") == _last.get("date")
-        if _quote_is_latest and _closed and _rt.get("price"):
-            # 行情就是最后一根已收盘 K 线的当日行情：采用行情（含更细的当日涨跌口径）
-            _rt.setdefault("prev_close", (_prev or {}).get("close"))
+        _qd = _rt.get("trade_date") or ""
+        _last_date = _last.get("date") or ""
+        _quote_is_latest = _qd == _last_date
+        # 行情日期比最后一根 K 线更新 = 当天已收盘、但行情商的日线还没发布
+        # （港股收盘 16:00，日线常滞后数十分钟）。此时行情才是当天收盘价，
+        # 若退回 K 线就会用上一交易日的价格，等于把最大持仓的价格倒退一天。
+        _quote_is_newer = bool(_qd and _last_date and _qd > _last_date)
+        if (_quote_is_latest or _quote_is_newer) and _closed and _rt.get("price"):
+            if _quote_is_newer and _last.get("close"):
+                # 日线缺当天那根：昨收取 K 线最后一根，涨跌用行情价自算
+                _rt["prev_close"] = _last["close"]
+                _rt["change"] = _rt["price"] - _last["close"]
+                _rt["change_pct"] = (_rt["price"] / _last["close"] - 1) * 100
+            else:
+                _rt.setdefault("prev_close", (_prev or {}).get("close"))
             continue
         # 其余情况（盘前、盘中、行情落后）：用 K 线重构
         _rt["price"] = _last.get("close")
@@ -474,7 +485,9 @@ def build_dashboard(verbose: bool = True, backfill: bool = True, force: bool = F
         mv = close * shares * fx if close else None
         cost_amt = cost * shares * fx
         pnl_amt = (close - cost) * shares * fx if close else None
-        pnl_pct = ((close / cost - 1) * 100) if (close and cost) else None
+        # 券商的摊薄成本可能为负数（累计已实现盈利超过剩余成本，如双环/中国移动）。
+        # 此时收益率口径与券商一致：盈亏 / |成本|，否则正负号会反过来。
+        pnl_pct = (((close - cost) / abs(cost)) * 100) if (close and cost) else None
         day_pnl = ((close - prev_close) * shares * fx) if (close and prev_close) else None
 
         # 硬止损

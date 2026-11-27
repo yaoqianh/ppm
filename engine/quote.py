@@ -24,7 +24,13 @@ UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like 
 HEADERS = {"User-Agent": UA, "Referer": "https://gu.qq.com/"}
 
 REALTIME_URL = "https://qt.gtimg.cn/q="
-KLINE_URL = "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param="
+# 日线接口有多个等价域名。2026-11-27 起 web.ifzq.gtimg.cn 开始整段返回 HTTP 501，
+# 而 ifzq.gtimg.cn（无 web 前缀）仍然正常 —— 所以按顺序回退，不要写死单个域名。
+KLINE_HOSTS = [
+    "https://ifzq.gtimg.cn/appstock/app/fqkline/get?param=",
+    "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=",
+]
+KLINE_URL = KLINE_HOSTS[0]
 
 _TIMEOUT = 15
 _RETRIES = 2
@@ -283,13 +289,22 @@ def fetch_kline(code: str, days: int = 320) -> List[dict]:
     symbol = to_symbol(code)
 
     def _do():
-        txt = _http_get(_kline_url(symbol, days), encoding="utf-8")
-        js = json.loads(txt)
-        node = (js.get("data") or {}).get(symbol) or {}
-        rows = node.get("qfqday") or node.get("day")
-        if not rows and node.get("qt"):
-            rows = None
+        last_err = None
+        rows = None
+        for _base in KLINE_HOSTS:
+            try:
+                txt = _http_get(f"{_base}{symbol},day,,,{days},qfq", encoding="utf-8")
+                js = json.loads(txt)
+                node = (js.get("data") or {}).get(symbol) or {}
+                rows = node.get("qfqday") or node.get("day")
+                if rows:
+                    break
+            except Exception as e:
+                last_err = e
+                rows = None
         if not rows:
+            if last_err:
+                raise last_err
             return []
         out = []
         for r in rows:

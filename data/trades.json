@@ -646,6 +646,126 @@
    "fee": 0,
    "type": "normal",
    "note": "2026-10 双环先低位加仓300股、后减仓500股（成交价按成本变动反解，请核对）"
+  },
+  {
+   "date": "2026-11-27",
+   "side": "buy",
+   "code": "00700.HK",
+   "name": "腾讯控股",
+   "shares": 400,
+   "price": 371.6979,
+   "currency": "HKD",
+   "fee": 0,
+   "type": "normal",
+   "note": "价格由前后摊薄成本反推（成交日/成交价请核对）"
+  },
+  {
+   "date": "2026-11-27",
+   "side": "sell",
+   "code": "09888.HK",
+   "name": "百度集团-W",
+   "shares": 300,
+   "price": 76.8631,
+   "currency": "HKD",
+   "fee": 0,
+   "type": "normal",
+   "note": "价格由前后摊薄成本反推（成交日/成交价请核对）"
+  },
+  {
+   "date": "2026-11-27",
+   "side": "buy",
+   "code": "002558.SZ",
+   "name": "巨人网络",
+   "shares": 1000,
+   "price": 19.0699,
+   "currency": "CNY",
+   "fee": 0,
+   "type": "normal",
+   "note": "价格由前后摊薄成本反推（成交日/成交价请核对）"
+  },
+  {
+   "date": "2026-11-27",
+   "side": "buy",
+   "code": "516010.SH",
+   "name": "游戏ETF国泰",
+   "shares": 5000,
+   "price": 0.9369,
+   "currency": "CNY",
+   "fee": 0,
+   "type": "normal",
+   "note": "价格由前后摊薄成本反推（成交日/成交价请核对）"
+  },
+  {
+   "date": "2026-11-27",
+   "side": "buy",
+   "code": "601899.SH",
+   "name": "紫金矿业",
+   "shares": 4000,
+   "price": 26.1835,
+   "currency": "CNY",
+   "fee": 0,
+   "type": "normal",
+   "note": "价格由前后摊薄成本反推（成交日/成交价请核对）"
+  },
+  {
+   "date": "2026-11-27",
+   "side": "buy",
+   "code": "563020.SH",
+   "name": "红利低波ETF易方达",
+   "shares": 28000,
+   "price": 1.2331,
+   "currency": "CNY",
+   "fee": 0,
+   "type": "normal",
+   "note": "价格由前后摊薄成本反推（成交日/成交价请核对）"
+  },
+  {
+   "date": "2026-11-27",
+   "side": "buy",
+   "code": "159781.SZ",
+   "name": "科创创业ETF易方达",
+   "shares": 44000,
+   "price": 0.724,
+   "currency": "CNY",
+   "fee": 0,
+   "type": "normal",
+   "note": "价格由前后摊薄成本反推（成交日/成交价请核对）"
+  },
+  {
+   "date": "2026-11-27",
+   "side": "sell",
+   "code": "002472.SZ",
+   "name": "双环传动",
+   "shares": 1400,
+   "price": 41.4038,
+   "currency": "CNY",
+   "fee": 0,
+   "type": "normal",
+   "note": "价格由前后摊薄成本反推（成交日/成交价请核对）（摊薄成本转负）"
+  },
+  {
+   "date": "2026-11-27",
+   "side": "sell",
+   "code": "600941.SH",
+   "name": "中国移动",
+   "shares": 400,
+   "price": 98.5647,
+   "currency": "CNY",
+   "fee": 0,
+   "type": "normal",
+   "note": "价格由前后摊薄成本反推（成交日/成交价请核对）（摊薄成本转负）"
+  },
+  {
+   "date": "2026-11-27",
+   "side": "sell",
+   "code": "06082.HK",
+   "name": "壁仞科技",
+   "shares": 1200,
+   "price": 14.6298,
+   "currency": "HKD",
+   "fee": 0,
+   "type": "normal",
+   "note": "清仓（按券商清仓盈亏 -13,707.32 反推）"
   }
  ]
 }
